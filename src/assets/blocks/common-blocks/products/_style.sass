@@ -1,0 +1,78 @@
+.products
+  &--mt
+    margin: 60px 0
+
+  .container
+    max-width: 1268px
+
+  &__row
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+  &__title
+    width: 100%
+    max-width: 1216px
+    margin: 0 auto 44px auto
+    display: block
+    color: #000000
+    font-size: 40px
+
+  .swiper-pagination
+    display: none
+
+  .swiper-navigation
+    display: none
+
+  .swiper-button-prev
+    width: 50px !important
+    height: 50px !important
+    margin: 0 16px 0 0
+    display: flex
+    align-items: center
+    justify-content: center
+    position: unset
+    margin-top: unset !important
+    border-radius: 100%
+    outline: none
+    &:hover, &:focus
+      &:after
+        color: darken(#D5D8DC, 10%)
+    &:active
+      opacity: .6
+    &:after
+      content: '\e900'
+      color: #D5D8DC
+      font-size: 50px
+      font-weight: 600
+      font-family: 'acvarium-icons' !important
+      transition: .2s
+
+  .swiper-button-next
+    width: 50px !important
+    height: 50px !important
+    display: flex
+    align-items: center
+    justify-content: center
+    position: unset
+    margin-top: unset !important
+    border-radius: 100%
+    transform: rotate(180deg)
+    outline: none
+    &:hover, &:focus
+      &:after
+        color: darken(#D5D8DC, 10%)
+    &:active
+      opacity: .6
+    &:after
+      content: '\e900'
+      color: #D5D8DC
+      font-size: 50px
+      font-weight: 600
+      font-family: 'acvarium-icons' !important
+      transition: .2s
+
+  .swiper-slide
+    max-width: 290px
+    margin: 0 20px 0 0

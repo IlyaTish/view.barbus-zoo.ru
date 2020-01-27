@@ -1,0 +1,83 @@
+.menu-desc
+  margin: 60px 0 0
+  .container
+    column-count: 3
+
+  &__list
+    margin: 0
+    padding: 0
+    &__item
+      list-style: none
+    &__link
+      list-style: none
+      width: 100%
+      height: 200px
+      min-height: 200px
+      max-width: 392px
+      margin: 0 0 20px
+      padding: 30px
+      display: flex
+      align-items: center
+      justify-content: space-between
+      text-decoration: none
+      border-radius: 20px
+      border: 1px solid #EAEEEF
+      background: #FFFFFF
+      box-sizing: border-box
+      page-break-inside: avoid
+      break-inside: avoid
+      overflow: hidden
+      transition: .2s
+      &:hover, &:focus
+        border: 1px solid $blue
+
+  &__icon
+    width: 114px
+    height: 114px
+    min-width: 114px
+    min-height: 114px
+    margin: 0 20px 0 0
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 100%
+    background: $blue
+    i
+      color: #FFFFFF
+      font-size: 60px
+    .fish-bowl-icon
+      top: 3px
+      position: relative
+      font-size: 64px
+    .fish-food-icon
+      font-size: 64px
+
+  &__text-cont
+    height: 100%
+    display: flex
+    flex-direction: column
+
+  &__title
+    width: 100%
+    display: inline-block
+    margin: 0 0 12px
+    color: $black
+    font-size: 24px
+
+  &__p
+    width: 100%
+    max-height: 64px
+    margin: 0
+    color: $gray
+    font-size: 14px
+    overflow: hidden
+
+  &__link
+    margin-top: auto
+    color: $blue
+    font-size: 14px
+    text-decoration: underline
+    text-transform: uppercase
+    vertical-align: bottom
+    align-self: flex-start
+    cursor: pointer

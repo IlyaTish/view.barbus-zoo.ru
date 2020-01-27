@@ -1,0 +1,69 @@
+header.header
+  .container
+    img.header__logo(src='assets/images/logo.svg')
+
+    .header__col.header__info-cont
+      p.header__info г. Брянск, ул. Литейная, 68 к2 (ежедневно с 10:00 до 19:00)
+      nav.header__nav
+        ul.header__nav-list
+          li.header__nav-list__item
+            a.header__nav-list__link(href='#') Про нас
+          li.header__nav-list__item
+            a.header__nav-list__link(href='#') Услуги
+          li.header__nav-list__item
+            a.header__nav-list__link(href='#') Доставка и оплата
+          li.header__nav-list__item
+            a.header__nav-list__link(href='#') Акваблог
+
+    .header__row.header__buttons
+      a.header__btn.header__cart
+        i.icon.cart-icon
+        div
+          span.header__cart__text В корзине
+          span.header__cart__amount &nbsp;0&nbsp;
+          | товаров
+      a.header__btn.header__account
+        i.icon.user-icon
+        span Личный кабинет
+
+    .header__col.header__phone
+      a.header__phone-num(href='#') +7 (4832) 37-77-70
+      .header__row
+        a.header__callback
+          i.icon.phone-icon
+          span Заказать звонок
+
+
+.header-bottom
+  .container
+    ul.catalog-menu
+      li.catalog-menu__item
+        .catalog-menu__mask
+        a.catalog-menu__link
+          i.icon.fish-icon
+          span Рыбки
+      li.catalog-menu__item
+        .catalog-menu__mask
+        a.catalog-menu__link
+          i.icon.fish-bowl-icon
+          span Аквариумы
+      li.catalog-menu__item
+        .catalog-menu__mask
+        a.catalog-menu__link
+          i.icon.celsius-icon
+          span Оборудование
+      li.catalog-menu__item
+        .catalog-menu__mask
+        a.catalog-menu__link
+          i.icon.fish-food-icon
+          span Корм
+      li.catalog-menu__item
+        .catalog-menu__mask
+        a.catalog-menu__link
+          i.icon.coral-icon
+          span Растения
+      li.catalog-menu__item
+        .catalog-menu__mask
+        a.catalog-menu__link
+          i.icon.starfish-icon
+          span Прочее

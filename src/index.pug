@@ -1,0 +1,15 @@
+extends template.pug
+
+block content
+  //- Include Header block ('.header')
+  include assets/blocks/common-blocks/header/block.pug
+
+  - var page = 'index'
+  div(class='content '+ page +'')
+    include assets/blocks/main/main-slider/block.pug
+    include assets/blocks/main/menu-desc/block.pug
+    include assets/blocks/main/map/block.pug
+    include assets/blocks/common-blocks/products/block.pug
+
+  //- Include Footer block ('.footer')
+  include assets/blocks/common-blocks/footer/block.pug

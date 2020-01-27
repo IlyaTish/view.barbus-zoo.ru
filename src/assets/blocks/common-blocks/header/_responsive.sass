@@ -1,0 +1,85 @@
+@media (max-width: 1199px)
+  .header
+    &__cart
+      height: 38px
+      margin: 0 0 0 auto
+      color: #FFFFFF
+      border: 1px solid #FFFFFF
+      i
+        color: #FFFFFF
+      &__text
+        display: none
+
+    &__account
+      width: 30px
+      height: 30px
+      display: flex
+      align-items: center
+      justify-content: center
+      margin: 10px 0 0 auto
+      padding: 0
+      border: 1px solid $blue
+      border-radius: 100%
+      order: 1
+      i
+        margin: 0
+      span
+        display: none
+
+    &__callback
+      width: 30px
+      height: 30px
+      margin: 10px 0 0 18px
+      display: flex
+      align-items: center
+      justify-content: center
+      border-radius: 100%
+      border: 1px solid $blue
+      order: 2
+      &:before
+        display: none
+      span
+        display: none
+      i
+        display: block
+
+  .header-bottom
+    .container
+      display: flex
+      align-items: center
+
+    &__cart
+
+  .catalog-menu
+    display: none
+
+@media (max-width: 767px)
+  .header
+    height: 56px
+    background: $blue
+
+    &__logo
+      display: none
+
+    &__info-cont
+      display: none
+
+    &__phone-num
+      display: none
+
+    &__account
+      margin: 0 0 0 auto
+      color: #FFFFFF
+      border: 1px solid #FFFFFF
+      i
+        color: #FFFFFF
+
+    &__callback
+      margin: 0 0 0 8px
+      color: #FFFFFF
+      border: 1px solid #FFFFFF
+      i
+        color: #FFFFFF
+
+  .header-bottom
+    display: none

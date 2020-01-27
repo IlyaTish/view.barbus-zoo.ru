@@ -1,0 +1,19 @@
+mixin product(img, title, text, price)
+  .product
+    a.product__img-cont(href='#')
+      img.product__img(src=''+ img +'')
+    .product__cont
+      a.product__title(href='#')= title
+      p.product__desc= text
+      .product__row.product__row--mt
+        .quantity-block
+          button.quantity-arrow.quantity-arrow-minus
+          input.product__amount.quantity-num(type='number' value='1' min='1' max='2000')
+          button.quantity-arrow.quantity-arrow-plus
+
+        .product__row
+          span.product__price= price
+          span.product__price-sign &nbsp;₽
+      button.btn.product__btn
+        i.icon.cart-icon
+        span В корзину
