@@ -23,8 +23,7 @@
     display: none
 
   .swiper-navigation
-    display: flex
-    align-items: center
+    display: none
 
   .swiper-button-prev
     width: 50px !important
@@ -36,11 +35,19 @@
     position: unset
     margin-top: unset !important
     border-radius: 100%
-    background: #D5D8DC
+    outline: none
+    &:hover, &:focus
+      &:after
+        color: darken(#D5D8DC, 10%)
+    &:active
+      opacity: .6
     &:after
-      color: #FFFFFF
-      font-size: 20px
+      content: '\e900'
+      color: #D5D8DC
+      font-size: 50px
       font-weight: 600
+      font-family: 'acvarium-icons' !important
+      transition: .2s
 
   .swiper-button-next
     width: 50px !important
@@ -51,11 +58,20 @@
     position: unset
     margin-top: unset !important
     border-radius: 100%
-    background: #D5D8DC
+    transform: rotate(180deg)
+    outline: none
+    &:hover, &:focus
+      &:after
+        color: darken(#D5D8DC, 10%)
+    &:active
+      opacity: .6
     &:after
-      color: #FFFFFF
-      font-size: 20px
+      content: '\e900'
+      color: #D5D8DC
+      font-size: 50px
       font-weight: 600
+      font-family: 'acvarium-icons' !important
+      transition: .2s
 
   .swiper-slide
     max-width: 290px

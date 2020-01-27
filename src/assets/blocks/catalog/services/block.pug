@@ -1,0 +1,12 @@
+mixin service(services)
+  .offer.services
+    .container
+      h3.offer__title Услуги:
+      ul.offer__list
+        for service in services.data
+          li.offer__item
+            a(class='offer__link '+ service.img +'')
+              .offer__icon
+                i(class='icon '+ service.icon +'') 
+              if service.text
+                h5= service.text

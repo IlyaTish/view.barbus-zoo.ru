@@ -1,0 +1,14 @@
+mixin offer(offerItems)
+  .offer
+    .container
+      ul.offer__list
+        li.offer__item
+          .offer__empty
+            h3.offer__title Мы <br>предлагаем:
+        for item in offerItems.data
+          li.offer__item
+            a(class='offer__link '+ item.img +'')
+              .offer__icon
+                i(class='icon '+ item.icon +'') 
+              if item.text
+                h5= item.text

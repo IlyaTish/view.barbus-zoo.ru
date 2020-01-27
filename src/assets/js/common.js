@@ -49,6 +49,22 @@ function closeMenu(elem, btn, activeClass) {
 }
 
 
+function adaptive(width, elem, cont_1, cont_2, appendIn) {
+  if (window.matchMedia(width).matches) {
+    // do functionality on screens smaller than width
+    cont_1.appendChild(elem);
+  }
+
+  else {
+    if (appendIn === true) {
+      cont_2.appendChild(elem);
+    } else {
+      cont_2.after(elem);
+    }
+  }
+}
+
+
 /* Function for styling select */
 function selectStyle() {
   // Variables
@@ -234,6 +250,44 @@ ready(function() {
   selectStyle();
   quantityProducts();
   delimiter();
+
+  // Variables
+  var width_1199 = '(max-width: 1199px)',
+      width_1260 = '(max-width: 1260px)',
+
+      appendChild = true,
+
+      // Header elements
+      headerAccount = document.querySelector('.header__account'),
+      headerCart = document.querySelector('.header__cart'),
+
+      // Catalog page elements
+      offerDopTitle = document.querySelector('.offer-dop').querySelector('.offer__title'),
+
+      // Header container variables
+      headerPhoneCont = document.querySelector('.header__phone').querySelector('.header__row'),
+      headerBottomCont = document.querySelector('.header-bottom').querySelector('.container'),
+      headerButtonsCont = document.querySelector('.header__buttons'),
+
+      // Catalog page container variables
+      offerDopCont = document.querySelector('.offer-dop').querySelector('.container'),
+      offerDopEmpty = document.querySelector('.offer-dop').querySelector('.offer__empty');
+
+  // Header teleport
+  adaptive(width_1199, headerCart, headerBottomCont, headerButtonsCont);
+  adaptive(width_1199, headerAccount, headerPhoneCont, headerButtonsCont);
+
+  // Catalog page teleport
+  adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
+
+  window.onresize = function() {
+    // Header teleport
+    adaptive(width_1199, headerCart, headerBottomCont, headerButtonsCont);
+    adaptive(width_1199, headerAccount, headerPhoneCont, headerButtonsCont);
+
+    // Catalog page teleport
+    adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
+  }
 
   var mainSwiper = new Swiper('.main-swiper', {
       loop: true,

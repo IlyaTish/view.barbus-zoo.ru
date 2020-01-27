@@ -4,7 +4,8 @@ block content
   //- Include Header block ('.header')
   include assets/blocks/common-blocks/header/block.pug
 
-  .content
+  - var page = 'index'
+  div(class='content '+ page +'')
     include assets/blocks/main/main-slider/block.pug
     include assets/blocks/main/menu-desc/block.pug
     include assets/blocks/main/map/block.pug
