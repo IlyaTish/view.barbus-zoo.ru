@@ -7,8 +7,10 @@
   cursor: pointer
   overflow: hidden
   transition: .2s
-  &:hover
+  &:hover, &:focus
     border: 1px solid $blue
+    .product__title
+      color: $blue
 
   &__row
     display: flex
@@ -42,8 +44,6 @@
     font-size: 20px
     text-decoration: none
     transition: .2s
-    &:hover, &:focus
-      color: $blue
 
   &__desc
     min-height: 54px

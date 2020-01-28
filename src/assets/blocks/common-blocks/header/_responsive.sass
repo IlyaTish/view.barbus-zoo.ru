@@ -51,7 +51,59 @@
     &__cart
 
   .catalog-menu
-    display: none
+    width: 100%
+    height: auto
+    padding: 24px 20px 10px 24px
+    display: block
+    top: 100%
+    left: 0
+    position: absolute
+    background: #EDF6F9
+    box-sizing: border-box
+    column-count: 2
+    &__item
+      width: 100%
+      height: 147px
+      margin: 0 0 20px
+      max-width: 354px
+      padding: 0
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      background: #FFFFFF
+      border-radius: 20px
+      border: 1px solid #EAEEEF
+      &:first-of-type, &:last-of-type
+        padding: 0
+    &__link
+      min-height: 147px
+      padding: 16px 30px 16px 20px
+      justify-content: flex-start
+      span
+        color: #000000
+        font-size: 24px
+        text-transform: none
+    &__icon
+      width: 114px
+      height: 114px
+      margin: 0 20px 0 0
+      display: flex
+      align-items: center
+      justify-content: center
+      background: $blue
+      border-radius: 100%
+      i
+        margin: 0
+        color: #FFFFFF
+        font-size: 60px
+      .fish-bowl-icon
+        top: 3px
+        position: relative
+        font-size: 64px
+      .fish-food-icon
+        font-size: 64px
+      .starfish-icon, .celsius-icon
+        font-size: 60px
 
 @media (max-width: 767px)
   .header

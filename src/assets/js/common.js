@@ -49,14 +49,14 @@ function closeMenu(elem, btn, activeClass) {
 }
 
 
-function adaptive(width, elem, cont_1, cont_2, appendIn) {
+function adaptive(width, elem, cont_1, cont_2, appendChild) {
   if (window.matchMedia(width).matches) {
     // do functionality on screens smaller than width
     cont_1.appendChild(elem);
   }
 
   else {
-    if (appendIn === true) {
+    if (appendChild === true) {
       cont_2.appendChild(elem);
     } else {
       cont_2.after(elem);
@@ -117,6 +117,31 @@ function selectStyle() {
     toggleClass(dropDown, selectBoxCont, dropDownActive);
     toggleClass(selectBox, selectBoxCont, selectBoxActive);
     closeMenu(dropDown, selectBoxCont, dropDownActive);
+  });
+}
+
+
+function headerFix() {
+  var width_1199 = '(min-width: 1199px)';
+  var headerHight      = 170, // Header hight
+      appendChild      = true,
+      // Element
+      catalogMenu      = document.querySelector('.catalog-menu'),
+      // Containers
+      headerCont       = document.querySelector('.header-cont'),
+      headerInfoCont   = document.querySelector('.header__info-cont'),
+      headerBottomCont = document.querySelector('.header-bottom').querySelector('.container');
+
+  window.addEventListener('scroll', function(e) {
+    if (window.matchMedia(width_1199).matches) {
+      if (window.pageYOffset >= 170) {
+        headerCont.classList.add('header-cont--fixed');
+        adaptive(width_1199, catalogMenu, headerInfoCont, headerBottomCont, appendChild);
+      } else {
+        adaptive(width_1199, catalogMenu, headerBottomCont, headerInfoCont, appendChild);
+        headerCont.classList.remove('header-cont--fixed');
+      }
+    }
   });
 }
 
@@ -248,6 +273,9 @@ function enableSwiper() {
 /*  Js after DOM is loaded */
 ready(function() {
   selectStyle();
+
+  headerFix();
+
   quantityProducts();
   delimiter();
 
@@ -255,42 +283,42 @@ ready(function() {
   var width_1199 = '(max-width: 1199px)',
       // Header elements
       headerAccount = document.querySelector('.header__account'),
-      headerCart = document.querySelector('.header__cart'),
+      headerCart    = document.querySelector('.header__cart'),
 
       // Header container variables
-      headerPhoneCont = document.querySelector('.header__phone').querySelector('.header__row'),
-      headerBottomCont = document.querySelector('.header-bottom').querySelector('.container'),
+      headerPhoneCont   = document.querySelector('.header__phone').querySelector('.header__row'),
+      headerBottomCont  = document.querySelector('.header-bottom').querySelector('.container'),
       headerButtonsCont = document.querySelector('.header__buttons');
 
   // Header teleport
   adaptive(width_1199, headerCart, headerBottomCont, headerButtonsCont);
   adaptive(width_1199, headerAccount, headerPhoneCont, headerButtonsCont);
 
+  // Header teleport onresize
   window.onresize = function() {
-    // Header teleport
     adaptive(width_1199, headerCart, headerBottomCont, headerButtonsCont);
     adaptive(width_1199, headerAccount, headerPhoneCont, headerButtonsCont);
   }
 
 
   // Catalog variables
-  var width_1260 = '(max-width: 1260px)',
-      appendChild = true,
-      catalogPage = document.querySelector('.catalog');
+  var appendChild = true,
+      width_1260  = '(max-width: 1260px)',
+      offerDop    = document.querySelector('.offer-dop');
 
-  // Check catalog page
-  if (catalogPage) {
+  if (offerDop) {
     // Catalog page elements
     var offerDopTitle = document.querySelector('.offer-dop').querySelector('.offer__title'),
+
         // Catalog page container variables
-        offerDopCont = document.querySelector('.offer-dop').querySelector('.container'),
+        offerDopCont  = document.querySelector('.offer-dop').querySelector('.container'),
         offerDopEmpty = document.querySelector('.offer-dop').querySelector('.offer__empty');
 
     // Catalog page teleport
     adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
 
+    // Catalog page teleport on resize
     window.onresize = function() {
-      // Catalog page teleport on resize
       adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
     }
   }
@@ -299,11 +327,11 @@ ready(function() {
   // Swiper slider settings and options
   var mainSwiper = new Swiper('.main-swiper', {
       loop: true,
+      effect: 'coverflow',
       autoplay: {
         delay: 10000,
       },
       spaceBetween: 20,
-      direction: 'horizontal',
       slidesPerView: 1,
       centeredSlides: true,
       pagination: {
