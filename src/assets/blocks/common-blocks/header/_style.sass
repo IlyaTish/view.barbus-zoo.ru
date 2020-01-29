@@ -10,6 +10,7 @@
     height: 100%
     display: flex
     align-items: center
+    position: relative
 
   &__logo
     transition: .2s
@@ -147,7 +148,7 @@
   position: relative
   background: $blue
   transition: .2s
-  z-index: 99
+  z-index: 3
 
   .container
     height: 100%
@@ -158,6 +159,7 @@
   padding: 0
   display: flex
   justify-content: space-between
+  transition: .2s
   &__item
     width: 100%
     padding: 0 34px
@@ -202,13 +204,8 @@
     .starfish-icon
       font-size: 34px
 
-.catalog
-  display: flex
-  cursor: pointer
-  &__text
-    margin: 0 0 0 20px
-    color: #FFFFFF
-    font-size: 24px
+  &--active
+    left: 0 !important
 
 @media (min-width: 1199px)
   .header-cont
@@ -290,6 +287,7 @@
       .catalog-menu
         margin: 14px 0 0
         &__item
+          width: auto
           padding: 0 40px 0 0
           background: none
           border: none
