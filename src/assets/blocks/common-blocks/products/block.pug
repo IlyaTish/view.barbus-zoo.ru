@@ -1,24 +1,48 @@
-include ../product/block.pug
+//- include ../product/block.pug
 
-.products.products--mt
-  .container
-    .products__row
-      h3.products__title Новинки каталога
-      .swiper-nav.swiper-navigation
-        .swiper-button-prev
-        .swiper-button-next
-    .swiper-container.swiper.swiper-products
-      .swiper-wrapper
-        .swiper-slide
-          +product('assets/images/product-img-01.jpg', 'Пецилия красная длинная', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...', '5')
+//- .products.products--mt
+//-   .container
+//-     .products__row
+//-       h3.products__title Новинки каталога
+//-       .swiper-nav.swiper-navigation
+//-         .swiper-button-prev
+//-         .swiper-button-next
+//-     .swiper-container.swiper.swiper-products
+//-       .swiper-wrapper
+//-         .swiper-slide
+//-           +product('assets/images/product-img-01.jpg', 'Пецилия красная длинная', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...', '5')
 
-        .swiper-slide
-          +product('assets/images/product-img-02.jpg', 'Пецилия красная', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '1000')
+//-         .swiper-slide
+//-           +product('assets/images/product-img-02.jpg', 'Пецилия красная', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '1000')
 
-        .swiper-slide
-          +product('assets/images/product-img-03.jpg', 'Пецилия красная', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...', '251')
+//-         .swiper-slide
+//-           +product('assets/images/product-img-03.jpg', 'Пецилия красная', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...', '251')
 
-        .swiper-slide
-          +product('assets/images/product-img-04.jpg', 'Пецилия красная', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...', '100000')
+//-         .swiper-slide
+//-           +product('assets/images/product-img-04.jpg', 'Пецилия красная', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...', '100000')
 
-      .swiper-pagination
+//-       .swiper-pagination
+
+mixin products(products)
+  .products
+    .container
+      .products__cont
+        for product in products.data
+          .product
+            a.product__img-cont(href='#')
+              img.product__img(src=''+ product.img +'')
+            .product__cont
+              a.product__title(href='#')= product.title
+              p.product__desc= product.text
+              .product__row.product__row--mt
+                .quantity-block
+                  button.quantity-arrow.quantity-arrow-minus
+                  input.product__amount.quantity-num(type='number' value='1' min='1' max='2000')
+                  button.quantity-arrow.quantity-arrow-plus
+
+                .product__row
+                  span.product__price= product.price
+                  span.product__price-sign &nbsp;₽
+              button.btn.product__btn
+                i.icon.cart-icon
+                span В корзину

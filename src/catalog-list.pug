@@ -39,85 +39,86 @@ block content
     include assets/blocks/catalog-list/filters/block.pug
 
 
-    //- Breadcrumb block ('.products') data
+    //- Products block ('.products') data
     -
       const products = {
         data: [{
-          img:   'assets/images/product-img-01.jpg',
+          img:   'assets/images/product-img-02.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
           price: '1000'
         },
         {
-          img:   'assets/images/product-img-01.jpg',
+          img:   'assets/images/product-img-03.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
           price: '251'
         },
         {
-          img:   'assets/images/product-img-01.jpg',
+          img:   'assets/images/product-img-04.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
           price: '100000'
         },
         {
           img:   'assets/images/product-img-01.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
           price: '1000'
         },
         {
-          img:   'Рыбки',
+          img:   'assets/images/product-img-04.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
           price: '100000'
         },
         {
           img:   'assets/images/product-img-01.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
           price: '1000'
         },
         {
-          img:   'assets/images/product-img-01.jpg',
+          img:   'assets/images/product-img-02.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
           price: '1000'
         },
         {
-          img:   'assets/images/product-img-01.jpg',
+          img:   'assets/images/product-img-03.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
           price: '251'
         },
         {
-          img:   'assets/images/product-img-01.jpg',
+          img:   'assets/images/product-img-03.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
           price: '251'
         },
         {
-          img:   'assets/images/product-img-01.jpg',
+          img:   'assets/images/product-img-04.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
           price: '100000'
         },
         {
           img:   'assets/images/product-img-01.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
           price: '1000'
         },
         {
-          img:   'assets/images/product-img-01.jpg',
+          img:   'assets/images/product-img-02.jpg',
           title: 'Пецилия красная',
-          text:  '',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
           price: '1000'
         }]
       }
 
-    //- Include Breadcrumb block ('.breadcrumb')
+    //- Include Product block ('.product')
     include assets/blocks/common-blocks/products/block.pug
+    +products(products)
 
 
   //- Include Footer block ('.footer')
