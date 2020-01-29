@@ -1,0 +1,124 @@
+extends template.pug
+
+block content
+  //- Include Header block ('.header')
+  include assets/blocks/common-blocks/header/block.pug
+
+
+  - var page = 'catalog-list'
+  div(class='content '+ page +'')
+    //- Breadcrumb block ('.breadcrumb') data
+    -
+      const links = {
+        data: [{
+          text: 'Главная',
+          href: '#',
+          active: true
+        },
+        {
+          text: 'Каталог',
+          href: '#',
+          active: true
+        },
+        {
+          text: 'Рыбки',
+          href: '#'
+        }]
+      }
+
+    //- Include Breadcrumb block ('.breadcrumb')
+    include assets/blocks/common-blocks/breadcrumb/block.pug
+    +breadcrumb(links)
+
+
+    //- Include Heading block ('.catalog-list__heading')
+    include assets/blocks/catalog-list/heading/block.pug
+
+
+    //- Include Filters block ('.filters')
+    include assets/blocks/catalog-list/filters/block.pug
+
+
+    //- Breadcrumb block ('.products') data
+    -
+      const products = {
+        data: [{
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '1000'
+        },
+        {
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '251'
+        },
+        {
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '100000'
+        },
+        {
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '1000'
+        },
+        {
+          img:   'Рыбки',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '100000'
+        },
+        {
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '1000'
+        },
+        {
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '1000'
+        },
+        {
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '251'
+        },
+        {
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '251'
+        },
+        {
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '100000'
+        },
+        {
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '1000'
+        },
+        {
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная',
+          text:  '',
+          price: '1000'
+        }]
+      }
+
+    //- Include Breadcrumb block ('.breadcrumb')
+    include assets/blocks/common-blocks/products/block.pug
+
+
+  //- Include Footer block ('.footer')
+  include assets/blocks/common-blocks/footer/block.pug

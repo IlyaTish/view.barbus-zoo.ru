@@ -452,11 +452,8 @@ body
 .content
   flex: 1 0 auto
   position: relative
-  background-image: url('./../images/acvarium-pattern-01.png')
   background-size: 100% auto
   background-repeat: no-repeat
-  @media (max-width: 767px)
-    background-image: url('./../images/acvarium-pattern-01-small.png')
   &:before
     width: 100%
     height: 170px
@@ -465,6 +462,11 @@ body
     background: #FFFFFF
     @media (max-width: 1199px)
       display: none
+
+.index.content
+  background-image: url('./../images/acvarium-pattern-01.png')
+  @media (max-width: 767px)
+    background-image: url('./../images/acvarium-pattern-01-small.png')
 
 .content.catalog
   @media (max-width: 1199px)
@@ -749,6 +751,7 @@ h5
 .select-box
   display: inline-block
   position: relative
+  z-index: 999
   &--active
     .select-box__cont
       &:after
@@ -758,6 +761,7 @@ h5
     font-size: 14px
     cursor: pointer
     position: relative
+    background: #FFFFFF
     border-bottom: 1px solid #eee
     &:last-of-type
       border-bottom: none
@@ -780,6 +784,7 @@ h5
   &:after
     width: 24px
     height: 20px
+    margin: 0 0 0 auto
     content: ''
     display: block
     bottom: 1px
@@ -787,7 +792,7 @@ h5
     background-size: auto
     background-position: center center
     background-repeat: no-repeat
-    background-image: url('./../images/arrow-down-icon.svg')
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEwIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik01IDhMMC42Njk4NzMgMC41TDkuMzMwMTMgMC41MDAwMDFMNSA4WiIgZmlsbD0iIzg5OThBNCIvPgo8L3N2Zz4K')
     transition: .1s
 
 .select-box__dropdown
@@ -814,12 +819,27 @@ h5
       &:hover
         color: $blue
     &__cont
-      color: #FFF
-      li, span
-        color: #FFF
+      width: 100%
+      min-width: 244px
+      min-height: 46px
+      padding: 10px 20px
+      display: flex
+      justify-content: flex-start
+      color: $black
+      font-size: 16px
+      text-align: left
+      border-radius: 40px
+      border: 1px solid #BEC3C7
+      box-sizing: border-box
     &__dropdown
-      width: 160px
-      background: #FFF
+      width: 100%
+      background: #FFFFFF
+      border-radius: 10px
+      box-shadow: 0px 4px 10px rgba(0,0,0,.159392)
+      overflow: hidden
+      li
+        padding: 12px 20px
+        font-size: 16px
 
 
 .quantity-block
