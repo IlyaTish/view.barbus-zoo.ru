@@ -13,7 +13,13 @@
     position: relative
 
   &__logo
+    text-decoration: none
+    opacity: 1
     transition: .2s
+    &:hover, &:focus
+      opacity: .7
+    svg
+      transition: .2s
 
   &__col
     margin: 0 0 0 20px
@@ -159,6 +165,7 @@
   padding: 0
   display: flex
   justify-content: space-between
+  z-index: 99999
   transition: .2s
   &__item
     width: 100%
@@ -221,9 +228,10 @@
         &__col
           margin: 0 0 0 36px
         &__logo
-          width: 54px
-          path
-            fill: #FFFFFF
+          svg
+            width: 54px
+            path
+              fill: #FFFFFF
           .white-path
             fill: $dark-gray
         &__info

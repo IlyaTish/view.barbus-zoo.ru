@@ -9,7 +9,42 @@ block content
     include assets/blocks/main/main-slider/block.pug
     include assets/blocks/main/menu-desc/block.pug
     include assets/blocks/main/map/block.pug
+
+    //- Products block ('.products') data
+    -
+      const products = {
+        swiper: true,
+        data: [{
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная длинная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
+          price: '5'
+        },
+        {
+          img:   'assets/images/product-img-02.jpg',
+          title: 'Пецилия красная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          price: '1000'
+        },
+        {
+          img:   'assets/images/product-img-03.jpg',
+          title: 'Пецилия красная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
+          price: '251'
+        },
+        {
+          img:   'assets/images/product-img-04.jpg',
+          title: 'Пецилия красная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
+          price: '100000'
+        }]
+      }
+
+    //- Include Product block ('.product')
     include assets/blocks/common-blocks/products/block.pug
+    +products(products)
+
+    //- Include Insta block ('.insta')
     include assets/blocks/main/insta/block.pug
 
   //- Include Footer block ('.footer')

@@ -1,12 +1,44 @@
-@media (max-width: 750px)
+@media (max-width: 991px)
+  .catalog-list
+    &__heading
+      flex-direction: column
+      align-items: flex-start
+
+    &__row
+      width: 100%
+      margin: 20px 0 0
+      display: flex
+      align-items: center
+
+    &__items-amount
+      margin: 0 auto 0 0
+
+  .filters-sort
+    margin: 0
+
+@media (max-width: 600px)
   .catalog-list
     &__heading
       flex-direction: column
       align-items: center
       text-align: center
 
+    &__row
+      width: 100%
+      margin: 20px 0 0
+      flex-direction: column
+      text-align: center
+
     &__items-amount
-      margin: 20px 0 0 5px
+      margin: 0
+
+  .filters-sort
+    width: 100%
+    margin: 20px 0 0
+    .select-box
+      width: 100%
+      &__cont
+        max-width: 100%
 
 @media (max-width: 479px)
   .catalog-list

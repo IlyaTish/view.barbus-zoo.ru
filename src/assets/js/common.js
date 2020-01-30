@@ -45,14 +45,20 @@ function closeMenu(elem, btn, elemActiveClass, btnActiveClass) {
 function adaptive(width, elem, cont_1, cont_2, appendChild) {
   if (window.matchMedia(width).matches) {
     // do functionality on screens smaller than width
-    cont_1.appendChild(elem);
+    if (elem && cont_1) {
+      cont_1.appendChild(elem);
+    }
   }
 
   else {
     if (appendChild === true) {
-      cont_2.appendChild(elem);
+      if (elem && cont_2) {
+        cont_2.appendChild(elem);
+      }
     } else {
-      cont_2.after(elem);
+      if (elem && cont_2) {
+        cont_2.after(elem);
+      }
     }
   }
 }
@@ -238,6 +244,7 @@ ready(function() {
 
     // Width
     var width_1199 = '(max-width: 1199px)',
+        width_991  = '(max-width: 991px)',
         width_767  = '(max-width: 767px)',
 
         // Header elements
@@ -259,6 +266,14 @@ ready(function() {
         catalogMenu        = document.querySelector('.catalog-menu'),
         catalogMenuActive  = 'catalog-menu--active',
 
+        // Catalog-list elements
+        catalogList   = document.querySelector('.catalog-list'),
+        catalogSelect = document.querySelector('.catalog-list').querySelector('.filters-sort'),
+
+        //Catalog-list container
+        catalogListCont = document.querySelector('.catalog-list__row'),
+        filtersCont     = document.querySelector('.filters').querySelector('.container'),
+
         appendChild = true;
 
     // ('.header__cart'), ('.header__account') teleport
@@ -270,6 +285,7 @@ ready(function() {
       adaptive(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
       adaptive(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
 
+      // ('.header__cart') teleport on screen smaller then 767px
       adaptive(width_767, headerCart, headerCont, headerBottomCont, appendChild);
     }
 
@@ -279,6 +295,11 @@ ready(function() {
 
     // Close ('.catalog-menu') when document clicked
     closeMenu(catalogMenu, burgerMenu, catalogMenuActive, burgerMenuActive);
+
+    if (catalogList) {
+      // Catalog-list page teleport
+      adaptive(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
+    }
 
     window.onresize = function() {
       // ('.header__cart'), ('.header__account') teleport onresize
@@ -292,6 +313,9 @@ ready(function() {
       // ('.burger-menu'), ('.catalog-menu') teleport on screen smaller then 767px and onresize
       adaptive(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
       adaptive(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
+
+      // Catalog-list page teleport on resize
+      adaptive(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
     }
 
 
@@ -304,14 +328,11 @@ ready(function() {
   if (offerDop) {
     // Catalog page elements
     var offerDopTitle = document.querySelector('.offer-dop').querySelector('.offer__title'),
-
         // Catalog page container variables
         offerDopCont  = document.querySelector('.offer-dop').querySelector('.container'),
         offerDopEmpty = document.querySelector('.offer-dop').querySelector('.offer__empty');
-
     // Catalog page teleport
     adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
-
     // Catalog page teleport on resize
     window.onresize = function() {
       adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
@@ -377,7 +398,6 @@ ready(function() {
       });
     }
   };
-
 
   function swiper_2() {
     if (breakpoint.matches === true) {
