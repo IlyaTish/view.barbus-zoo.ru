@@ -349,6 +349,30 @@ ready(() => {
       }
   });
 
+  const productGalleryThumbs = new Swiper('.product-gallery-thumbs', {
+    loop: true,
+    autoplay: {
+      delay: 10000,
+    },
+    spaceBetween: 10,
+    slidesPerView: 3,
+    centeredSlides: true,
+    grabCursor: true
+  });
+
+  const productGallery = new Swiper('.product-gallery', {
+    loop: true,
+    autoplay: {
+      delay: 10000,
+    },
+    spaceBetween: 20,
+    slidesPerView: 1,
+    centeredSlides: true,
+    thumbs: {
+      swiper: productGalleryThumbs
+    }
+  });
+
 
 
   const breakpoint = window.matchMedia('(min-width: 1280px)');

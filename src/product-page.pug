@@ -36,6 +36,10 @@ block content
     +breadcrumb(links)
 
 
+    //- Include Product-template block ('.product-template')
+    include assets/blocks/product-page/product-template/block.pug
+
+
     //- Products block ('.products') data
     -
       let products = {
@@ -71,10 +75,6 @@ block content
     //- Include Products block ('.products')
     include assets/blocks/common-blocks/products/block.pug
     +products(products)
-
-
-    //- Include Product-template block ('.product-template')
-    include assets/blocks/product-page/product-template/block.pug
 
 
     //- Products block ('.products') data
