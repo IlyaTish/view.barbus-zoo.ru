@@ -1,36 +1,25 @@
 /* Functions */
 
 // Document ready function
-var ready = function(callback) {
+const ready = (callback) => {
   if (document.readyState != 'loading') callback();
   else document.addEventListener('DOMContentLoaded', callback);
 }
 
 
 
-// Check if block has active class
-function checkActive(elem, class) {
-  if (elem.classList.contains(class)) {
-    elem.classList.remove(class);
-  } else {
-    elem.classList.add(class);
-  }
-}
-
-
-
-function toggleClass(targetElem, elem, activeClass) {
-  elem.addEventListener('click', function() {
+const toggleClass = (targetElem, elem, activeClass) => {
+  elem.addEventListener('click', () => {
     targetElem.classList.toggle(activeClass);
   });
 }
 
 
 
-function closeMenu(elem, btn, elemActiveClass, btnActiveClass) {
-  document.addEventListener('click', function(event) {
-    var isClickInside = elem.contains(event.target),
-        isBtnClicked  = btn.contains(event.target);
+const closeMenu = (elem, btn, elemActiveClass, btnActiveClass) => {
+  document.addEventListener('click', (e) => {
+    const isClickInside = elem.contains(e.target),
+          isBtnClicked  = btn.contains(e.target);
 
     if (!isClickInside && !isBtnClicked) {
       //the click was outside the elem
@@ -42,7 +31,7 @@ function closeMenu(elem, btn, elemActiveClass, btnActiveClass) {
 
 
 
-function adaptive(width, elem, cont_1, cont_2, appendChild) {
+const adaptive = (width, elem, cont_1, cont_2, appendChild) => {
   if (window.matchMedia(width).matches) {
     // do functionality on screens smaller than width
     if (elem && cont_1) {
@@ -66,27 +55,27 @@ function adaptive(width, elem, cont_1, cont_2, appendChild) {
 
 
 /* Function for styling select */
-function selectStyle() {
+const selectStyle = () => {
   // Variables
-  var cont = document.querySelector('form');
-  var selectInputs = document.querySelectorAll('.select');
-  var dropDownActive = 'select-box__dropdown--active';
+  const cont           = document.querySelector('form'),
+        selectInputs   = document.querySelectorAll('.select'),
+        dropDownActive = 'select-box__dropdown--active';
 
-  [].forEach.call(selectInputs, function(select) {
-    var selectBox = document.createElement('div');
-    var selectBoxActive = 'select-box--active';
+  [].forEach.call(selectInputs, (select) => {
+    const selectBox = document.createElement('div'),
+          selectBoxActive = 'select-box--active';
 
     selectBox.classList.add('select-box');
     selectBox.innerHTML = '<div class="select-box__cont"></div>';
 
-    var dropDown = document.createElement('div');
+    const dropDown = document.createElement('div');
     dropDown.classList.add('select-box__dropdown');
 
-    var selectBoxCont = selectBox.firstChild;
-    var options = select.children;
+    const selectBoxCont = selectBox.firstChild,
+          options       = select.children;
 
-    [].forEach.call(options, function(option) {
-      var selectedOption = select.options[select.selectedIndex].textContent;
+    [].forEach.call(options, (option) => {
+      const selectedOption = select.options[select.selectedIndex].textContent;
 
       if (selectedOption) {
         selectBoxCont.innerHTML = selectedOption;
@@ -96,10 +85,10 @@ function selectStyle() {
         return true;
       }
 
-      var li = document.createElement('li');
+      const li = document.createElement('li');
       li.innerHTML = '<span>' + option.getAttribute('data-html-text') + '</span>';
 
-      li.addEventListener('click', function() {
+      li.addEventListener('click', () => {
         selectBoxCont.innerHTML = option.textContent;
         selectBox.classList.remove(selectBoxActive);
         dropDown.classList.remove(dropDownActive);
@@ -123,18 +112,18 @@ function selectStyle() {
 
 
 /* Change header styles when scroll */
-function headerFix() {
-  var width_1199 = '(min-width: 1199px)';
-  var headerHight      = 170, // Header hight
-      appendChild      = true,
-      // Element
-      catalogMenu      = document.querySelector('.catalog-menu'),
-      // Containers
-      headerCont       = document.querySelector('.header-cont'),
-      headerInfoCont   = document.querySelector('.header__info-cont'),
-      headerBottomCont = document.querySelector('.header-bottom').querySelector('.container');
+const headerFix = () => {
+  const width_1199     = '(min-width: 1199px)',
+        headerHight    = 170, // Header hight
+        appendChild    = true,
+        // Element
+        catalogMenu      = document.querySelector('.catalog-menu'),
+        // Containers
+        headerCont       = document.querySelector('.header-cont'),
+        headerInfoCont   = document.querySelector('.header__info-cont'),
+        headerBottomCont = document.querySelector('.header-bottom').querySelector('.container');
 
-  window.addEventListener('scroll', function(e) {
+  window.addEventListener('scroll', (e) => {
     if (window.matchMedia(width_1199).matches) {
       if (window.pageYOffset >= 170) {
         headerCont.classList.add('header-cont--fixed');
@@ -152,47 +141,46 @@ function headerFix() {
 
 
 /* Count amount of products */
-function quantityProducts() {
-  var products = document.querySelectorAll('.product');
+const quantityProducts = () => {
+  const products = document.querySelectorAll('.product');
 
-  [].forEach.call(products, function(product) {
-    var arrowMinus = product.querySelector('.quantity-arrow-minus');
-    var arrowPlus = product.querySelector('.quantity-arrow-plus');
-    var quantityNum = product.querySelector('.quantity-num');
+  [].forEach.call(products, (product) => {
+    const arrowMinus  = product.querySelector('.quantity-arrow-minus'),
+          arrowPlus   = product.querySelector('.quantity-arrow-plus'),
+          quantityNum = product.querySelector('.quantity-num');
 
-    var price = product.querySelector('.product__price');
-    var priceVal = parseInt(price.textContent);
+    let price    = product.querySelector('.product__price'),
+        priceVal = parseInt(price.textContent);
 
     price.setAttribute('data-default-price', parseInt(price.textContent));
 
-    var defaultPrice = parseInt(price.getAttribute('data-default-price'));
+    const defaultPrice = parseInt(price.getAttribute('data-default-price'));
 
-    arrowMinus.addEventListener('click', function(e) {
+    arrowMinus.addEventListener('click', (e) => {
       quantityMinus();
     });
 
-    arrowPlus.addEventListener('click', function(e) {
-
+    arrowPlus.addEventListener('click', (e) => {
       quantityPlus();
     });
 
-    function quantityMinus() {
+    const quantityMinus = () => {
       if (quantityNum.value > 1) {
         quantityNum.setAttribute('value', --quantityNum.value);
         price.innerHTML = (parseInt(price.textContent.replace(/[^\d.]/g, ''), 10) - defaultPrice).toLocaleString('ru-RU');
       }
     }
 
-    function quantityPlus() {
+    const quantityPlus = () => {
       quantityNum.setAttribute('value', ++quantityNum.value);
 
       price.innerHTML = (parseInt(price.textContent.replace(/[^\d.]/g, ''), 10) + defaultPrice).toLocaleString('ru-RU');
     }
 
-    quantityNum.addEventListener('keyup', function(e) {
-      val = parseInt(e.target.value);
-      min = parseInt(e.target.getAttribute('min'));
-      max = parseInt(e.target.getAttribute('max'));
+    quantityNum.addEventListener('keyup', (e) => {
+      const val = parseInt(e.target.value),
+            min = parseInt(e.target.getAttribute('min')),
+            max = parseInt(e.target.getAttribute('max'));
 
       if (val <= min) {
         e.target.value = min;
@@ -205,7 +193,10 @@ function quantityProducts() {
       price.innerHTML = (e.target.value * defaultPrice).toLocaleString('ru-RU');
     });
 
-    quantityNum.addEventListener('blur', function(e) {
+    quantityNum.addEventListener('blur', (e) => {
+      const min = parseInt(e.target.getAttribute('min')),
+            max = parseInt(e.target.getAttribute('max'));
+
       if (e.target.value == '') {
         e.target.value = min;
       } else if (e.target.value == '0') {
@@ -222,10 +213,10 @@ function quantityProducts() {
 
 
 /* Add delimiter to prices */
-function delimiter() {
-  var prices = document.querySelectorAll('.product__price');
+const delimiter = () => {
+  const prices = document.querySelectorAll('.product__price');
 
-  [].forEach.call(prices, function(price) {
+  [].forEach.call(prices, (price) => {
     price.innerHTML = (parseInt(price.textContent) * 1)
     .toLocaleString('ru-RU')
   });
@@ -234,7 +225,7 @@ function delimiter() {
 
 
 /*  Js after DOM is loaded */
-ready(function() {
+ready(() => {
   selectStyle();
   headerFix();
   quantityProducts();
@@ -242,107 +233,107 @@ ready(function() {
 
 
 
-    // Width
-    var width_1199 = '(max-width: 1199px)',
-        width_991  = '(max-width: 991px)',
-        width_767  = '(max-width: 767px)',
+  // Width
+  var width_1260 = '(max-width: 1260px)',
+      width_1199 = '(max-width: 1199px)',
+      width_991  = '(max-width: 991px)',
+      width_767  = '(max-width: 767px)',
 
-        // Header elements
-        headerAccount = document.querySelector('.header__account'),
-        headerCart    = document.querySelector('.header__cart'),
+      // Header elements
+      headerAccount = document.querySelector('.header__account'),
+      headerCart    = document.querySelector('.header__cart'),
 
-        // Header container variables
-        headerCont        = document.querySelector('.header').querySelector('.container'),
-        headerPhoneCont   = document.querySelector('.header__phone').querySelector('.header__row'),
-        headerBottomCont  = document.querySelector('.header-bottom').querySelector('.container'),
-        headerButtonsCont = document.querySelector('.header__buttons'),
+      // Header container variables
+      headerCont        = document.querySelector('.header').querySelector('.container'),
+      headerPhoneCont   = document.querySelector('.header__phone').querySelector('.header__row'),
+      headerBottomCont  = document.querySelector('.header-bottom').querySelector('.container'),
+      headerButtonsCont = document.querySelector('.header__buttons'),
 
-        // Burger-menu elements ('.burger-menu')
-        burgerMenu       = document.querySelector('.burger-menu'),
-        burgerMenuBtn    = document.querySelector('.burger-menu-btn'),
-        burgerMenuActive = 'burger-menu--active',
+      // Burger-menu elements ('.burger-menu')
+      burgerMenu       = document.querySelector('.burger-menu'),
+      burgerMenuBtn    = document.querySelector('.burger-menu-btn'),
+      burgerMenuActive = 'burger-menu--active',
 
-        // Catalog-menu elements ('.catalog-menu')
-        catalogMenu        = document.querySelector('.catalog-menu'),
-        catalogMenuActive  = 'catalog-menu--active',
+      // Catalog-menu elements ('.catalog-menu')
+      catalogMenu        = document.querySelector('.catalog-menu'),
+      catalogMenuActive  = 'catalog-menu--active',
 
-        // Catalog-list elements
-        catalogList   = document.querySelector('.catalog-list'),
-        catalogSelect = document.querySelector('.catalog-list').querySelector('.filters-sort'),
+      appendChild = true;
+
+  // ('.header__cart'), ('.header__account') teleport
+  adaptive(width_1199, headerCart, headerBottomCont, headerButtonsCont, appendChild);
+  adaptive(width_1199, headerAccount, headerPhoneCont, headerButtonsCont, appendChild);
+
+  if (window.matchMedia(width_767).matches) {
+    // ('.burger-menu'), ('.catalog-menu') teleport on screen smaller then 767px
+    adaptive(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
+    adaptive(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
+
+    // ('.header__cart') teleport on screen smaller then 767px
+    adaptive(width_767, headerCart, headerCont, headerBottomCont, appendChild);
+  }
+
+  // Toggle classes on ('.burger-menu') click event
+  toggleClass(catalogMenu, burgerMenu, catalogMenuActive);
+  toggleClass(burgerMenu, burgerMenu, burgerMenuActive);
+
+  // Close ('.catalog-menu') when document clicked
+  closeMenu(catalogMenu, burgerMenu, catalogMenuActive, burgerMenuActive);
+
+
+
+  if (document.querySelector('.offer-dop')) {
+    // Catalog page elements
+    var offerDopTitle = document.querySelector('.offer-dop').querySelector('.offer__title'),
+
+        // Catalog page container variables
+        offerDopCont  = document.querySelector('.offer-dop').querySelector('.container'),
+        offerDopEmpty = document.querySelector('.offer-dop').querySelector('.offer__empty');
+
+    // Catalog page teleport
+    adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
+  }
+
+
+
+  if (document.querySelector('.catalog-list')) {
+    // Catalog-list elements
+    var catalogSelect = document.querySelector('.catalog-list').querySelector('.filters-sort'),
 
         //Catalog-list container
         catalogListCont = document.querySelector('.catalog-list__row'),
-        filtersCont     = document.querySelector('.filters').querySelector('.container'),
+        filtersCont     = document.querySelector('.filters').querySelector('.container');
 
-        appendChild = true;
+    // ('.filters-sort') element teleport
+    adaptive(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
+  }
 
-    // ('.header__cart'), ('.header__account') teleport
+
+
+  window.onresize = () => {
+    // ('.header__cart'), ('.header__account') teleport onresize
     adaptive(width_1199, headerCart, headerBottomCont, headerButtonsCont, appendChild);
     adaptive(width_1199, headerAccount, headerPhoneCont, headerButtonsCont, appendChild);
 
     if (window.matchMedia(width_767).matches) {
-      // ('.burger-menu'), ('.catalog-menu') teleport on screen smaller then 767px
-      adaptive(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
-      adaptive(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
-
-      // ('.header__cart') teleport on screen smaller then 767px
       adaptive(width_767, headerCart, headerCont, headerBottomCont, appendChild);
     }
 
-    // Toggle classes on ('.burger-menu') click event
-    toggleClass(catalogMenu, burgerMenu, catalogMenuActive);
-    toggleClass(burgerMenu, burgerMenu, burgerMenuActive);
+    // ('.burger-menu'), ('.catalog-menu') teleport on screen smaller then 767px and onresize
+    adaptive(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
+    adaptive(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
 
-    // Close ('.catalog-menu') when document clicked
-    closeMenu(catalogMenu, burgerMenu, catalogMenuActive, burgerMenuActive);
+    // ('.filters-sort') element teleport teleport on screen smaller then 991px and onresize
+    adaptive(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
 
-    if (catalogList) {
-      // Catalog-list page teleport
-      adaptive(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
-    }
-
-    window.onresize = function() {
-      // ('.header__cart'), ('.header__account') teleport onresize
-      adaptive(width_1199, headerCart, headerBottomCont, headerButtonsCont, appendChild);
-      adaptive(width_1199, headerAccount, headerPhoneCont, headerButtonsCont, appendChild);
-
-      if (window.matchMedia(width_767).matches) {
-        adaptive(width_767, headerCart, headerCont, headerBottomCont, appendChild);
-      }
-
-      // ('.burger-menu'), ('.catalog-menu') teleport on screen smaller then 767px and onresize
-      adaptive(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
-      adaptive(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
-
-      // Catalog-list page teleport on resize
-      adaptive(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
-    }
-
-
-
-  // Catalog variables
-  var appendChild = true,
-      width_1260  = '(max-width: 1260px)',
-      offerDop    = document.querySelector('.offer-dop');
-
-  if (offerDop) {
-    // Catalog page elements
-    var offerDopTitle = document.querySelector('.offer-dop').querySelector('.offer__title'),
-        // Catalog page container variables
-        offerDopCont  = document.querySelector('.offer-dop').querySelector('.container'),
-        offerDopEmpty = document.querySelector('.offer-dop').querySelector('.offer__empty');
-    // Catalog page teleport
+    // ('.offer__title') element teleport on screen smaller then 1260px and onresize
     adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
-    // Catalog page teleport on resize
-    window.onresize = function() {
-      adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
-    }
   }
 
 
 
   // Swiper slider settings and options
-  var mainSwiper = new Swiper('.main-swiper', {
+  const mainSwiper = new Swiper('.main-swiper', {
       loop: true,
       effect: 'coverflow',
       autoplay: {
@@ -360,10 +351,10 @@ ready(function() {
 
 
 
-  var breakpoint = window.matchMedia('(min-width: 1280px)');
-  var swiper;
+  const breakpoint = window.matchMedia('(min-width: 1280px)');
+  let swiper;
 
-  function swiper_1() {
+  const swiper_1 = () => {
     if (breakpoint.matches === true) {
       if (swiper !== undefined) {
         swiper.destroy(true, true);
@@ -399,7 +390,7 @@ ready(function() {
     }
   };
 
-  function swiper_2() {
+  const swiper_2 = () => {
     if (breakpoint.matches === true) {
       if (swiper !== undefined) {
         swiper.destroy(true, true);
