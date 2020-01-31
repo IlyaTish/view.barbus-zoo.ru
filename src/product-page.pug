@@ -1,0 +1,116 @@
+extends template.pug
+
+block content
+  //- Include Header block ('.header')
+  include assets/blocks/common-blocks/header/block.pug
+
+
+  - var page = 'product-page'
+  div(class='content '+ page +'')
+    //- Breadcrumb block ('.breadcrumb') data
+    -
+      const links = {
+        data: [{
+          text: 'Главная',
+          href: '#',
+          active: true
+        },
+        {
+          text: 'Каталог',
+          href: '#',
+          active: true
+        },
+        {
+          text: 'Рыбки',
+          href: '#',
+          active: true
+        },
+        {
+          text: 'Пецилия красная',
+          href: '#'
+        }]
+      }
+
+    //- Include Breadcrumb block ('.breadcrumb')
+    include assets/blocks/common-blocks/breadcrumb/block.pug
+    +breadcrumb(links)
+
+
+    //- Products block ('.products') data
+    -
+      let products = {
+        swiper: true,
+        recommended: true,
+        title: 'К этому товару рекомендуем:',
+        data: [{
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная длинная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
+          price: '5'
+        },
+        {
+          img:   'assets/images/product-img-02.jpg',
+          title: 'Пецилия красная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          price: '1000'
+        },
+        {
+          img:   'assets/images/product-img-03.jpg',
+          title: 'Пецилия красная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
+          price: '251'
+        },
+        {
+          img:   'assets/images/product-img-04.jpg',
+          title: 'Пецилия красная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
+          price: '100000'
+        }]
+      }
+
+    //- Include Products block ('.products')
+    include assets/blocks/common-blocks/products/block.pug
+    +products(products)
+
+
+    //- Include Product-template block ('.product-template')
+    include assets/blocks/product-page/product-template/block.pug
+
+
+    //- Products block ('.products') data
+    -
+      products = {
+        swiper: true,
+        title:  'Вы недавно смотрели:',
+        data: [{
+          img:   'assets/images/product-img-01.jpg',
+          title: 'Пецилия красная длинная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
+          price: '5'
+        },
+        {
+          img:   'assets/images/product-img-02.jpg',
+          title: 'Пецилия красная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          price: '1000'
+        },
+        {
+          img:   'assets/images/product-img-03.jpg',
+          title: 'Пецилия красная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
+          price: '251'
+        },
+        {
+          img:   'assets/images/product-img-04.jpg',
+          title: 'Пецилия красная',
+          text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
+          price: '100000'
+        }]
+      }
+
+    //- Include Products block ('.products')
+    +products(products)
+
+
+  //- Include Footer block ('.footer')
+  include assets/blocks/common-blocks/footer/block.pug
