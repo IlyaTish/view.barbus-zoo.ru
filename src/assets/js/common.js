@@ -442,41 +442,31 @@ ready(() => {
   const breakpoint = window.matchMedia('(min-width: 1280px)');
   let swiper;
 
-  const swiper_1 = () => {
-    if (breakpoint.matches === true) {
-      if (swiper !== undefined) {
-        swiper.destroy(true, true);
-      } else {
-        return;
+  const swiperProducts = new Swiper('.swiper-products', {
+    loop: true,
+    autoplay: {
+      delay: 10000
+    },
+    spaceBetween: 20,
+    slidesPerView: 1,
+    centeredSlide: true,
+    navigation: {
+      nextEl: '.products .swiper-button-next',
+      prevEl: '.products .swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    breakpoints: {
+      489: {
+        slidesPerView: 'auto',
+        freeMode: true,
+        centeredSlide: false
       }
-    } else if (breakpoint.matches === false) {
-      swiper = new Swiper('.swiper-products', {
-        loop: false,
-        autoplay: {
-          delay: 10000
-        },
-        spaceBetween: 20,
-        slidesPerView: 1,
-        centeredSlide: true,
-        navigation: {
-          nextEl: '.products .swiper-button-next',
-          prevEl: '.products .swiper-button-prev',
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'bullets',
-          clickable: true
-        },
-        breakpoints: {
-          489: {
-            slidesPerView: 'auto',
-            freeMode: true,
-            centeredSlide: false
-          }
-        }
-      });
     }
-  };
+  });
 
   const swiper_2 = () => {
     if (breakpoint.matches === true) {
@@ -513,9 +503,6 @@ ready(() => {
       });
     }
   };
-
-  breakpoint.addListener(swiper_1);
-  swiper_1();
 
   breakpoint.addListener(swiper_2);
   swiper_2();

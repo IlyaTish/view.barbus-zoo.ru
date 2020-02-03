@@ -9,7 +9,9 @@
   transition: .2s
   &:hover, &:focus
     border: 1px solid $blue
-    animation: shining 1.2s infinite
+    animation: shining .8s infinite
+    img
+      transform: scale(1.1)
     .product__title
       color: $blue
 
@@ -29,6 +31,7 @@
       width: 100%
       min-height: 188px
       height: auto
+      transition: .5s
 
   &__cont
     width: 100%
