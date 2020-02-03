@@ -442,30 +442,49 @@ ready(() => {
   const breakpoint = window.matchMedia('(min-width: 1280px)');
   let swiper;
 
-  const swiperProducts = new Swiper('.swiper-products', {
-    loop: true,
-    autoplay: {
-      delay: 10000
-    },
-    spaceBetween: 20,
-    slidesPerView: 1,
-    centeredSlide: true,
-    navigation: {
-      nextEl: '.products .swiper-button-next',
-      prevEl: '.products .swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      489: {
-        slidesPerView: 'auto',
-        freeMode: true,
-        centeredSlide: false
+  const products = document.querySelectorAll('.products');
+
+  [].forEach.call(products, (el, index) => {
+    const btnPrev = el.querySelector('.swiper-button-prev'),
+          btnNext = el.querySelector('.swiper-button-next');
+
+    el.classList.add('products-'+ index);
+
+    btnNext.classList.add('btn-next-'+ index);
+    btnPrev.classList.add('btn-prev-'+ index);
+
+    console.log(btnPrev);
+
+    const swiperProducts = new Swiper('.swiper-products', {
+      loop: true,
+      autoplay: {
+        delay: 10000
+      },
+      spaceBetween: 20,
+      slidesPerView: 1,
+      navigation: {
+        nextEl: '.btn-next-'+ index,
+        prevEl: '.btn-prev-'+ index
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      },
+      breakpoints: {
+        489: {
+          slidesPerView: 'auto',
+          freeMode: true,
+          freeModeMomentumRatio: 0.2,
+          freeModeSticky: true,
+          centeredSlide: false
+        },
+        1199: {
+          slidesPerView: 4,
+          centeredSlide: true
+        }
       }
-    }
+    });
   });
 
   const swiper_2 = () => {
