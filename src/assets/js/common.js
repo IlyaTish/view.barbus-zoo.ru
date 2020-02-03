@@ -141,7 +141,7 @@ const headerFix = () => {
 
 
 const catalogLinksHover = () => {
-  const catItems      = document.querySelectorAll('.catalog-menu__link'),
+  const catItems      = document.querySelectorAll('.catalog-menu__item'),
         catItemsIndex = [...catItems].reverse(),
         leftPos       = 20;
 

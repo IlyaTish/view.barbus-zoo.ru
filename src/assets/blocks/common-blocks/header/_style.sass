@@ -34,6 +34,9 @@
   &__info
     color: $gray
     margin: 0 0 28px
+    text-decoration: none
+    &:hover
+      color: $blue
 
   &__nav-list
     margin: 0
@@ -180,7 +183,6 @@
     border-right: 3px solid #FFFFFF
     transition: .2s
     &:hover
-      background: $yellow
       &:before
         background: $yellow
         opacity: 1
@@ -197,8 +199,7 @@
       border-top-right-radius: 40px
       border-bottom-right-radius: 40px
       opacity: 0
-      z-index: -1
-      transition: .16s
+      transition: .2s
     &:first-of-type
       &:before
         width: 2000px
