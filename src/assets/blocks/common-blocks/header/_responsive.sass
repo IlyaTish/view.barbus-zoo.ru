@@ -73,8 +73,14 @@
       background: #FFFFFF
       border-radius: 20px
       border: 1px solid #EAEEEF
+      &:before
+        display: none
+      &:hover
+        background: #FFFFFF
       &:first-of-type, &:last-of-type
-        padding: 0
+        .catalog-menu__link
+          padding: 16px 30px 16px 20px
+
     &__link
       min-height: 147px
       padding: 16px 30px 16px 20px
@@ -83,6 +89,7 @@
         color: #000000
         font-size: 24px
         text-transform: none
+
     &__icon
       width: 114px
       height: 114px

@@ -140,6 +140,18 @@ const headerFix = () => {
 
 
 
+const catalogLinksHover = () => {
+  const catItems      = document.querySelectorAll('.catalog-menu__link'),
+        catItemsIndex = [...catItems].reverse(),
+        leftPos       = 20;
+
+  [].forEach.call(catItemsIndex, (el, index) => {
+    el.style.zIndex = ''+ ++index +'';
+  });
+}
+
+
+
 /* Count amount of products */
 const quantityProducts = () => {
   const products = document.querySelectorAll('.product-item');
@@ -226,8 +238,7 @@ const delimiter = () => {
 
 const tabs = () => {
   const tabLinks   = document.querySelectorAll('.tabs a'),
-        tabPanels  = document.querySelectorAll('.tab-panel'),
-        showMore   = document.querySelector('.show-more');
+        tabPanels  = document.querySelectorAll('.tab-panel');
 
   [].forEach.call(tabPanels, (el, index) => {
     el.setAttribute('data-index', ''+index+'');
@@ -250,7 +261,9 @@ const tabs = () => {
     });
   }
 
-  if (showMore) {
+  if (document.querySelector('.show-more')) {
+    const showMore = document.querySelector('.show-more');
+
     showMore.addEventListener('click', (e) => {
       showMore.classList.toggle('show-more--active');
 
@@ -273,6 +286,7 @@ const tabs = () => {
 ready(() => {
   selectStyle();
   headerFix();
+  catalogLinksHover();
   quantityProducts();
   delimiter();
   tabs();
