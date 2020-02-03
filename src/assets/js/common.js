@@ -462,7 +462,7 @@ ready(() => {
       },
       spaceBetween: 20,
       slidesPerView: 1,
-      longSwipesMs: 100,
+      longSwipesMs: 600,
       navigation: {
         nextEl: '.btn-next-'+ index,
         prevEl: '.btn-prev-'+ index
