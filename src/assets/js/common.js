@@ -427,6 +427,9 @@ ready(() => {
     spaceBetween: 20,
     slidesPerView: 1,
     centeredSlides: true,
+    thumbs: {
+      swiper: productGalleryThumbs
+    },
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
