@@ -507,6 +507,7 @@ body
   border-radius: 40px
   box-sizing: border-box
   cursor: pointer
+  outline: none
   transition: .2s
   i
     margin: 0 6px 0 0
@@ -860,21 +861,88 @@ h5
         font-size: 16px
 
 
+.tabs
+  padding: 0
+  margin: 0
+  display: flex
+
+.tab
+  margin: 0 10px 0 0
+  top: 2px
+  position: relative
+  color: #8998A4
+  background: #F9FAFB
+  border-radius: 20px 20px 0 0
+  border: 1px solid #EDF6F9
+  border-bottom: 1px solid #FFFFFF
+  box-sizing: border-box
+  list-style: none
+  cursor: pointer
+  transition: .1s
+  z-index: 2
+  &:last-of-type
+    margin: 0
+  &--active
+    color: $blue
+    background: #FFFFFF
+    z-index: 4
+  a
+    width: 100%
+    height: 100%
+    padding: 16px 40px
+    display: inline-block
+    font-size: 24px
+    text-decoration: none
+    box-sizing: border-box
+  @media (max-width: 767px)
+    a
+      padding: 12px 18px
+      font-size: 20px
+
+.tabs-content
+  padding: 30px 30px 20px 30px
+  position: relative
+  box-sizing: border-box
+  border: 1px solid #EDF6F9
+  border-radius: 0 20px 20px 20px
+  z-index: 3
+  p
+    margin: 0
+    color: #4D4D4D
+    font-size: 16px
+    @include roboto-light
+    line-height: 20px
+
+.tab-panel
+  max-height: 120px
+  display: none
+  overflow: hidden
+  transition: .2s
+  &--active
+    display: block
+  &--mh
+    max-height: 4000px
+
+
 .quantity-block
+  width: 106px
+  height: 40px
   position: relative
 
 .quantity-arrow
   width: 14px
   height: 14px
+  margin-top: -7px
   padding: 0
   display: flex
   align-items: center
   justify-content: center
+  top: 50%
   right: 16px
   position: absolute
   border: none
   background: none
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNiIgdmlld0JveD0iMCAwIDEwIDYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik01IDAuNDk5ODc4TDkuMzMwMTMgNS4wOTc3SDAuNjY5ODczTDUgMC40OTk4NzhaIiBmaWxsPSIjMkQzRTUwIi8+Cjwvc3ZnPgo=")
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNiIgdmlld0JveD0iMCAwIDEwIDYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik01IDAuNDk5ODc4TDkuMzMwMTMgNS4wOTc3SDAuNjY5ODczTDUgMC40OTk4NzhaIiBmaWxsPSIjMkQzRTUwIi8+Cjwvc3ZnPgo=')
   background-repeat: no-repeat
   background-position: center center
   cursor: pointer
@@ -883,11 +951,29 @@ h5
     opacity: .6
 
 .quantity-arrow-plus
-  top: 6px
+  margin-top: -14px
 
 .quantity-arrow-minus
-  bottom: 6px
+  margin-top: 1px
   transform: rotate(180deg)
+
+
+.share
+  display: flex
+  align-items: center
+  color: $blue
+  cursor: pointer
+  text-align: center
+  opacity: 1
+  transition: .2s
+  &:hover, &:focus, &:active
+    opacity: .6
+  span
+    font-size: 16px
+  i
+    font-size: 30px
+    margin: 0 0 0 14px
+
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button

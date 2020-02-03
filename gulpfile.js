@@ -29,7 +29,7 @@ const paths = {
   styles: {
     src:    './src/assets/sass/**/**/*.sass',
     blocks: './src/assets/blocks/**/**/*.sass',
-    dest:   './dist/assets/css'
+    dest:   './src/assets/css'
   },
   scripts: {
     src:  './src/assets/js/**/**/*.js',
@@ -38,7 +38,7 @@ const paths = {
   libs: {
     jsSrc:   './src/assets/libs/*.js',
     cssSrc:  './src/assets/libs/**/*.css',
-    cssDest: './dist/assets/css'
+    cssDest: './src/assets/css'
   },
   fonts: {
     src:  './src/assets/fonts/**/*',
@@ -120,18 +120,11 @@ gulp.task('cssConcat', () => {
   console.log('\n' + '* Объединение всех стилей *');
   return (
     gulp
-      .src(paths.dist + '/assets/css/*.css')
+      .src(paths.src + '/assets/css/*.css')
       .pipe(concat('all.min.css'))
       .pipe(gulp.dest(paths.dist + '/assets/css'))
       .pipe(browserSync.stream())
   );
-});
-
-
-gulp.task('clearCss', async () => {
-  /* Удаление лишних стилей */
-  console.log('\n' + '* Удаление лишних стилей *');
-  const deletedPaths = await del([ paths.dist + '/assets/css/style.min.css', paths.dist + '/assets/css/libs.min.css' ]);
 });
 
 
@@ -141,6 +134,9 @@ gulp.task('scripts', () => {
   return (
     gulp
       .src([ paths.libs.jsSrc, paths.scripts.src ])
+      .pipe(babel({
+          presets: ['@babel/env']
+      }))
       .pipe(concat('all.min.js'))
       .pipe(uglify())
       .pipe(gulp.dest(paths.scripts.dest))
@@ -192,6 +188,7 @@ gulp.task('watch', () => {
   gulp.watch(paths.html.src).on('change', browserSync.reload);
   gulp.watch(paths.pug.src, gulp.series('pug')).on('change', browserSync.reload);
   gulp.watch([ paths.styles.src, paths.styles.blocks ], gulp.series('styles', 'cssLibs', 'cssConcat'));
+  gulp.watch(paths.styles.dest);
   gulp.watch(paths.scripts.src, gulp.series('scripts')).on('change', browserSync.reload);
   gulp.watch(paths.images.src).on('change', browserSync.reload);
 });

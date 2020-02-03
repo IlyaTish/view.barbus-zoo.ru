@@ -142,7 +142,7 @@ const headerFix = () => {
 
 /* Count amount of products */
 const quantityProducts = () => {
-  const products = document.querySelectorAll('.product');
+  const products = document.querySelectorAll('.product-item');
 
   [].forEach.call(products, (product) => {
     const arrowMinus  = product.querySelector('.quantity-arrow-minus'),
@@ -224,12 +224,58 @@ const delimiter = () => {
 
 
 
+const tabs = () => {
+  const tabLinks   = document.querySelectorAll('.tabs a'),
+        tabPanels  = document.querySelectorAll('.tab-panel'),
+        showMore   = document.querySelector('.show-more');
+
+  [].forEach.call(tabPanels, (el, index) => {
+    el.setAttribute('data-index', ''+index+'');
+  });
+
+  for (let el of tabLinks) {
+    const parentListItem = el.parentElement,
+          index = [...parentListItem.parentElement.children].indexOf(parentListItem);
+
+    el.addEventListener('click', e => {
+      e.preventDefault();
+
+      document.querySelector('.tab.tab--active').classList.remove('tab--active');
+      document.querySelector('.tab-panel.tab-panel--active').classList.remove('tab-panel--active');
+
+      parentListItem.classList.add('tab--active');
+
+      const panel = [...tabPanels].filter(el => el.getAttribute('data-index') == index);
+      panel[0].classList.add('tab-panel--active');
+    });
+  }
+
+  if (showMore) {
+    showMore.addEventListener('click', (e) => {
+      showMore.classList.toggle('show-more--active');
+
+      if (showMore.classList.contains('show-more--active')) {
+        showMore.textContent = 'Свернуть';
+      } else {
+        showMore.textContent = 'Развернуть';
+      }
+
+      [].forEach.call(tabPanels, (el) => {
+        el.classList.toggle('tab-panel--mh');
+      });
+    });
+  }
+}
+
+
+
 /*  Js after DOM is loaded */
 ready(() => {
   selectStyle();
   headerFix();
   quantityProducts();
   delimiter();
+  tabs();
 
 
 
@@ -356,8 +402,7 @@ ready(() => {
     },
     spaceBetween: 10,
     slidesPerView: 3,
-    centeredSlides: true,
-    grabCursor: true
+    centeredSlides: true
   });
 
   const productGallery = new Swiper('.product-gallery', {
@@ -368,8 +413,10 @@ ready(() => {
     spaceBetween: 20,
     slidesPerView: 1,
     centeredSlides: true,
-    thumbs: {
-      swiper: productGalleryThumbs
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
     }
   });
 

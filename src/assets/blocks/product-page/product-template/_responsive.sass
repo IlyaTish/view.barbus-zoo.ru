@@ -1,0 +1,80 @@
+@media (max-width: 991px)
+  .product-template
+    &__row
+      &--title
+        align-items: center
+      &--product
+        flex-direction: column
+      &--price
+        justify-content: center
+
+    &__info
+      max-width: 100%
+      margin: 50px 0 0
+
+    .product__price
+      width: auto
+      max-width: none
+      margin: 0 0 40px auto
+
+    .quantity-block
+      margin: 0 auto 0 60px
+
+    .tabs-container
+      margin: 60px 0 0
+
+    &__btn
+      width: 100%
+      max-width: 338px
+      margin: 0
+
+@media (max-width: 767px)
+  .product-template
+    &__row
+      &--title
+        align-items: baseline
+
+  .product-gallery
+    width: 100%
+    max-width: 100%
+
+  .product-gallery-thumbs
+    &__img
+      height: auto
+      max-width: 100%
+
+  .share
+    margin: 0 0 0 20px
+    i
+      margin: 0
+    span
+      display: none
+
+@media (max-width: 575px)
+  .product-template
+    &__row
+      &--price
+        flex-direction: column
+        align-items: center
+
+    &__btn
+      width: 100%
+      max-width: 100%
+      margin: 22px 0 0
+
+    .product__price
+      width: auto
+      max-width: none
+      margin: 0
+
+    .quantity-block
+      width: 100%
+      margin: 30px 0 0
+
+  .product-gallery
+    padding: 20px 20px 50px 20px
+    .swiper-pagination
+      display: block
+
+  .product-gallery-thumbs
+    display: none

@@ -1,6 +1,6 @@
 mixin products(products)
   if products.swiper
-    .products-swiper
+    .products-swiper.products-swiper--mt
       if products.recommended
         .products.products--recommended
           .container
@@ -14,7 +14,7 @@ mixin products(products)
               .swiper-wrapper
                 for product in products.data
                   .swiper-slide
-                    .product
+                    .product.product-item
                       a.product__img-cont(href='#')
                         img.product__img(src=''+ product.img +'')
                       .product__cont
@@ -28,7 +28,6 @@ mixin products(products)
 
                           .product__row
                             span.product__price= product.price
-                            span.product__price-sign &nbsp;₽
                         button.btn.product__btn
                           i.icon.cart-icon
                           span В корзину
@@ -46,7 +45,7 @@ mixin products(products)
               .swiper-wrapper
                 for product in products.data
                   .swiper-slide
-                    .product
+                    .product.product-item
                       a.product__img-cont(href='#')
                         img.product__img(src=''+ product.img +'')
                       .product__cont
@@ -60,7 +59,6 @@ mixin products(products)
 
                           .product__row
                             span.product__price= product.price
-                            span.product__price-sign &nbsp;₽
                         button.btn.product__btn
                           i.icon.cart-icon
                           span В корзину
@@ -71,7 +69,7 @@ mixin products(products)
       .container
         .products__cont
           for product in products.data
-            .product
+            .product.product-item
               a.product__img-cont(href='#')
                 img.product__img(src=''+ product.img +'')
               .product__cont
@@ -85,7 +83,6 @@ mixin products(products)
 
                   .product__row
                     span.product__price= product.price
-                    span.product__price-sign &nbsp;₽
                 button.btn.product__btn
                   i.icon.cart-icon
                   span В корзину
