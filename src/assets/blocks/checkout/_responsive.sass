@@ -1,0 +1,81 @@
+@media (max-width: 1199px)
+  .checkout
+    .container
+      flex-direction: column
+
+    &__form
+      max-width: 100%
+      margin: 44px 0 0
+
+    &__cart
+      max-width: 100%
+      margin: 44px 0
+
+    &__item-cont
+      display: flex
+      align-items: center
+      justify-content: space-between
+      .quantity-block
+        width: 128px
+
+    &__item-row
+      max-width: 324px
+      margin-left: auto
+
+    &__item-title
+      font-size: 18px
+
+    &__btn
+      max-width: 324px
+      margin-left: auto
+
+@media (max-width: 767px)
+  .checkout
+    &__form-cont
+      flex-direction: column
+      input
+        margin: 20px 0 0
+        &:first-of-type
+          margin: 0
+
+    &__options
+      margin: 40px 0 0
+      flex-direction: column
+
+    &__option-cont
+      margin: 0 0 52px
+      &:last-of-type
+        margin: 0
+
+    &__cart
+      width: calc(100% + 32px)
+      max-width: calc(100% + 32px)
+      padding: 30px
+      left: -16px
+      position: relative
+      border-radius: 0
+
+    &__item-cont
+      display: block
+      .quantity-block
+        width: 100%
+
+    &__item-img
+      width: 150px
+
+    &__item-title
+      font-size: 14px
+
+@media (max-width: 479px)
+  .checkout
+    &__cart
+      padding: 30px 20px
+
+    &__item-row
+      max-width: 100%
+
+    &__item-img
+      width: 110px
+
+    &__btn
+      max-width: 100%

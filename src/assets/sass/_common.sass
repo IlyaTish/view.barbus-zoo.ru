@@ -170,9 +170,9 @@ select /* 1 */
  */
 
 button,
-[type="button"],
-[type="reset"],
-[type="submit"]
+[type='button'],
+[type='reset'],
+[type='submit']
   -webkit-appearance: button
 
 /**
@@ -180,9 +180,9 @@ button,
  */
 
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner
   border-style: none
   padding: 0
 
@@ -191,9 +191,9 @@ button::-moz-focus-inner,
  */
 
 button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring
   outline: 1px dotted ButtonText
 
 /**
@@ -237,8 +237,8 @@ textarea
  * 2. Remove the padding in IE 10.
  */
 
-[type="checkbox"],
-[type="radio"]
+[type='checkbox'],
+[type='radio']
   box-sizing: border-box /* 1 */
   padding: 0 /* 2 */
 
@@ -246,8 +246,8 @@ textarea
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
 
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button
   height: auto
 
 /**
@@ -255,7 +255,7 @@ textarea
  * 2. Correct the outline style in Safari.
  */
 
-[type="search"]
+[type='search']
   -webkit-appearance: textfield /* 1 */
   outline-offset: -2px /* 2 */
 
@@ -263,7 +263,7 @@ textarea
  * Remove the inner padding in Chrome and Safari on macOS.
  */
 
-[type="search"]::-webkit-search-decoration
+[type='search']::-webkit-search-decoration
   -webkit-appearance: none
 
 /**
@@ -361,8 +361,8 @@ $black: #202020
 
 @font-face
   font-family: 'acvarium-icons'
-  src:  url('./../fonts/acvarium-icons/acvarium-icons.eot?1uy3w6')
-  src:  url('./../fonts/acvarium-icons/acvarium-icons.eot?1uy3w6#iefix') format('embedded-opentype'), url('./../fonts/acvarium-icons/acvarium-icons.ttf?1uy3w6') format('truetype'), url('./../fonts/acvarium-icons/acvarium-icons.woff?1uy3w6') format('woff'), url('./../fonts/acvarium-icons/acvarium-icons.svg?1uy3w6#acvarium-icons') format('svg')
+  src:  url('../fonts/acvarium-icons/acvarium-icons.eot?bib0kj')
+  src:  url('../fonts/acvarium-icons/acvarium-icons.eot?bib0kj#iefix') format('embedded-opentype'), url('../fonts/acvarium-icons/acvarium-icons.ttf?bib0kj') format('truetype'), url('../fonts/acvarium-icons/acvarium-icons.woff?bib0kj') format('woff'), url('../fonts/acvarium-icons/acvarium-icons.svg?bib0kj#acvarium-icons') format('svg')
   font-weight: normal
   font-style: normal
   font-display: block
@@ -380,30 +380,44 @@ $black: #202020
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
-.stingray-icon:before
-  content: '\e908'
-.clean-icon:before
-  content: '\e909'
-.fish-tank-icon:before
-  content: '\e90a'
-.chemistry-icon:before
-  content: '\e90b'
-.shell-icon:before
-  content: '\e90c'
 .arrow-back-icon:before
   content: '\e900'
+.bus-icon:before
+  content: '\e90e'
 .cart-icon:before
   content: '\e901'
 .celsius-icon:before
   content: '\e902'
+.credit-card-icon:before
+  content: '\e90d'
 .coral-icon:before
   content: '\e903'
+.car-icon:before
+  content: '\e90f'
+.clock-icon:before
+  content: '\e910'
+.clean-icon:before
+  content: '\e909'
+.chemistry-icon:before
+  content: '\e90b'
+.delivery-icon:before
+  content: '\e911'
+.facebook-icon:before
+  content: '\e912'
+.fish-tank-icon:before
+  content: '\e90a'
 .fish-icon:before
   content: '\e904'
 .fish-bowl-icon:before
   content: '\e905'
 .fish-food-icon:before
   content: '\e906'
+.odnoklassniki-icon:before
+  content: '\e918'
+.pencil-icon:before
+  content: '\e919'
+.printer-icon:before
+  content: '\e91a'
 .instagram-icon:before
   content: '\e907'
 .phone-icon:before
@@ -412,10 +426,18 @@ $black: #202020
   content: '\e914'
 .share-icon:before
   content: '\e915'
+.share-empty-icon:before
+  content: '\e91b'
+.shell-icon:before
+  content: '\e90c'
 .starfish-icon:before
   content: '\e916'
+.stingray-icon:before
+  content: '\e908'
 .user-icon:before
   content: '\e917'
+.vk-icon:before
+  content: '\e91c'
 
 
 /* Common styles
@@ -560,11 +582,15 @@ h1, h2, h3, h4
   color: $black
   font-size: 52px
   @include roboto-light
+  @media (max-width: 767px)
+    font-size: 40px
 
 h5
+  color: $black
   font-size: 24px
   font-weight: 400
   @include roboto-regular
+
 
 // Burger-menu styles
 .burger-menu
@@ -731,6 +757,68 @@ h5
   color: $dark-gray !important
 
 
+.input, .textarea
+  width: 100%
+  height: 50px
+  padding: 16px 20px
+  color: $black
+  font-size: 16px
+  border-radius: 6px
+  border: 1px solid #BEC3C7
+  box-sizing: border-box
+  outline: none
+  transition: .2s
+  &:hover
+    border: 1px solid darken($gray, 10%)
+  &:focus
+    border: 1px solid $blue
+
+.textarea
+  width: 100%
+  max-width: 100%
+  min-height: 180px
+  max-height: 400px
+
+
+/* Radiobutton styles
+   ========================================================================== */
+
+.radio input
+  position: absolute
+  z-index: -1
+  opacity: 0
+  margin: 10px 0 0 7px
+.radio__text
+  padding: 0 0 0 34px
+  color: $black
+  font-size: 16px
+  position: relative
+  cursor: pointer
+.radio__text:before
+  content: ''
+  position: absolute
+  top: 0
+  left: 0
+  width: 20px
+  height: 20px
+  border: 1px solid $blue
+  border-radius: 50%
+  background: #FFF
+.radio__text:after
+  content: ''
+  position: absolute
+  top: 6px
+  left: 6px
+  width: 10px
+  height: 10px
+  border-radius: 50%
+  background: $blue
+  opacity: 0
+  transition: .2s
+.radio input:checked + .radio__text:after
+  opacity: 1
+
+
 /* Select styles
    ========================================================================== */
 
@@ -763,7 +851,7 @@ h5
   option
     color: #000000
     font-weight: normal
-  *[dir="rtl"] .select, :root:lang(ar) .select, :root:lang(iw) .select
+  *[dir='rtl'] .select, :root:lang(ar) .select, :root:lang(iw) .select
     background-position: left .7em top 50%, 0 0
     padding: .6em .8em .5em 1.4em
 
@@ -794,7 +882,7 @@ h5
   display: flex
   align-items: center
   justify-content: center
-  font-family: "Roboto"
+  font-family: 'Roboto'
   text-align: center
   cursor: pointer
   border-radius: 3px

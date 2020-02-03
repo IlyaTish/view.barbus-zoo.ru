@@ -8,6 +8,7 @@ const ready = (callback) => {
 
 
 
+// Toggle class function
 const toggleClass = (targetElem, elem, activeClass) => {
   elem.addEventListener('click', () => {
     targetElem.classList.toggle(activeClass);
@@ -16,6 +17,7 @@ const toggleClass = (targetElem, elem, activeClass) => {
 
 
 
+// Close open menu if click is outside menu or menu children
 const closeMenu = (elem, btn, elemActiveClass, btnActiveClass) => {
   document.addEventListener('click', (e) => {
     const isClickInside = elem.contains(e.target),
@@ -31,6 +33,7 @@ const closeMenu = (elem, btn, elemActiveClass, btnActiveClass) => {
 
 
 
+// Teleport function for adaptive layout
 const adaptive = (width, elem, cont_1, cont_2, appendChild) => {
   if (window.matchMedia(width).matches) {
     // do functionality on screens smaller than width
@@ -114,7 +117,7 @@ const selectStyle = () => {
 /* Change header styles when scroll */
 const headerFix = () => {
   const width_1199     = '(min-width: 1199px)',
-        headerHight    = 170, // Header hight
+        headerHight    = 0, // Header hight
         appendChild    = true,
         // Element
         catalogMenu      = document.querySelector('.catalog-menu'),
@@ -164,18 +167,21 @@ const quantityProducts = () => {
     let price    = product.querySelector('.product__price'),
         priceVal = parseInt(price.textContent);
 
+    // Set price default
     price.setAttribute('data-default-price', parseInt(price.textContent));
-
     const defaultPrice = parseInt(price.getAttribute('data-default-price'));
 
+    // Listen arrow minus button click
     arrowMinus.addEventListener('click', (e) => {
       quantityMinus();
     });
 
+    // Listen arrow plus button click
     arrowPlus.addEventListener('click', (e) => {
       quantityPlus();
     });
 
+    // Remove product, when arrow minus button clicked
     const quantityMinus = () => {
       if (quantityNum.value > 1) {
         quantityNum.setAttribute('value', --quantityNum.value);
@@ -183,17 +189,21 @@ const quantityProducts = () => {
       }
     }
 
+    // Add product, when arrow plus button clicked
     const quantityPlus = () => {
       quantityNum.setAttribute('value', ++quantityNum.value);
 
       price.innerHTML = (parseInt(price.textContent.replace(/[^\d.]/g, ''), 10) + defaultPrice).toLocaleString('ru-RU');
     }
 
+    // Check correct value of ('.quantity-num')
     quantityNum.addEventListener('keyup', (e) => {
       const val = parseInt(e.target.value),
             min = parseInt(e.target.getAttribute('min')),
             max = parseInt(e.target.getAttribute('max'));
 
+      // If ('.quantity-num') value is equals to min value, set to min
+      // If ('.quantity-num') value is equals to max value, set to max
       if (val <= min) {
         e.target.value = min;
       } else if (val > max) {
@@ -205,10 +215,12 @@ const quantityProducts = () => {
       price.innerHTML = (e.target.value * defaultPrice).toLocaleString('ru-RU');
     });
 
+    // Check correct value of ('.quantity-num')
     quantityNum.addEventListener('blur', (e) => {
       const min = parseInt(e.target.getAttribute('min')),
             max = parseInt(e.target.getAttribute('max'));
 
+      // If ('.quantity-num') is empty or equals to 0, set to min value
       if (e.target.value == '') {
         e.target.value = min;
       } else if (e.target.value == '0') {
@@ -395,7 +407,7 @@ ready(() => {
   // Swiper slider settings and options
   const mainSwiper = new Swiper('.main-swiper', {
       loop: true,
-      effect: 'coverflow',
+      effect: 'fade',
       autoplay: {
         delay: 10000,
       },
@@ -463,6 +475,7 @@ ready(() => {
       spaceBetween: 20,
       slidesPerView: 1,
       longSwipesMs: 600,
+      centeredSlide: true,
       navigation: {
         nextEl: '.btn-next-'+ index,
         prevEl: '.btn-prev-'+ index
@@ -475,14 +488,14 @@ ready(() => {
       breakpoints: {
         489: {
           slidesPerView: 'auto',
-          freeMode: true,
-          freeModeMomentumRatio: 0.2,
-          freeModeSticky: true,
-          centeredSlide: false
         },
         1199: {
           slidesPerView: 4,
-          centeredSlide: true
+          freeMode: true,
+          freeModeMomentumRatio: 0.3,
+          freeModeSticky: true,
+          freeModeMomentumBounce: false,
+          longSwipesRatio: 0
         }
       }
     });
