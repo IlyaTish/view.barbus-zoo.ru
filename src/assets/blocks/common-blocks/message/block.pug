@@ -1,0 +1,14 @@
+mixin message(title)
+  .message
+    .container
+      .message-cont
+        .message__item
+          if page === 'error-page'
+            img.message__img(src='assets/images/starfish-02.svg')
+          else
+            img.message__img(src='assets/images/fish-02.svg')
+          h1.message__title= title
+          if page === 'error-page'
+            span.message__subtitle Такой страницы нет, но есть <br>много товаров в <a href='#'>каталоге</a>
+          else
+            span.message__number № 55315

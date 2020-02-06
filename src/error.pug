@@ -1,0 +1,40 @@
+extends template.pug
+
+block content
+  //- Include Header block ('.header')
+  include assets/blocks/common-blocks/header/block.pug
+
+
+  - var page = 'error-page'
+  div(class='content '+ page +'')
+    //- Breadcrumb block ('.breadcrumb') data
+    -
+      const links = {
+        data: [{
+          text: 'Главная',
+          href: '#',
+          active: true
+        },
+        {
+          text: 'Корзина',
+          href: '#',
+          active: true
+        },
+        {
+          text: 'Заказ оформлен',
+          href: '#'
+        }]
+      }
+
+    //- Include Breadcrumb block ('.breadcrumb')
+    include assets/blocks/common-blocks/breadcrumb/block.pug
+    +breadcrumb(links)
+
+
+    //- Include Message block ('.message')
+    include assets/blocks/common-blocks/message/block.pug
+    +message('Упс!\nОшибка 404')
+
+
+  //- Include Footer block ('.footer')
+  include assets/blocks/common-blocks/footer/block.pug

@@ -450,10 +450,6 @@ ready(() => {
   });
 
 
-
-  const breakpoint = window.matchMedia('(min-width: 1280px)');
-  let swiper;
-
   const products = document.querySelectorAll('.products');
 
   [].forEach.call(products, (el, index) => {
@@ -501,42 +497,62 @@ ready(() => {
     });
   });
 
-  const swiper_2 = () => {
-    if (breakpoint.matches === true) {
-      if (swiper !== undefined) {
-        swiper.destroy(true, true);
-      } else {
-        return;
-      }
-    } else if (breakpoint.matches === false) {
-      swiper = new Swiper('.swiper-insta', {
-        loop: false,
-        autoplay: {
-          delay: 10000
-        },
-        spaceBetween: 20,
-        slidesPerView: 2,
-        centeredSlide: true,
-        navigation: {
-          nextEl: '.insta .swiper-button-next',
-          prevEl: '.insta .swiper-button-prev',
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'bullets',
-          clickable: true
-        },
-        breakpoints: {
-          489: {
-            slidesPerView: 'auto',
-            freeMode: true,
-            centeredSlide: false
-          }
-        }
-      });
-    }
-  };
 
-  breakpoint.addListener(swiper_2);
-  swiper_2();
+  const instaSwiper = new Swiper('.swiper-insta', {
+    loop: false,
+    autoplay: {
+      delay: 10000
+    },
+    spaceBetween: 20,
+    slidesPerView: 2,
+    centeredSlide: true,
+    navigation: {
+      nextEl: '.insta .swiper-button-next',
+      prevEl: '.insta .swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    breakpoints: {
+      489: {
+        autoplay: false,
+        slidesPerView: 'auto',
+        freeMode: true,
+        centeredSlide: false,
+        allowTouchMove: false
+      }
+    }
+  });
+
+
+  const modalGallery = new Swiper('.swiper-modal-gallery', {
+    loop: false,
+    touchEventsTarget: '.modal-gallery__item',
+    autoplay: {
+      delay: 10000
+    },
+    spaceBetween: 20,
+    slidesPerView: 1,
+    centeredSlide: true,
+    navigation: {
+      nextEl: '.modal-gallery .swiper-button-next',
+      prevEl: '.modal-gallery .swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    breakpoints: {
+      489: {
+        autoplay: false,
+        slidesPerView: 'auto',
+        freeMode: true,
+        centeredSlide: false,
+        allowTouchMove: false
+      }
+    }
+  });
 });

@@ -1,0 +1,46 @@
+extends template.pug
+
+block content
+  //- Include Header block ('.header')
+  include assets/blocks/common-blocks/header/block.pug
+
+
+  - var page = 'about-page'
+  div(class='content '+ page +'')
+    //- Breadcrumb block ('.breadcrumb') data
+    -
+      const links = {
+        data: [{
+          text: 'Главная',
+          href: '#',
+          active: true
+        },
+        {
+          text: 'Информация',
+          href: '#'
+        }]
+      }
+
+    //- Include Breadcrumb block ('.breadcrumb')
+    include assets/blocks/common-blocks/breadcrumb/block.pug
+    +breadcrumb(links)
+
+
+    //- Include Modal-gallery block ('.modal-gallery')
+    include assets/blocks/common-blocks/modal-gallery/block.pug
+
+
+    //- Include Adout desc block ('.about__desc')
+    include assets/blocks/about/desc/block.pug
+
+
+    //- Include Adout desc block ('.about__desc')
+    include assets/blocks/about/info/block.pug
+
+
+    //- Include Instagram block ('.insta')
+    include assets/blocks/main/insta/block.pug
+
+
+  //- Include Footer block ('.footer')
+  include assets/blocks/common-blocks/footer/block.pug

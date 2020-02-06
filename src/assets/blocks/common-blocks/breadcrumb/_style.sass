@@ -37,3 +37,7 @@
     transition: .2s
     &--active
       color: $blue
+      &:hover, &:focus, &:active
+        color: lighten($blue, 20%) !important
+    &:hover, &:focus, &:active
+      color: $blue

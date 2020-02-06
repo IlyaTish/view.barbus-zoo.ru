@@ -332,10 +332,13 @@ $black: #202020
   color: $gray
 
 .bold
-  font-weight: 600
+  font-family: 'Roboto-Bold', sans-serif
 
 
 /* Mixins */
+@mixin roboto-bold
+  font-family: 'Roboto-Bold', sans-serif
+
 @mixin roboto-regular
   font-family: 'Roboto-Regular', sans-serif
 
@@ -345,6 +348,13 @@ $black: #202020
 
 
 /* Fonts styles */
+@font-face
+  font-family: 'Roboto-Bold'
+  src: url('./../fonts/Roboto/Roboto-Bold/Roboto-Bold.eot')
+  src: url('./../fonts/Roboto/Roboto-Bold/Roboto-Bold.eot?#iefix') format('embedded-opentype'), url('./../fonts/Roboto/Roboto-Bold/Roboto-Bold.woff') format('woff'), url('./../fonts/Roboto/Roboto-Bold/Roboto-Bold.ttf') format('truetype')
+  font-style: normal
+  font-weight: normal
+
 @font-face
   font-family: 'Roboto-Regular'
   src: url('./../fonts/Roboto/Roboto-Regular/Roboto-Regular.eot')
@@ -361,8 +371,8 @@ $black: #202020
 
 @font-face
   font-family: 'acvarium-icons'
-  src:  url('../fonts/acvarium-icons/acvarium-icons.eot?bib0kj')
-  src:  url('../fonts/acvarium-icons/acvarium-icons.eot?bib0kj#iefix') format('embedded-opentype'), url('../fonts/acvarium-icons/acvarium-icons.ttf?bib0kj') format('truetype'), url('../fonts/acvarium-icons/acvarium-icons.woff?bib0kj') format('woff'), url('../fonts/acvarium-icons/acvarium-icons.svg?bib0kj#acvarium-icons') format('svg')
+  src:  url('../fonts/acvarium-icons/acvarium-icons.eot?mukbj')
+  src:  url('../fonts/acvarium-icons/acvarium-icons.eot?mukbj#iefix') format('embedded-opentype'), url('../fonts/acvarium-icons/acvarium-icons.ttf?mukbj') format('truetype'), url('../fonts/acvarium-icons/acvarium-icons.woff?mukbj') format('woff'), url('../fonts/acvarium-icons/acvarium-icons.svg?mukbj#acvarium-icons') format('svg')
   font-weight: normal
   font-style: normal
   font-display: block
@@ -434,6 +444,8 @@ $black: #202020
   content: '\e916'
 .stingray-icon:before
   content: '\e908'
+.map-marker-icon:before
+  content: '\e91d'
 .user-icon:before
   content: '\e917'
 .vk-icon:before
@@ -566,6 +578,7 @@ body
   margin: 0 auto
   color: $black
   text-transform: uppercase
+  line-height: 60px
   border: 1px solid #8998A4
   &--margins
     margin: 40px auto

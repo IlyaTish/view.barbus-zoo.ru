@@ -1,0 +1,48 @@
+.message-cont
+  display: flex
+  align-items: center
+  justify-content: center
+
+.message
+  &__item
+    min-width: 476px
+    min-height: 476px
+    padding: 100px 0
+    margin: 44px 0 60px 0
+    display: flex
+    align-items: center
+    justify-content: space-between
+    flex-direction: column
+    text-align: center
+    background-image: url('../images/thanks.png')
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: contain
+    box-sizing: border-box
+
+  &__title
+    color: $blue
+    font-size: 36px
+    @include roboto-bold
+    line-height: 36px
+    white-space: pre-wrap
+
+  &__number
+    font-size: 36px
+    @include roboto-light
+
+  &__subtitle
+    font-size: 16px
+    @include roboto-light
+    a
+      color: $blue
+      font-weight: 600
+      text-decoration: underline
+      &:hover, &:focus, &:active
+        color: lighten($blue, 10%)
+        text-decoration: none
+
+.error-page
+  .message
+    &__item
+      background-image: url('../images/error.png')
