@@ -17,6 +17,10 @@
     list-style: none
     page-break-inside: avoid
     break-inside: avoid
+    &--social
+      .about-info__item
+        &:before
+          display: none
 
   &__title-cont
     display: flex
@@ -49,3 +53,13 @@
       font-size: 10px
       top: 3px
       position: relative
+    a
+      text-decoration: none
+      &:hover
+        .icon
+          color: $blue
+      .icon
+        margin: 0 12px 0 0
+        color: $gray
+        font-size: 20px
+        transition: .2s

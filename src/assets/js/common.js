@@ -517,6 +517,13 @@ ready(() => {
     },
     breakpoints: {
       489: {
+        slidesPerView: 2,
+        allowTouchMove: true,
+        autoplay: {
+          delay: 10000
+        }
+      },
+      1240: {
         autoplay: false,
         slidesPerView: 'auto',
         freeMode: true,
@@ -530,9 +537,6 @@ ready(() => {
   const modalGallery = new Swiper('.swiper-modal-gallery', {
     loop: false,
     touchEventsTarget: '.modal-gallery__item',
-    autoplay: {
-      delay: 10000
-    },
     spaceBetween: 20,
     slidesPerView: 1,
     centeredSlide: true,
@@ -547,6 +551,13 @@ ready(() => {
     },
     breakpoints: {
       489: {
+        slidesPerView: 'auto',
+        allowTouchMove: true,
+        autoplay: {
+          delay: 10000
+        }
+      },
+      1240: {
         autoplay: false,
         slidesPerView: 'auto',
         freeMode: true,
