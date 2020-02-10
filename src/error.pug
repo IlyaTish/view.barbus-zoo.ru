@@ -7,28 +7,6 @@ block content
 
   - var page = 'error-page'
   div(class='content '+ page +'')
-    //- Breadcrumb block ('.breadcrumb') data
-    -
-      const links = {
-        data: [{
-          text: 'Главная',
-          href: '#',
-          active: true
-        },
-        {
-          text: 'Корзина',
-          href: '#',
-          active: true
-        },
-        {
-          text: 'Заказ оформлен',
-          href: '#'
-        }]
-      }
-
-    //- Include Breadcrumb block ('.breadcrumb')
-    include assets/blocks/common-blocks/breadcrumb/block.pug
-    +breadcrumb(links)
 
 
     //- Include Message block ('.message')

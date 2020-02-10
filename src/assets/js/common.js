@@ -117,7 +117,7 @@ const selectStyle = () => {
 /* Change header styles when scroll */
 const headerFix = () => {
   const width_1199     = '(min-width: 1199px)',
-        headerHight    = 0, // Header hight
+        headerHight    = 170, // Header hight
         appendChild    = true,
         // Element
         catalogMenu      = document.querySelector('.catalog-menu'),
