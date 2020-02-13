@@ -1,22 +1,23 @@
-.modal-gallery
-  .container
-    .modal-gallery__row
-      h1.modal-gallery__title О нас
-      .swiper-nav.swiper-navigation
-        .swiper-button-prev
-        .swiper-button-next
-    .swiper-container.swiper.swiper-modal-gallery
-      .swiper-wrapper
-        .swiper-slide
-          a.modal-gallery__item(data-fslightbox href='assets/images/modal-gallery-img-01.jpg')
-            img.modal-gallery__img(src='assets/images/modal-gallery-img-01.jpg')
+mixin modal-gallery(title, img_1, img_2, img_3)
+  .modal-gallery
+    .container
+      .modal-gallery__row
+        h1.modal-gallery__title= title
+        .swiper-nav.swiper-navigation
+          .swiper-button-prev
+          .swiper-button-next
+      .swiper-container.swiper.swiper-modal-gallery
+        .swiper-wrapper
+          .swiper-slide
+            a.modal-gallery__item(data-fslightbox href=''+ img_1 +'')
+              img.modal-gallery__img(src=''+ img_1 +'')
 
-        .swiper-slide
-          a.modal-gallery__item(data-fslightbox href='assets/images/modal-gallery-img-02.jpg')
-            img.modal-gallery__img(src='assets/images/modal-gallery-img-02.jpg')
+          .swiper-slide
+            a.modal-gallery__item(data-fslightbox href=''+ img_2 +'')
+              img.modal-gallery__img(src=''+ img_2 +'')
 
-        .swiper-slide
-          a.modal-gallery__item(data-fslightbox href='assets/images/modal-gallery-img-03.jpg')
-            img.modal-gallery__img(src='assets/images/modal-gallery-img-03.jpg')
+          .swiper-slide
+            a.modal-gallery__item(data-fslightbox href=''+ img_3 +'')
+              img.modal-gallery__img(src=''+ img_3 +'')
 
-      .swiper-pagination
+        .swiper-pagination

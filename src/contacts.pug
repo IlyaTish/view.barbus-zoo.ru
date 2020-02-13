@@ -5,7 +5,7 @@ block content
   include assets/blocks/common-blocks/header/block.pug
 
 
-  - var page = 'about-page'
+  - var page = 'contacts-page'
   div(class='content '+ page +'')
     //- Breadcrumb block ('.breadcrumb') data
     -
@@ -17,6 +17,11 @@ block content
         },
         {
           text: 'Информация',
+          href: '#',
+          active: true
+        },
+        {
+          text: 'Контакты',
           href: '#'
         }]
       }
@@ -26,13 +31,8 @@ block content
     +breadcrumb(links)
 
 
-    //- Include Modal-gallery block ('.modal-gallery')
-    include assets/blocks/common-blocks/modal-gallery/block.pug
-    +modal-gallery('Про нас', 'assets/images/modal-gallery-img-01.jpg', 'assets/images/modal-gallery-img-02.jpg', 'assets/images/modal-gallery-img-03.jpg')
-
-
-    //- Include Adout desc block ('.about__desc')
-    include assets/blocks/about/desc/block.pug
+    //- Include Route block ('.route')
+    include assets/blocks/contacts/route/block.pug
 
 
     //- Include Info block ('.info')
