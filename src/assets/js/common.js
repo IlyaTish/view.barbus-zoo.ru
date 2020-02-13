@@ -294,6 +294,43 @@ const tabs = () => {
 
 
 
+const collapseFn = () => {
+  const collapse       = document.querySelector('.collapse'),
+        collapseTitle  = document.querySelectorAll('.collapse__title'),
+        collapseActive = 'active';
+
+  [].forEach.call(collapseTitle, (item) => {
+    const height     = item.clientHeight,
+          parent     = item.parentElement.parentElement,
+          contHeight = parent.querySelector('.collapse-content').clientHeight;
+
+    const checkActive = () => {
+      if (!parent) {
+        return null;
+      } else if (parent.classList.contains(collapseActive)) {
+        parent.style.maxHeight = ''+ contHeight +'px';
+      } else if (!parent.classList.contains(collapseActive)) {
+        parent.style.maxHeight = ''+ height +'px';
+      }
+    }
+
+    checkActive();
+
+    item.addEventListener('click', (e) => {
+      console.log(parent);
+      if (parent.classList.contains(collapseActive)) {
+        parent.style.maxHeight = ''+ height +'px';
+        parent.classList.remove(collapseActive);
+      } else if (!parent.classList.contains(collapseActive)) {
+        parent.style.maxHeight = ''+ contHeight +'px';
+        parent.classList.add(collapseActive);
+      }
+    });
+  });
+}
+
+
+
 /*  Js after DOM is loaded */
 ready(() => {
   selectStyle();
@@ -302,6 +339,7 @@ ready(() => {
   quantityProducts();
   delimiter();
   tabs();
+  collapseFn();
 
 
 
@@ -400,6 +438,8 @@ ready(() => {
 
     // ('.offer__title') element teleport on screen smaller then 1260px and onresize
     adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
+
+    collapseFn();
   }
 
 

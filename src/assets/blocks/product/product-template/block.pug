@@ -1,0 +1,55 @@
+.product-template.product-item
+  .container
+    .product-template__row.product-template__row--title
+      h1.product-template__title Золотая рыбка
+      a.share
+        span Поделиться
+        i.icon.share-icon
+
+    .product-template__row.product-template__row--product
+      .swiper-container.product-gallery
+        .swiper-wrapper
+          .swiper-slide
+            a.product-gallery__img-cont(data-fslightbox href='assets/images/product-img-04.jpg')
+              img.product-gallery__img(src='assets/images/product-img-04.jpg')
+          .swiper-slide
+            a.product-gallery__img-cont(data-fslightbox href='assets/images/product-img-01.jpg')
+              img.product-gallery__img(src='assets/images/product-img-01.jpg')
+          .swiper-slide
+            a.product-gallery__img-cont(data-fslightbox href='assets/images/product-img-03.jpg')
+              img.product-gallery__img(src='assets/images/product-img-03.jpg')
+        .swiper-pagination
+
+        .swiper-container.product-gallery-thumbs
+          .swiper-wrapper
+            .swiper-slide
+              img.product-gallery-thumbs__img(src='assets/images/product-img-04.jpg')
+            .swiper-slide
+              img.product-gallery-thumbs__img(src='assets/images/product-img-01.jpg')
+            .swiper-slide
+              img.product-gallery-thumbs__img(src='assets/images/product-img-03.jpg')
+
+
+      .product-template__info
+        .product-template__row.product-template__row--price
+          span.product__price 100000
+          .quantity-block
+            button.quantity-arrow.quantity-arrow-minus
+            input.product__amount.quantity-num(type='number' value='1' min='1' max='2000')
+            button.quantity-arrow.quantity-arrow-plus
+          button.btn.product-template__btn
+            i.icon.cart-icon
+            span Добавить
+
+        .tabs-container
+          ul.tabs
+            li.tab.tab--active
+              a Описание
+            li.tab
+              a Уход
+          .tabs-content
+            .tab-panel.tab-panel--active
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sociis natoque penatibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+            .tab-panel
+              p Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sociis natoque penatibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+            span.show-more Развернуть

@@ -1,0 +1,137 @@
+.product-template
+  margin: 44px 0
+  &__row
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+    &--title
+      margin: 0 0 44px
+      align-items: center
+    &--price
+      flex-wrap: wrap
+
+  &__info
+    width: 100%
+    max-width: 598px
+    margin: 0 0 0 20px
+
+  &__btn
+    width: 186px
+    height: 70px
+    margin: 20px auto 0 20px
+    text-transform: uppercase
+    i
+      margin: 0 14px 0 0
+
+  .product__price
+    width: 100%
+    max-width: 100%
+    font-size: 52px
+    white-space: pre-wrap
+    @include roboto-light
+    &:after
+      font-size: 52px
+      margin: 0 0 0 10px
+
+  .quantity-block
+    width: 186px
+    height: 70px
+    margin: 20px 0 0
+
+  .product__amount
+    font-size: 20px
+
+  .tabs-container
+    margin: 20px 0 0
+
+  .show-more
+    margin: 20px 0 0
+    padding: 10px 0
+    position: relative
+    display: inline-block
+    color: $blue
+    font-size: 16px
+    box-sizing: border-box
+    cursor: pointer
+    opacity: 1
+    white-space: nowrap
+    transition: .2s
+    &:hover, &:focus, &:active
+      opacity: .6
+    &:after
+      width: 14px
+      height: 8px
+      margin: 0 0 0 8px
+      display: inline-block
+      content: ''
+      position: relative
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNiIgdmlld0JveD0iMCAwIDEwIDYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik01IDUuMTMwNDNMOS4zMzAxMyAwLjUzMjYwOUgwLjY2OTg3M0w1IDUuMTMwNDNaIiBmaWxsPSIjMzZDMEYxIi8+Cjwvc3ZnPgo=')
+      background-repeat: no-repeat
+      background-position: center center
+      transition: .1s
+    &--active
+      &:after
+        bottom: 1px
+        transform: rotate(180deg)
+
+.product-gallery
+  width: 100%
+  max-width: 496px
+  padding: 20px
+  margin-left: 0 !important
+  margin-right: 0 !important
+  background: #F9FAFB
+  border-radius: 20px
+  box-sizing: border-box
+  &__img-cont
+    width: 100%
+    height: 100%
+    max-height: 296px
+    display: block
+    position: relative
+    border-radius: 20px
+    cursor: pointer
+    overflow: hidden
+    &:before
+      width: 100%
+      height: 100%
+      content: ''
+      display: block
+      top: 0
+      left: 0
+      position: absolute
+      background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYzIDEyVjFINTIiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWpvaW49ImJldmVsIi8+CjxwYXRoIGQ9Ik0xIDUyVjYzSDEyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJiZXZlbCIvPgo8cGF0aCBkPSJNMSA2M0wyNiAzOCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1saW5lam9pbj0iYmV2ZWwiLz4KPHBhdGggZD0iTTM4IDI2TDYzIDEiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWpvaW49ImJldmVsIi8+CjxwYXRoIGQ9Ik0yNCAyNEw0MCA0MCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1saW5lam9pbj0iYmV2ZWwiLz4KPC9zdmc+Cg=='), linear-gradient(0deg, rgba(54, 192, 241, 0.6), rgba(54, 192, 241, 0.6))
+      background-position: center center
+      background-repeat: no-repeat
+      pointer-events: none
+      opacity: 0
+      transition: .2s
+    &:hover
+      &:before
+        opacity: 1
+    img
+      width: 100%
+      height: 100%
+
+  .swiper-pagination
+    display: none
+
+.product-gallery-thumbs
+  max-width: 100%
+  margin: 14px 0 0
+  &__img
+    width: 100%
+    max-width: 144px
+    height: 94px
+    display: block
+
+  .swiper-slide
+    position: relative
+    border-radius: 10px
+    border: 2px solid transparent
+    box-sizing: border-box
+    overflow: hidden
+    transition: .2s
+
+  .swiper-slide-active
+    border: 2px solid $yellow

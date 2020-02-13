@@ -371,8 +371,8 @@ $black: #202020
 
 @font-face
   font-family: 'acvarium-icons'
-  src:  url('../fonts/acvarium-icons/acvarium-icons.eot?mukbj')
-  src:  url('../fonts/acvarium-icons/acvarium-icons.eot?mukbj#iefix') format('embedded-opentype'), url('../fonts/acvarium-icons/acvarium-icons.ttf?mukbj') format('truetype'), url('../fonts/acvarium-icons/acvarium-icons.woff?mukbj') format('woff'), url('../fonts/acvarium-icons/acvarium-icons.svg?mukbj#acvarium-icons') format('svg')
+  src:  url('../fonts/acvarium-icons/acvarium-icons.eot?4hh4gw')
+  src:  url('../fonts/acvarium-icons/acvarium-icons.eot?4hh4gw#iefix') format('embedded-opentype'), url('../fonts/acvarium-icons/acvarium-icons.ttf?4hh4gw') format('truetype'), url('../fonts/acvarium-icons/acvarium-icons.woff?4hh4gw') format('woff'), url('../fonts/acvarium-icons/acvarium-icons.svg?4hh4gw#acvarium-icons') format('svg')
   font-weight: normal
   font-style: normal
   font-display: block
@@ -392,6 +392,8 @@ $black: #202020
 
 .arrow-back-icon:before
   content: '\e900'
+.arrow-down-icon:before
+  content: '\e91e'
 .bus-icon:before
   content: '\e90e'
 .cart-icon:before
@@ -589,6 +591,24 @@ body
   &:hover, &:focus
     border: 1px solid $blue
 
+.btn-print
+  color: $blue
+  display: flex
+  align-items: center
+  border: none
+  background: none
+  cursor: pointer
+  transition: .2s
+  &:hover, &:focus, &:active
+    color: lighten($blue, 20%)
+  &--ml
+    margin-left: auto
+  span
+    font-size: 16px
+  i
+    margin: 0 0 0 14px
+    font-size: 40px
+
 // Headings
 h1, h2, h3, h4
   margin: 0
@@ -644,44 +664,34 @@ h5
 
 .burger-menu-btn
   width: 36px
-  height: 25px
+  height: 22px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
   position: relative
   cursor: pointer
   z-index: 999999
   transition: .1s
-  &__elem
+  &:before
     width: 100%
     height: 4px
-    margin-left: -18px
+    content: ''
     display: block
-    top: 50%
-    left: 50%
-    position: absolute
     background: #FFFFFF
     transition: ease-in-out .2s
-    &:before
-      width: 100%
-      height: 4px
-      content: ''
-      display: block
-      bottom: 9px
-      position: absolute
-      background: #FFFFFF
-      transition: ease-in-out .2s
-    &:after
-      width: 100%
-      height: 4px
-      content: ''
-      display: block
-      top: 9px
-      position: absolute
-      background: #FFFFFF
-      transition: ease-in-out .2s
-  @media (max-width: 1199px)
-    display: flex
-    align-items: center
-    justify-content: center
-
+  &:after
+    width: 100%
+    min-height: 4px
+    content: ''
+    display: block
+    background: #FFFFFF
+    transition: ease-in-out .2s
+  &__elem
+    width: 100%
+    min-height: 4px
+    display: block
+    background: #FFFFFF
+    transition: ease-in-out .2s
 
 .swiper
   .swiper-pagination
@@ -825,11 +835,12 @@ h5
   width: 10px
   height: 10px
   border-radius: 50%
-  background: $blue
-  opacity: 0
+  border: 1px solid $blue
+  background: #FFFFFF
+  box-sizing: border-box
   transition: .2s
 .radio input:checked + .radio__text:after
-  opacity: 1
+  background: $blue
 
 
 /* Select styles
@@ -1023,6 +1034,61 @@ h5
     display: block
   &--mh
     max-height: 4000px
+
+
+.collapse-container
+  margin: 40px 0
+
+.collapse
+  max-height: auto
+  margin: 0 0 20px
+  display: flex
+  flex-direction: column
+  border-radius: 20px
+  border: 1px solid #EDF6F9
+  background: #F9FAFB
+  box-sizing: border-box
+  overflow: hidden
+  transition: max-height ease-in-out .5s
+  &:last-of-type
+    margin: 0
+  &__title
+    width: 100%
+    padding: 22px 30px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    position: relative
+    color: $black
+    font-size: 24px
+    cursor: pointer
+    box-sizing: border-box
+    &:after
+      content: '\e91e'
+      margin-left: 10px
+      margin-top: -5px
+      display: block
+      color: $black
+      font-size: 12px
+      font-family: 'acvarium-icons'
+      transform: rotate(0deg)
+      transition: .2s
+  &__p
+    margin: 0
+    padding: 0 30px 22px 30px
+    color: #4D4D4D
+    font-size: 16px
+    @include roboto-light
+    line-height: 20px
+    box-sizing: border-box
+
+.collapse.active
+  .collapse__title
+    color: $blue
+    &:after
+      margin-top: -8px
+      color: $blue
+      transform: rotate(180deg)
 
 
 .quantity-block
