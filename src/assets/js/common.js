@@ -33,8 +33,8 @@ const closeMenu = (elem, btn, elemActiveClass, btnActiveClass) => {
 
 
 
-// Teleport function for adaptive layout
-const adaptive = (width, elem, cont_1, cont_2, appendChild) => {
+// Teleport function for teleport layout
+const teleport = (width, elem, cont_1, cont_2, appendChild) => {
   if (window.matchMedia(width).matches) {
     // do functionality on screens smaller than width
     if (elem && cont_1) {
@@ -114,28 +114,40 @@ const selectStyle = () => {
 
 
 
-/* Change header styles when scroll */
+/* Change header styles on scroll, teleport caatalog-menu on scroll */
 const headerFix = () => {
   const width_1199     = '(min-width: 1199px)',
-        headerHight    = 170, // Header hight
         appendChild    = true,
-        // Element
+        // Elements
         catalogMenu      = document.querySelector('.catalog-menu'),
         // Containers
         headerCont       = document.querySelector('.header-cont'),
         headerInfoCont   = document.querySelector('.header__info-cont'),
         headerBottomCont = document.querySelector('.header-bottom').querySelector('.container');
 
-  window.addEventListener('scroll', (e) => {
+  let flag = 1;
+
+  window.addEventListener('scroll', function teleportMenu(e) {
     if (window.matchMedia(width_1199).matches) {
       if (window.pageYOffset >= 170) {
-        headerCont.classList.add('header-cont--fixed');
-        adaptive(width_1199, catalogMenu, headerInfoCont, headerBottomCont, appendChild);
-      } else {
-        headerCont.classList.remove('header-cont--fixed');
-        adaptive(width_1199, catalogMenu, headerBottomCont, headerInfoCont, appendChild);
+        if (flag === 1) {
+          headerCont.classList.add('header-cont--fixed');
+          teleport(width_1199, catalogMenu, headerInfoCont, headerBottomCont, appendChild);
+          flag = 0;
+        }
       }
-    } else {
+
+      else {
+        flag = 0;
+        if (flag === 0) {
+          headerCont.classList.remove('header-cont--fixed');
+          teleport(width_1199, catalogMenu, headerBottomCont, headerInfoCont, appendChild);
+          flag = 1;
+        }
+      }
+    }
+
+    else {
       return;
     }
   });
@@ -371,16 +383,16 @@ ready(() => {
       appendChild = true;
 
   // ('.header__cart'), ('.header__account') teleport
-  adaptive(width_1199, headerCart, headerBottomCont, headerButtonsCont, appendChild);
-  adaptive(width_1199, headerAccount, headerPhoneCont, headerButtonsCont, appendChild);
+  teleport(width_1199, headerCart, headerBottomCont, headerButtonsCont, appendChild);
+  teleport(width_1199, headerAccount, headerPhoneCont, headerButtonsCont, appendChild);
 
   if (window.matchMedia(width_767).matches) {
     // ('.burger-menu'), ('.catalog-menu') teleport on screen smaller then 767px
-    adaptive(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
-    adaptive(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
+    teleport(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
+    teleport(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
 
     // ('.header__cart') teleport on screen smaller then 767px
-    adaptive(width_767, headerCart, headerCont, headerBottomCont, appendChild);
+    teleport(width_767, headerCart, headerCont, headerBottomCont, appendChild);
   }
 
   // Toggle classes on ('.burger-menu') click event
@@ -401,7 +413,7 @@ ready(() => {
         offerDopEmpty = document.querySelector('.offer-dop').querySelector('.offer__empty');
 
     // Catalog page teleport
-    adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
+    teleport(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
   }
 
 
@@ -415,29 +427,29 @@ ready(() => {
         filtersCont     = document.querySelector('.filters').querySelector('.container');
 
     // ('.filters-sort') element teleport
-    adaptive(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
+    teleport(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
   }
 
 
 
   window.onresize = () => {
     // ('.header__cart'), ('.header__account') teleport onresize
-    adaptive(width_1199, headerCart, headerBottomCont, headerButtonsCont, appendChild);
-    adaptive(width_1199, headerAccount, headerPhoneCont, headerButtonsCont, appendChild);
+    teleport(width_1199, headerCart, headerBottomCont, headerButtonsCont, appendChild);
+    teleport(width_1199, headerAccount, headerPhoneCont, headerButtonsCont, appendChild);
 
     if (window.matchMedia(width_767).matches) {
-      adaptive(width_767, headerCart, headerCont, headerBottomCont, appendChild);
+      teleport(width_767, headerCart, headerCont, headerBottomCont, appendChild);
     }
 
     // ('.burger-menu'), ('.catalog-menu') teleport on screen smaller then 767px and onresize
-    adaptive(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
-    adaptive(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
+    teleport(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
+    teleport(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
 
     // ('.filters-sort') element teleport teleport on screen smaller then 991px and onresize
-    adaptive(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
+    teleport(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
 
     // ('.offer__title') element teleport on screen smaller then 1260px and onresize
-    adaptive(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
+    teleport(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
 
     collapseFn();
   }
