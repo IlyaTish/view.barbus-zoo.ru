@@ -1,0 +1,121 @@
+.articles
+  margin: 44px 0 60px
+
+  .container
+    padding: 0 10px
+
+.articles-list
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+
+.article
+  max-width: 290px
+  min-width: 290px
+  margin: 0 10px 20px 10px
+  border-radius: 20px
+  border: 1px solid #F4F8F9
+  flex: 1
+  box-sizing: border-box
+  overflow: hidden
+
+  &__img-cont
+    width: 100%
+    height: 188px
+    position: relative
+    border-bottom: 1px solid #F4F8F9
+    overflow: hidden
+
+  &__img
+    width: 100%
+    height: auto
+    min-height: 100%
+
+  &__date
+    padding: 4px 16px 4px 22px
+    display: flex
+    align-items: center
+    min-height: 36px
+    left: 0
+    bottom: 0
+    position: absolute
+    color: #FFFFFF
+    background: rgba(45, 62, 80, 0.8)
+    border-top: 1px solid #FFFFFF
+    border-right: 1px solid #FFFFFF
+    border-top-right-radius: 20px
+    box-sizing: border-box
+    &:before
+      width: 23px
+      height: 19px
+      margin: 0 10px 0 0
+      content: ''
+      display: block
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjMiIGhlaWdodD0iMTkiIHZpZXdCb3g9IjAgMCAyMyAxOSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMSAxOUgyQzAuODk1NSAxOSAwIDE4LjEwNDUgMCAxN1YyQzAgMC44OTU1IDAuODk1NSAwIDIgMEgyMUMyMi4xMDQ1IDAgMjMgMC44OTU1IDIzIDJWMTdDMjMgMTguMTA0NSAyMi4xMDQ1IDE5IDIxIDE5Wk0yMiAyQzIyIDEuNDQ4IDIxLjU1MiAxIDIxIDFIMkMxLjQ0OCAxIDEgMS40NDggMSAyVjVIMjJWMlpNMjIgNkgxVjE3QzEgMTcuNTUyIDEuNDQ4IDE4IDIgMThIMjFDMjEuNTUyIDE4IDIyIDE3LjU1MiAyMiAxN1Y2Wk0yMCAxM0gxOUMxOC43MjQgMTMgMTguNSAxMi43NzY1IDE4LjUgMTIuNVYxMS41QzE4LjUgMTEuMjI0IDE4LjcyNCAxMSAxOSAxMUgyMEMyMC4yNzY1IDExIDIwLjUgMTEuMjI0IDIwLjUgMTEuNVYxMi41QzIwLjUgMTIuNzc2NSAyMC4yNzY1IDEzIDIwIDEzWk0yMCA5LjVIMTlDMTguNzI0IDkuNSAxOC41IDkuMjc2NSAxOC41IDlWOEMxOC41IDcuNzIzNSAxOC43MjQgNy41IDE5IDcuNUgyMEMyMC4yNzY1IDcuNSAyMC41IDcuNzIzNSAyMC41IDhWOUMyMC41IDkuMjc2NSAyMC4yNzY1IDkuNSAyMCA5LjVaTTE2IDEzSDE1QzE0LjcyNCAxMyAxNC41IDEyLjc3NjUgMTQuNSAxMi41VjExLjVDMTQuNSAxMS4yMjQgMTQuNzI0IDExIDE1IDExSDE2QzE2LjI3NjUgMTEgMTYuNSAxMS4yMjQgMTYuNSAxMS41VjEyLjVDMTYuNSAxMi43NzY1IDE2LjI3NjUgMTMgMTYgMTNaTTE2IDkuNUgxNUMxNC43MjQgOS41IDE0LjUgOS4yNzY1IDE0LjUgOVY4QzE0LjUgNy43MjM1IDE0LjcyNCA3LjUgMTUgNy41SDE2QzE2LjI3NjUgNy41IDE2LjUgNy43MjM1IDE2LjUgOFY5QzE2LjUgOS4yNzY1IDE2LjI3NjUgOS41IDE2IDkuNVpNMTIgMTNIMTFDMTAuNzIzNSAxMyAxMC41IDEyLjc3NjUgMTAuNSAxMi41VjExLjVDMTAuNSAxMS4yMjQgMTAuNzIzNSAxMSAxMSAxMUgxMkMxMi4yNzY1IDExIDEyLjUgMTEuMjI0IDEyLjUgMTEuNVYxMi41QzEyLjUgMTIuNzc2NSAxMi4yNzY1IDEzIDEyIDEzWk0xMiA5LjVIMTFDMTAuNzIzNSA5LjUgMTAuNSA5LjI3NjUgMTAuNSA5VjhDMTAuNSA3LjcyMzUgMTAuNzIzNSA3LjUgMTEgNy41SDEyQzEyLjI3NjUgNy41IDEyLjUgNy43MjM1IDEyLjUgOFY5QzEyLjUgOS4yNzY1IDEyLjI3NjUgOS41IDEyIDkuNVpNOCAxNi41SDdDNi43MjM1IDE2LjUgNi41IDE2LjI3NjUgNi41IDE2VjE1QzYuNSAxNC43MjM1IDYuNzIzNSAxNC41IDcgMTQuNUg4QzguMjc2NSAxNC41IDguNSAxNC43MjM1IDguNSAxNVYxNkM4LjUgMTYuMjc2NSA4LjI3NjUgMTYuNSA4IDE2LjVaTTggMTNIN0M2LjcyMzUgMTMgNi41IDEyLjc3NjUgNi41IDEyLjVWMTEuNUM2LjUgMTEuMjI0IDYuNzIzNSAxMSA3IDExSDhDOC4yNzY1IDExIDguNSAxMS4yMjQgOC41IDExLjVWMTIuNUM4LjUgMTIuNzc2NSA4LjI3NjUgMTMgOCAxM1pNOCA5LjVIN0M2LjcyMzUgOS41IDYuNSA5LjI3NjUgNi41IDlWOEM2LjUgNy43MjM1IDYuNzIzNSA3LjUgNyA3LjVIOEM4LjI3NjUgNy41IDguNSA3LjcyMzUgOC41IDhWOUM4LjUgOS4yNzY1IDguMjc2NSA5LjUgOCA5LjVaTTQgMTYuNUgzQzIuNzIzNSAxNi41IDIuNSAxNi4yNzY1IDIuNSAxNlYxNUMyLjUgMTQuNzIzNSAyLjcyMzUgMTQuNSAzIDE0LjVINEM0LjI3NjUgMTQuNSA0LjUgMTQuNzIzNSA0LjUgMTVWMTZDNC41IDE2LjI3NjUgNC4yNzY1IDE2LjUgNCAxNi41Wk00IDEzSDNDMi43MjM1IDEzIDIuNSAxMi43NzY1IDIuNSAxMi41VjExLjVDMi41IDExLjIyNCAyLjcyMzUgMTEgMyAxMUg0QzQuMjc2NSAxMSA0LjUgMTEuMjI0IDQuNSAxMS41VjEyLjVDNC41IDEyLjc3NjUgNC4yNzY1IDEzIDQgMTNaTTExIDE0LjVIMTJDMTIuMjc2NSAxNC41IDEyLjUgMTQuNzIzNSAxMi41IDE1VjE2QzEyLjUgMTYuMjc2NSAxMi4yNzY1IDE2LjUgMTIgMTYuNUgxMUMxMC43MjM1IDE2LjUgMTAuNSAxNi4yNzY1IDEwLjUgMTZWMTVDMTAuNSAxNC43MjM1IDEwLjcyMzUgMTQuNSAxMSAxNC41WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==")
+      background-position: center center
+      background-repeat: no-repeat
+      background-size: cover
+
+  &__date-text
+    font-size: 14px
+
+  &__desc-cont
+    padding: 20px
+    box-sizing: border-box
+
+  &__title
+    display: inline-block
+    margin: 0 0 18px
+    color: #000000
+    font-size: 20px
+
+  &__p-cont
+    position: relative
+    overflow: hidden
+    &:after
+      content: ' ...'
+      display: contents
+      position: absolute
+      bottom: 0
+      right: 0
+      padding: 0 1em
+      color: $blue
+      background: inherit
+
+  &__p
+    display: inline
+    margin: 0
+    color: #4D4D4D
+    font-size: 14px
+    line-height: 18px
+    position: relative
+
+  &__read-more
+    width: auto
+    margin: 20px 0 0
+    display: inline-block
+    color: $blue
+    font-size: 14px
+    text-transform: uppercase
+    text-decoration: underline
+    cursor: pointer
+    transition: .2s
+    &:hover
+      color: $yellow
+
+  &--large
+    max-width: 596px
+    min-width: 596px
+    display: flex
+
+    .article__img-cont
+      width: 100%
+      height: 100%
+      min-width: 290px
+
+    .article__desc-cont
+      width: 100%
+
+    .article__p
+      width: 100%
+      max-width: 246px

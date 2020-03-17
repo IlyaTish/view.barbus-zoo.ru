@@ -1,0 +1,50 @@
+@media (max-width: 1240px)
+  .article
+    max-width: 100%
+    flex: 3
+
+    &--large
+      min-width: 290px
+      display: block
+
+      .article__img-cont
+        width: 100%
+        height: 188px
+        min-width: auto
+
+      .article__desc-cont
+        width: 100%
+
+      .article__p-cont
+        max-height: 54px
+
+      .article__p
+        max-width: 100%
+
+@media (max-width: 991px)
+  .article
+    &--large
+      max-width: 596px
+      min-width: 100%
+      display: flex
+
+      .article__img-cont
+        width: 100%
+        height: 100%
+        min-width: 290px
+
+      .article__p-cont
+        max-height: none
+
+@media (max-width: 767px)
+  .article
+    width: 100%
+
+    &--large
+      min-width: 290px
+      display: block
+
+      .article__img-cont
+        width: 100%
+        height: 380px
+        min-width: auto

@@ -803,20 +803,76 @@ h5
   max-height: 400px
 
 
-/* Radiobutton styles
+/* Radiobutton, checkbox styles
    ========================================================================== */
+
+.checkbox
+  vertical-align: top
+  width: 17px
+  height: 17px
+  margin: 0 3px 0 0
+
+.checkbox + label
+  display: flex
+  color: #FFFFFF
+  @include roboto-regular
+  line-height: 18px
+  cursor: pointer
+
+.checkbox:not(checked)
+  position: absolute
+  z-index: -1
+  opacity: 0
+  margin: 10px 0 0 20px
+
+.checkbox:not(checked) + label
+  position: relative
+  padding: 0 0 0 40px
+
+.checkbox:not(checked) + label:before
+  content: ''
+  position: absolute
+  top: 7px
+  left: 0
+  width: 20px
+  height: 20px
+  border-radius: 4px
+  background: #FFFFFF
+  transition: .2s
+
+.checkbox:not(checked) + label:after
+  content: ''
+  position: absolute
+  top: 7px
+  left: 0
+  width: 20px
+  height: 20px
+  border-radius: 4px
+  background-color: transparent
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNyAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEgNkw2LjAwMDAxIDExTDE2IDEiIHN0cm9rZT0iIzM2QzBGMSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1saW5lam9pbj0iYmV2ZWwiLz4KPC9zdmc+Cg==")
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: auto
+  opacity: 0
+  transition: .2s
+
+.checkbox:checked + label:after
+  opacity: 1
+
 
 .radio input
   position: absolute
   z-index: -1
   opacity: 0
   margin: 10px 0 0 7px
+
 .radio__text
   padding: 0 0 0 34px
   color: $black
   font-size: 16px
   position: relative
   cursor: pointer
+
 .radio__text:before
   content: ''
   position: absolute
@@ -826,7 +882,8 @@ h5
   height: 20px
   border: 1px solid $blue
   border-radius: 50%
-  background: #FFF
+  background: #FFFFFF
+
 .radio__text:after
   content: ''
   position: absolute
@@ -839,6 +896,7 @@ h5
   background: #FFFFFF
   box-sizing: border-box
   transition: .2s
+
 .radio input:checked + .radio__text:after
   background: $blue
 
@@ -906,7 +964,7 @@ h5
   display: flex
   align-items: center
   justify-content: center
-  font-family: 'Roboto'
+  @include roboto-regular
   text-align: center
   cursor: pointer
   border-radius: 3px

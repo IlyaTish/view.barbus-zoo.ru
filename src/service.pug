@@ -33,12 +33,15 @@ block content
 
     //- Include Modal-gallery block ('.modal-gallery')
     include assets/blocks/common-blocks/modal-gallery/block.pug
-    +modal-gallery('Чистка аквариумов', 'assets/images/modal-gallery-img-04.jpg', 'assets/images/modal-gallery-img-05.jpg', 'assets/images/modal-gallery-img-06.jpg')
+    +modal-gallery('Чистка аквариумов', 'assets/images/modal-gallery/modal-gallery/modal-gallery-img-04.jpg', 'assets/images/modal-gallery/modal-gallery/modal-gallery-img-05.jpg', 'assets/images/modal-gallery/modal-gallery/modal-gallery-img-06.jpg')
 
 
     //- Include Description block ('.service__desc')
     include assets/blocks/service/desc/block.pug
 
+
+  //- Include Popup block ('.popup')
+  include assets/blocks/common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
   include assets/blocks/common-blocks/footer/block.pug

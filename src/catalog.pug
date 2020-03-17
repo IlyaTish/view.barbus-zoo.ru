@@ -90,8 +90,8 @@ block content
     //- Include Offer-dop block ('.offer-dop')
     include assets/blocks/catalog/offer-dop/block.pug
     +offer-dop(offerDopItems)
-    
-    
+
+
     //- Services block ('.services') data
     -
       const services = {
@@ -119,6 +119,9 @@ block content
     include assets/blocks/catalog/services/block.pug
     +service(services)
 
+
+  //- Include Popup block ('.popup')
+  include assets/blocks/common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
   include assets/blocks/common-blocks/footer/block.pug

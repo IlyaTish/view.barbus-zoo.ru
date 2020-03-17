@@ -7,6 +7,6 @@ mixin service(services)
           li.offer__item
             a(class='offer__link '+ service.img +'')
               .offer__icon
-                i(class='icon '+ service.icon +'') 
+                i(class='icon '+ service.icon +'')
               if service.text
-                h5= service.text
+                h5.offer__link-title= service.text

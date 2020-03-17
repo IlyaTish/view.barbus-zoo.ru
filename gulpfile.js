@@ -186,7 +186,7 @@ gulp.task('watch', () => {
   });
 
   gulp.watch(paths.html.src).on('change', browserSync.reload);
-  gulp.watch(paths.pug.src, gulp.series('pug')).on('change', browserSync.reload);
+  gulp.watch([ paths.pug.src, paths.src + '/**/**/**/**/*.pug' ], gulp.series('pug')).on('change', browserSync.reload);
   gulp.watch([ paths.styles.src, paths.styles.blocks ], gulp.series('styles', 'cssLibs', 'cssConcat'));
   gulp.watch(paths.styles.dest);
   gulp.watch(paths.scripts.src, gulp.series('scripts')).on('change', browserSync.reload);

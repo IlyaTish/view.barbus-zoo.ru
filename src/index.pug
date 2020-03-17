@@ -4,6 +4,7 @@ block content
   //- Include Header block ('.header')
   include assets/blocks/common-blocks/header/block.pug
 
+
   - var page = 'index'
   div(class='content '+ page +'')
     include assets/blocks/main/main-slider/block.pug
@@ -16,25 +17,25 @@ block content
         swiper: true,
         title:  'Новинки каталога',
         data: [{
-          img:   'assets/images/product-img-01.jpg',
+          img:   'assets/images/products/product-img-01.jpg',
           title: 'Пецилия красная длинная',
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
           price: '5'
         },
         {
-          img:   'assets/images/product-img-02.jpg',
+          img:   'assets/images/products/product-img-02.jpg',
           title: 'Пецилия красная',
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
           price: '1000'
         },
         {
-          img:   'assets/images/product-img-03.jpg',
+          img:   'assets/images/products/product-img-03.jpg',
           title: 'Пецилия красная',
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
           price: '251'
         },
         {
-          img:   'assets/images/product-img-04.jpg',
+          img:   'assets/images/products/product-img-04.jpg',
           title: 'Пецилия красная',
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet ...',
           price: '100000'
@@ -47,6 +48,10 @@ block content
 
     //- Include Insta block ('.insta')
     include assets/blocks/common-blocks/insta/block.pug
+
+
+  //- Include Popup block ('.popup')
+  include assets/blocks/common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
   include assets/blocks/common-blocks/footer/block.pug

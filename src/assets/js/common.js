@@ -47,7 +47,9 @@ const teleport = (width, elem, cont_1, cont_2, appendChild) => {
       if (elem && cont_2) {
         cont_2.appendChild(elem);
       }
-    } else {
+    }
+
+    else {
       if (elem && cont_2) {
         cont_2.after(elem);
       }
@@ -343,6 +345,66 @@ const collapseFn = () => {
 
 
 
+// Variables
+const btn         = document.querySelector('.btn'),
+      btns        = document.querySelectorAll('.btn'),
+      popup       = document.querySelector('.popup'),
+      popups      = document.querySelectorAll('.popup'),
+      popupLinks  = document.querySelectorAll('.popup-link'),
+      popupCont   = document.querySelector('.popup__cont');
+
+/* Popup function */
+const popupFunc = () => {
+  const popupsId   = [],
+        btnHrefs   = [];
+
+  [].forEach.call(popups, (popupElem) => {
+    popupsId.push(popupElem.getAttribute('id'));
+
+    document.addEventListener('click', (e) => {
+      const isClickInside = popupCont.contains(e.target);
+
+      if (!isClickInside && popupElem.classList.contains('active')) {
+        popupElem.classList.remove('active');
+      }
+    });
+
+    popupElem.addEventListener('submit', (e) => {
+      e.preventDefault();
+      popupElem.classList.remove('active');
+      popupThanks.classList.add('active');
+    });
+  });
+
+  [].forEach.call(popupLinks, (link) => {
+    const linkHref = link.getAttribute('href').replace('#', '');
+    btnHrefs.push(linkHref);
+
+    link.addEventListener('click', () => {
+      setTimeout(() => {
+        popups.forEach(popupElem => {
+          if (popupElem.getAttribute('id') === linkHref) {
+            popupElem.classList.add('active');
+
+            const btnClose = popupElem.querySelector('.btn-close'),
+                  popupBg  = popupElem.querySelector('.popup-bg');
+
+            btnClose.addEventListener('click', () => {
+              popupElem.classList.remove('active');
+            });
+
+            popupBg.addEventListener('click', () => {
+              popupElem.classList.remove('active');
+            });
+          }
+        });
+      });
+    });
+  });
+}
+
+
+
 /*  Js after DOM is loaded */
 ready(() => {
   selectStyle();
@@ -352,11 +414,20 @@ ready(() => {
   delimiter();
   tabs();
   collapseFn();
+  popupFunc();
+
+
+
+  // Mask for phone input
+  const phoneInput  = document.querySelector('.phone-input');
+  const maskOptions = { mask: '+{7} (000) 000-00-00' };
+  const mask        = IMask(phoneInput, maskOptions);
 
 
 
   // Width
-  var width_1260 = '(max-width: 1260px)',
+  var width_1260 = '(min-width: 1260px)',
+      width_1200 = '(max-width: 1200px)',
       width_1199 = '(max-width: 1199px)',
       width_991  = '(max-width: 991px)',
       width_767  = '(max-width: 767px)',
@@ -367,6 +438,7 @@ ready(() => {
 
       // Header container variables
       headerCont        = document.querySelector('.header').querySelector('.container'),
+      headerInfoCont    = document.querySelector('.header__info-cont'),
       headerPhoneCont   = document.querySelector('.header__phone').querySelector('.header__row'),
       headerBottomCont  = document.querySelector('.header-bottom').querySelector('.container'),
       headerButtonsCont = document.querySelector('.header__buttons'),
@@ -383,14 +455,15 @@ ready(() => {
       appendChild = true;
 
   // ('.header__cart'), ('.header__account') teleport
-  teleport(width_1199, headerCart, headerBottomCont, headerButtonsCont, appendChild);
-  teleport(width_1199, headerAccount, headerPhoneCont, headerButtonsCont, appendChild);
+  if (window.matchMedia(width_1199).matches) {
+    teleport(width_1199, headerCart, headerBottomCont, headerButtonsCont, appendChild);
+    teleport(width_1199, headerAccount, headerPhoneCont, headerButtonsCont, appendChild);
+  }
 
   if (window.matchMedia(width_767).matches) {
     // ('.burger-menu'), ('.catalog-menu') teleport on screen smaller then 767px
     teleport(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
     teleport(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
-
     // ('.header__cart') teleport on screen smaller then 767px
     teleport(width_767, headerCart, headerCont, headerBottomCont, appendChild);
   }
@@ -418,12 +491,12 @@ ready(() => {
 
 
 
-  if (document.querySelector('.catalog-list')) {
+  if (document.querySelector('.catalog-list') || document.querySelector('.akvablog-page')) {
     // Catalog-list elements
-    var catalogSelect = document.querySelector('.catalog-list').querySelector('.filters-sort'),
+    var catalogSelect = document.querySelector('.filters-sort'),
 
         //Catalog-list container
-        catalogListCont = document.querySelector('.catalog-list__row'),
+        catalogListCont = document.querySelector('.heading__row'),
         filtersCont     = document.querySelector('.filters').querySelector('.container');
 
     // ('.filters-sort') element teleport
@@ -431,25 +504,68 @@ ready(() => {
   }
 
 
+  let flag_1 = 1,
+      flag_2 = 1,
+      flag_3 = 1;
 
   window.onresize = () => {
-    // ('.header__cart'), ('.header__account') teleport onresize
-    teleport(width_1199, headerCart, headerBottomCont, headerButtonsCont, appendChild);
-    teleport(width_1199, headerAccount, headerPhoneCont, headerButtonsCont, appendChild);
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    const teleportOnResize = () => {
+      if (viewportWidth > 1200) {
+        if (flag_1 === 1) {
+          flag_2 = 1;
+          flag_3 = 1;
 
-    if (window.matchMedia(width_767).matches) {
-      teleport(width_767, headerCart, headerCont, headerBottomCont, appendChild);
+          headerButtonsCont.appendChild(headerCart);
+          headerButtonsCont.appendChild(headerAccount);
+          headerBottomCont.appendChild(catalogMenu);
+
+          flag_1 = 0;
+        }
+      }
+
+      if (viewportWidth > 768 && viewportWidth < 1199) {
+        if (flag_2 === 1) {
+          flag_1 = 1;
+          flag_3 = 1;
+
+          headerBottomCont.appendChild(headerCart);
+          headerPhoneCont.appendChild(headerAccount);
+          headerBottomCont.appendChild(catalogMenu);
+          headerBottomCont.appendChild(burgerMenu);
+
+          flag_2 = 0;
+        }
+      }
+
+      if (viewportWidth < 767) {
+        if (flag_3 === 1) {
+          flag_1 = 1;
+          flag_2 = 1;
+
+          headerCont.appendChild(headerCart);
+          headerCont.appendChild(headerAccount);
+          headerCont.appendChild(catalogMenu);
+          headerCont.appendChild(burgerMenu);
+
+          flag_3 = 0;
+        }
+      }
     }
 
-    // ('.burger-menu'), ('.catalog-menu') teleport on screen smaller then 767px and onresize
-    teleport(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
-    teleport(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
+    teleportOnResize();
 
-    // ('.filters-sort') element teleport teleport on screen smaller then 991px and onresize
-    teleport(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
+    if (window.matchMedia(width_1260).matches) {
+      // ('.offer__title') element teleport on screen smaller then 1260px and onresize
+      teleport(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
+    }
 
-    // ('.offer__title') element teleport on screen smaller then 1260px and onresize
-    teleport(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
+    if (window.matchMedia(width_991).matches) {
+      // ('.filters-sort') element teleport teleport on screen smaller then 991px and onresize
+      if (document.querySelector('.catalog-list') || document.querySelector('.akvablog-page')) {
+        teleport(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
+      }
+    }
 
     collapseFn();
   }
@@ -473,6 +589,7 @@ ready(() => {
       }
   });
 
+
   const productGalleryThumbs = new Swiper('.product-gallery-thumbs', {
     loop: true,
     autoplay: {
@@ -482,6 +599,7 @@ ready(() => {
     slidesPerView: 3,
     centeredSlides: true
   });
+
 
   const productGallery = new Swiper('.product-gallery', {
     loop: true,
@@ -502,52 +620,52 @@ ready(() => {
   });
 
 
-  const products = document.querySelectorAll('.products');
+  if (!document.querySelector('.catalog-list')) {
+    const products = document.querySelectorAll('.products');
 
-  [].forEach.call(products, (el, index) => {
-    const btnPrev = el.querySelector('.swiper-button-prev'),
-          btnNext = el.querySelector('.swiper-button-next');
+    [].forEach.call(products, (el, index) => {
+      const btnPrev = el.querySelector('.swiper-button-prev'),
+            btnNext = el.querySelector('.swiper-button-next');
 
-    el.classList.add('products-'+ index);
+      el.classList.add('products-'+ index);
 
-    btnNext.classList.add('btn-next-'+ index);
-    btnPrev.classList.add('btn-prev-'+ index);
+      btnNext.classList.add('btn-next-'+ index);
+      btnPrev.classList.add('btn-prev-'+ index);
 
-    console.log(btnPrev);
-
-    const swiperProducts = new Swiper('.swiper-products', {
-      loop: true,
-      autoplay: {
-        delay: 10000
-      },
-      spaceBetween: 20,
-      slidesPerView: 1,
-      longSwipesMs: 600,
-      centeredSlide: true,
-      navigation: {
-        nextEl: '.btn-next-'+ index,
-        prevEl: '.btn-prev-'+ index
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'bullets',
-        clickable: true
-      },
-      breakpoints: {
-        489: {
-          slidesPerView: 'auto',
+      const swiperProducts = new Swiper('.swiper-products', {
+        loop: true,
+        autoplay: {
+          delay: 10000
         },
-        1199: {
-          slidesPerView: 4,
-          freeMode: true,
-          freeModeMomentumRatio: 0.3,
-          freeModeSticky: true,
-          freeModeMomentumBounce: false,
-          longSwipesRatio: 0
+        spaceBetween: 20,
+        slidesPerView: 1,
+        longSwipesMs: 600,
+        centeredSlide: true,
+        navigation: {
+          nextEl: '.btn-next-'+ index,
+          prevEl: '.btn-prev-'+ index
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true
+        },
+        breakpoints: {
+          489: {
+            slidesPerView: 'auto',
+          },
+          1199: {
+            slidesPerView: 4,
+            freeMode: true,
+            freeModeMomentumRatio: 0.3,
+            freeModeSticky: true,
+            freeModeMomentumBounce: false,
+            longSwipesRatio: 0
+          }
         }
-      }
+      });
     });
-  });
+  }
 
 
   const instaSwiper = new Swiper('.swiper-insta', {

@@ -5,22 +5,93 @@
   justify-content: space-between
 
 .services-item
-  width: 392px
-  height: 392px
-  min-width: 392px
+  width: 100%
+  height: 100%
   min-height: 392px
+  max-width: 392px
+  max-height: 392px
+  margin: 0 20px 20px 0
   display: flex
   align-items: center
   justify-content: center
+  position: relative
   background-color: #EAEEEF
+  background-image: url('../images/pattern.jpg')
+  background-repeat: no-repeat
   border-radius: 100%
   overflow: hidden
+  &:last-of-type
+    margin: 0 0 20px 0
 
   &__title
+    max-width: 230px
+    position: relative
     color: #FFFFFF
     font-size: 26px
+    font-weight: 600
+    @include roboto-regular
+    text-align: center
     text-decoration: none
+    z-index: 2
+    transition: .2s
+
+  &__icon
+    width: 112px
+    height: 112px
+    max-width: 112px
+    max-height: 112px
+    margin: 0 0 30px
+    display: flex
+    align-items: center
+    justify-content: center
+    color: #FFFFFF
+    font-size: 68px
+    background: $blue
+    border-radius: 100%
+    position: relative
+    z-index: 2
 
 .services-link
-  display: block
+  width: 100%
+  height: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
   text-decoration: none
+  border-radius: 100%
+  &:hover
+    .services-link__img
+      img
+        transform: scale(1.1)
+
+    .services-item__title
+      color: $blue
+
+  &__img
+    width: calc(100% - 60px)
+    height: calc(100% - 60px)
+    position: absolute
+    margin: 0 auto
+    border-radius: 100%
+    background-size: cover
+    background-position: center center
+    overflow: hidden
+    &:before
+      width: 100%
+      height: 100%
+      content: ''
+      display: block
+      top: 0
+      left: 0
+      position: absolute
+      background: linear-gradient(0deg,rgba(45,62,80,.8),rgba(45,62,80,.8))
+      z-index: 2
+
+    img
+      width: 100%
+      height: 100%
+      position: relative
+      transition: ease-in-out 1s
+      transition: transform 6s cubic-bezier(.25,.45,.45,.95),-webkit-transform 6s cubic-bezier(.25,.45,.45,.95)
+      z-index: 1

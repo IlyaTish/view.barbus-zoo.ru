@@ -9,6 +9,6 @@ mixin offer-dop(offerDopItems)
           li.offer__item
             a(class='offer__link '+ item.img +'')
               .offer__icon
-                i(class='icon '+ item.icon +'') 
+                i(class='icon '+ item.icon +'')
               if item.text
-                h5= item.text
+                h5.offer__link-title= item.text

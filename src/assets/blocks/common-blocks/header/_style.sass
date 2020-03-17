@@ -135,12 +135,14 @@
     position: relative
     float: left
     clear: left
+    text-decoration: none
     cursor: pointer
     transition: .2s
     &:hover, &:focus
       color: $blue
       &:before
         display: none
+
     &:before
       width: 100%
       height: 1px
@@ -149,6 +151,8 @@
       top: calc(100% + 2px)
       position: absolute
       border-bottom: 1px dashed $blue
+      pointer-events: none
+
     i
       display: none
       color: $blue
@@ -246,8 +250,10 @@
     top: 0
     position: fixed
     transition: .2
+
     &--fixed
       max-height: 60px
+
       .header
         max-height: 60px
         background: $dark-gray
@@ -260,22 +266,28 @@
               fill: #FFFFFF
           .white-path
             fill: $dark-gray
+
         &__info
           display: none
+
         &__nav-list
           display: none
+
           &__link
             color: #FFFFFF
             &:hover
               color: $blue
+
         &__btn
           max-height: 50px
+
         &__cart
           height: 40px
           color: #FFFFFF
           background: $yellow
           i
             color: #FFFFFF
+
         &__account
           width: 40px
           height: 40px
@@ -292,11 +304,14 @@
             color: #FFFFFF
           span
             display: none
+
         &__phone
           min-width: auto
           margin: 0 0 0 10px
+
         &__phone-num
           display: none
+
         &__callback
           width: 40px
           height: 40px

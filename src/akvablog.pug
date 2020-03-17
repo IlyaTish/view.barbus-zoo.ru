@@ -1,0 +1,43 @@
+extends template.pug
+
+block content
+  //- Include Header block ('.header')
+  include assets/blocks/common-blocks/header/block.pug
+
+
+  - var page = 'akvablog-page'
+  div(class='content '+ page +'')
+    //- Breadcrumb block ('.breadcrumb') data
+    -
+      const links = {
+        data: [{
+          text: 'Главная',
+          href: '#',
+          active: true
+        },
+        {
+          text: 'Блог',
+          href: '#'
+        }]
+      }
+
+    //- Include Breadcrumb block ('.breadcrumb')
+    include assets/blocks/common-blocks/breadcrumb/block.pug
+    +breadcrumb(links)
+
+    //- Include Heading block ('.catalog-list__heading')
+    include assets/blocks/common-blocks/heading/block.pug
+    +heading('Акваблог', '130\u00A0статей')
+
+    //- Include Filters block ('.filters')
+    include assets/blocks/catalog-list/filters/block.pug
+
+    //- Include Akvablog-articles block ('.akvablog-articles')
+    include assets/blocks/akvablog/articles/block.pug
+
+
+  //- Include Popup block ('.popup')
+  include assets/blocks/common-blocks/popup/block.pug
+
+  //- Include Footer block ('.footer')
+  include assets/blocks/common-blocks/footer/block.pug
