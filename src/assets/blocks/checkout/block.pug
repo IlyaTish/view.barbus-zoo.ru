@@ -34,34 +34,5 @@
               input(type='radio' name='Оплата')
               span.radio__text Курьеру
 
-    .checkout__cart
-      h5.checkout__cart-title Корзина
-      .checkout__item.product-item
-        img.checkout__item-img(src='assets/images/products/product-img-01.jpg')
-        .checkout__item-cont
-          span.checkout__item-title Пецилия красная длинная
-          div.quantity-block
-            button.quantity-arrow.quantity-arrow-minus
-            input.product__amount.quantity-num(type='number' value='1' min='1' max='2000')
-            button.quantity-arrow.quantity-arrow-plus
-          span.product__price 5
-      .checkout__item.product-item
-        img.checkout__item-img(src='assets/images/products/product-img-02.jpg')
-        .checkout__item-cont
-          span.checkout__item-title Пецилия красная длинная
-          div.quantity-block
-            button.quantity-arrow.quantity-arrow-minus
-            input.product__amount.quantity-num(type='number' value='1' min='1' max='2000')
-            button.quantity-arrow.quantity-arrow-plus
-          span.product__price 5
-      .checkout__product.checkout__item-row
-        span.checkout__item-subtitle Товар:
-        span.product__price 240
-      .checkout__delivery.checkout__item-row
-        span.checkout__item-subtitle Доставка:
-        span.product__price 150
-      .checkout__total.checkout__item-row
-        span.checkout__item-subtitle Итого:
-        span.product__price 390
-      button.btn.checkout__btn
-        span Оплатить
+    //- Include Cart block ('.cart')
+    include ../common-blocks/cart/block.pug

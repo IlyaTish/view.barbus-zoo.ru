@@ -1,0 +1,59 @@
+.search
+  margin: 60px 0 80px
+
+  &__title
+    margin: 0 0 26px 10px
+
+  &__link
+    margin: 0 0 20px
+    display: inline-block
+    color: #202020
+    font-size: 20px
+    word-break: break-all
+    transition: .2s
+
+  &__cont
+    position: relative
+    overflow: hidden
+    &:after
+      content: ' ...'
+      display: contents
+      position: absolute
+      bottom: 0
+      right: 0
+      padding: 0 1em
+      color: #36C0F1
+      background: inherit
+
+  &__content-text
+    margin: 0
+    display: inline
+    color: #202020
+    font-size: 16px
+    @include roboto-light
+
+  .container
+    padding: 0 10px
+
+.search-items
+  display: flex
+  flex-wrap: wrap
+
+.search-item
+  width: 100%
+  max-width: 596px
+  margin: 0 10px 20px 10px
+  padding: 30px
+  text-decoration: none
+  border-radius: 20px
+  border: 1px solid #EDF6F9
+  box-sizing: border-box
+  transition: .2s
+  &:hover
+    border: 1px solid $blue
+
+    .search__link
+      color: $blue
+
+.search-request
+  color: $blue

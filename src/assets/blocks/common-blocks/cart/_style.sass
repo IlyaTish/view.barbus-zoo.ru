@@ -1,0 +1,88 @@
+.cart
+  width: 100%
+  height: fit-content
+  margin: 100px 0
+  padding: 30px 40px
+  max-width: 434px
+  border-radius: 20px
+  border: 1px solid #EDF6F9
+  background: #F9FAFB
+  box-sizing: border-box
+  .product__price
+    max-width: 100%
+    margin: 0
+    justify-content: flex-end
+    font-size: 20px
+    text-align: right
+    &:after
+      font-size: 20px
+
+  &__title
+    margin: 0 0 20px
+
+  &__product
+    margin: 20px 0 0
+
+  .cart__total
+    margin: 18px 0 0
+    .cart-item__subtitle
+      color: $black
+      font-size: 30px
+      @include roboto-light
+    .product__price
+      font-size: 52px
+      @include roboto-light
+      &:after
+        font-size: 52px
+
+  .btn
+    width: 100%
+    min-height: 60px
+    margin: 20px 0 0
+    color: #FFFFFF
+    text-transform: uppercase
+    line-height: 60px
+    letter-spacing: .75px
+    background: $blue
+    border: none
+    transition: .2s
+    &:hover, &:focus, &:active
+      background: $yellow
+
+.cart-item
+  display: flex
+  align-content: space-between
+  margin: 0 0 10px
+  border-radius: 10px
+  border: 1px solid #EDF6F9
+  background: #FFFFFF
+  overflow: hidden
+  &:last-of-type
+    margin: 0
+
+  &__img
+    width: auto
+    height: auto
+    max-width: 186px
+    max-height: 128px
+    height: auto
+    display: block
+
+  &__cont
+    width: 100%
+    padding: 8px 20px
+    box-sizing: border-box
+    .quantity-block
+      width: 100%
+      max-width: 128px
+      margin: 8px 0
+
+  &__row
+    margin: 4px 0 0
+    display: flex
+    align-items: baseline
+    justify-content: space-between
+
+  &__subtitle
+    display: inline-block
+    color: $gray

@@ -1,0 +1,126 @@
+.account
+  margin: 44px 0 100px
+
+  &__title
+    margin: 0 0 30px
+    font-size: 52px
+
+  &__cont
+    display: flex
+    justify-content: space-between
+
+  &__col-1
+    width: 100%
+    margin: 0 82px 0 0
+
+  &__col-2
+    width: 100%
+    max-width: 434px
+
+  .input-cont
+    width: 100%
+    position: relative
+
+  .input-wrapper
+    display: flex
+    margin: 0 0 20px
+
+  .input-title
+    min-width: 140px
+    max-width: 140px
+
+  .input
+    width: 100%
+    padding: 16px 60px 16px 20px
+
+  .btn-edit
+    width: 40px
+    height: 100%
+    margin: 0
+    padding: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    top: 0
+    right: 20px
+    position: absolute
+    border: none
+    background: transparent
+    cursor: pointer
+    &:hover
+      .icon
+        color: lighten($blue, 20%)
+
+  .icon
+    color: $blue
+    font-size: 20px
+
+  .cart
+    margin: 0
+
+.order-history
+  margin: 48px 0 0
+  padding: 30px 0
+  background: #F9FAFB
+  border: 1px solid #EDF6F9
+  border-radius: 20px
+  box-sizing: border-box
+
+  &__title
+    padding: 0 20px
+    color: #202020
+    box-sizing: border-box
+    font-size: 24px
+
+  &__date, &__id, &__sum
+    display: inline-block
+    font-size: 16px
+    word-break: break-all
+    @include roboto-regular
+
+  &__date
+    color: #202020
+
+  &__sum
+    display: flex
+    &:after
+      content: '₽'
+      display: block
+      margin: 0 0 0 6px
+      color: #36C0F1
+      font-size: 16px
+
+  &__list
+    padding: 0
+    margin: 20px 0 0
+
+  &__item
+    min-height: 40px
+    padding: 10px 20px
+    display: flex
+    list-style: none
+    box-sizing: border-box
+    &:nth-child(odd)
+      background: #EDF6F9
+
+  &__col-1, &__col-2
+    width: 100%
+    display: flex
+
+  &__col
+    width: 100%
+    flex: 1
+
+  .view-order
+    color: #8998A4
+    font-size: 14px
+    text-transform: uppercase
+    text-decoration: underline
+    cursor: pointer
+    transition: .2s
+    &:hover, &:focus
+      color: $blue
+
+  .view-order-link
+    text-align: right
+    flex: 1.5

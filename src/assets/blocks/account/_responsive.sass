@@ -1,0 +1,39 @@
+@media (max-width: 1199px)
+  .account
+    &__cont
+      flex-wrap: wrap
+
+    &__col-1
+      margin: 0
+
+    &__col-2
+      max-width: 100%
+
+  .order-history
+    margin: 40px 0
+
+@media (max-width: 767px)
+  .account
+    .input-wrapper
+      flex-direction: column
+      justify-content: flex-start
+
+    .input-title
+      max-width: 100%
+      min-width: 100%
+      margin: 0 0 8px
+
+  .order-history
+    &__col-1, &__col-2
+      flex-direction: column
+
+    &__col-1
+      max-width: 104px
+
+    &__date
+      margin: 0 0 8px
+
+    &__sum
+      margin: 0 0 8px
+      justify-content: flex-end
+      text-align: right

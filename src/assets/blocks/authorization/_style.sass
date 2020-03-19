@@ -1,0 +1,43 @@
+.auth
+  margin: 44px 0 100px
+
+  &__title
+    width: 100%
+    margin: 0 0 40px
+    font-size: 52px
+    text-align: center
+    @media (max-width: 767px)
+      margin: 0 0 20px
+      font-size: 40px
+      text-align: left
+
+  &__cont
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+  &__form
+    width: 100%
+    max-width: 392px
+    display: flex
+    flex-direction: column
+
+  &__links
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    margin: 16px 0 0
+
+  .input
+    margin: 0 0 20px
+
+  .btn
+    width: 100%
+    min-height: 60px
+    font-size: 16px
+    text-transform: uppercase
+    &:hover
+      color: #000000
+      background: #FFFFFF
+      border: 1px solid $yellow

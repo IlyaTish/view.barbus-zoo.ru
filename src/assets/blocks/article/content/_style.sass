@@ -1,0 +1,55 @@
+.article-content
+  margin: 0 0 80px
+
+  &__title
+    margin: 0 0 24px
+    display: inline-block
+    color: #202020
+    font-size: 20px
+
+  &__p
+    color: #202020
+    font-size: 16px
+    @include roboto-light
+    line-height: 20px
+
+  &__items
+    margin: 36px 0 0
+    padding: 0
+
+    &--numeric
+      counter-reset: item
+      .article-content__item
+        &:before
+          max-width: unset
+          max-height: unset
+          min-width: unset
+          min-height: unset
+          margin: 0 20px 0 0
+          top: -4px
+          color: $blue
+          font-size: 20px
+          content: counter(item)
+          counter-increment: item
+          border-radius: none
+          background: none
+
+  &__item
+    margin: 0 0 20px
+    display: flex
+    color: #202020
+    font-size: 16px
+    @include roboto-light
+    list-style: none
+    &:before
+      max-width: 5px
+      max-height: 5px
+      min-width: 5px
+      min-height: 5px
+      margin: 0 26px 0 0
+      content: ''
+      display: block
+      top: 6px
+      position: relative
+      background: $blue
+      border-radius: 100%

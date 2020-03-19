@@ -1,0 +1,31 @@
+.cart
+  h5.cart__title Корзина
+  .cart-item.product-item
+    img.cart-item__img(src='assets/images/products/product-img-01.jpg')
+    .cart-item__cont
+      span.cart-item__title Пецилия красная длинная
+      div.quantity-block
+        button.quantity-arrow.quantity-arrow-minus
+        input.product__amount.quantity-num(type='number' value='1' min='1' max='2000')
+        button.quantity-arrow.quantity-arrow-plus
+      span.product__price 5
+  .cart-item.product-item
+    img.cart-item__img(src='assets/images/products/product-img-02.jpg')
+    .cart-item__cont
+      span.cart-item__title Пецилия красная длинная
+      div.quantity-block
+        button.quantity-arrow.quantity-arrow-minus
+        input.product__amount.quantity-num(type='number' value='1' min='1' max='2000')
+        button.quantity-arrow.quantity-arrow-plus
+      span.product__price 5
+  .cart__product.cart-item__row
+    span.cart-item__subtitle Товар:
+    span.product__price 240
+  .cart__delivery.cart-item__row
+    span.cart-item__subtitle Доставка:
+    span.product__price 150
+  .cart__total.cart-item__row
+    span.cart-item__subtitle Итого:
+    span.product__price 390
+  button.btn
+    span Оплатить

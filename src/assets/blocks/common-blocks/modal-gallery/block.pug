@@ -1,4 +1,4 @@
-mixin modal-gallery(title, img_1, img_2, img_3)
+mixin modal-gallery(title, img_1, img_2, img_3, btnShare)
   .modal-gallery
     .container
       .modal-gallery__row
@@ -6,6 +6,10 @@ mixin modal-gallery(title, img_1, img_2, img_3)
         .swiper-nav.swiper-navigation
           .swiper-button-prev
           .swiper-button-next
+        if btnShare
+          .share
+            span Поделиться
+            i.icon.share-icon
       .swiper-container.swiper.swiper-modal-gallery
         .swiper-wrapper
           .swiper-slide

@@ -1,0 +1,36 @@
+extends template.pug
+
+block content
+  //- Include Header block ('.header')
+  include assets/blocks/common-blocks/header/block.pug
+
+
+  - var page = 'about-page'
+  div(class='content '+ page +'')
+    //- Breadcrumb block ('.breadcrumb') data
+    -
+      const links = {
+        data: [{
+          text: 'Главная',
+          href: '#',
+          active: true
+        },
+        {
+          text: 'Регистрация',
+          href: '#'
+        }]
+      }
+
+    //- Include Breadcrumb block ('.breadcrumb')
+    include assets/blocks/common-blocks/breadcrumb/block.pug
+    +breadcrumb(links)
+
+    //- Include Authorization block ('.registration')
+    include assets/blocks/registration/block.pug
+
+
+  //- Include Popup block ('.popup')
+  include assets/blocks/common-blocks/popup/block.pug
+
+  //- Include Footer block ('.footer')
+  include assets/blocks/common-blocks/footer/block.pug

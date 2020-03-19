@@ -340,6 +340,7 @@ $black: #202020
   font-family: 'Roboto-Bold', sans-serif
 
 @mixin roboto-regular
+  font-weight: 100
   font-family: 'Roboto-Regular', sans-serif
 
 @mixin roboto-light
@@ -465,6 +466,7 @@ body
   min-height: 100vh
   margin: 0
   font-size: 14px
+  font-weight: 100
   font-family: 'Roboto-Regular', sans-serif
   background: #FFF
   overflow-x: hidden
@@ -528,6 +530,14 @@ body
     color: $black
     text-align: center
 
+.link
+  color: $blue
+  text-decoration: underline
+  cursor: pointer
+  transition: .2s
+  &:hover
+    color: $yellow
+
 .btn
   padding: 0 24px 0 20px
   display: flex
@@ -554,6 +564,10 @@ body
     background: $blue
     i
       color: #FFFFFF
+
+  &--empty
+    color: #000000
+    border: 1px solid $blue
 
 .btn-search
   width: 20px
@@ -779,6 +793,16 @@ h5
 .swiper-pagination-bullet-active
   color: $dark-gray !important
 
+
+.input-wrapper
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.input-title
+  color: #202020
+  font-size: 16px
+  font-weight: 500
 
 .input, .textarea
   width: 100%

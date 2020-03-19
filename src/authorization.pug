@@ -5,7 +5,7 @@ block content
   include assets/blocks/common-blocks/header/block.pug
 
 
-  - var page = 'service-page'
+  - var page = 'about-page'
   div(class='content '+ page +'')
     //- Breadcrumb block ('.breadcrumb') data
     -
@@ -16,12 +16,7 @@ block content
           active: true
         },
         {
-          text: 'Услуги',
-          href: '#',
-          active: true
-        },
-        {
-          text: 'Чистка аквариумов',
+          text: 'Авторизация',
           href: '#'
         }]
       }
@@ -30,19 +25,8 @@ block content
     include assets/blocks/common-blocks/breadcrumb/block.pug
     +breadcrumb(links)
 
-
-    //- Include Modal-gallery block ('.modal-gallery')
-    include assets/blocks/common-blocks/modal-gallery/block.pug
-    +modal-gallery(
-      'Чистка аквариумов',
-      'assets/images/modal-gallery-img-04.jpg',
-      'assets/images/modal-gallery/modal-gallery-img-05.jpg',
-      'assets/images/modal-gallery/modal-gallery-img-06.jpg'
-    )
-
-
-    //- Include Description block ('.service__desc')
-    include assets/blocks/service/desc/block.pug
+    //- Include Authorization block ('.auth')
+    include assets/blocks/authorization/block.pug
 
 
   //- Include Popup block ('.popup')
