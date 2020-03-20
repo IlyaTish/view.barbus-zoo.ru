@@ -388,21 +388,23 @@ const popupFunc = () => {
     btnHrefs.push(linkHref);
 
     link.addEventListener('click', () => {
-      popups.forEach(popupElem => {
-        if (popupElem.getAttribute('id') === linkHref) {
-          popupElem.classList.add('active');
+      setTimeout(() => {
+        popups.forEach(popupElem => {
+          if (popupElem.getAttribute('id') === linkHref) {
+            popupElem.classList.add('active');
 
-          const btnClose = popupElem.querySelector('.btn-close'),
-          popupBg  = popupElem.querySelector('.popup-bg');
+            const btnClose = popupElem.querySelector('.btn-close'),
+            popupBg  = popupElem.querySelector('.popup-bg');
 
-          btnClose.addEventListener('click', () => {
-            popupElem.classList.remove('active');
-          });
+            btnClose.addEventListener('click', () => {
+              popupElem.classList.remove('active');
+            });
 
-          popupBg.addEventListener('click', () => {
-            popupElem.classList.remove('active');
-          });
-        }
+            popupBg.addEventListener('click', () => {
+              popupElem.classList.remove('active');
+            });
+          }
+        });
       });
     });
   });
@@ -576,51 +578,62 @@ ready(() => {
 
   window.onresize = () => {
     const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    if (document.querySelector('.offer-dop')) {
+      // Catalog page elements
+      var offerDopTitle = document.querySelector('.offer-dop').querySelector('.offer__title'),
+
+          // Catalog page container variables
+          offerDopCont  = document.querySelector('.offer-dop').querySelector('.container'),
+          offerDopEmpty = document.querySelector('.offer-dop').querySelector('.offer__empty');
+    }
+
+    if (document.querySelector('.filters')) {
+      // Catalog-list elements
+      var catalogSelect = document.querySelector('.filters-sort'),
+
+          //Catalog-list container
+          catalogListCont = document.querySelector('.heading__row'),
+          filtersCont     = document.querySelector('.filters').querySelector('.container');
+    }
+
     const teleportOnResize = () => {
       if (document.querySelector('.offer-dop')) {
-        // Catalog page elements
-        var offerDopTitle = document.querySelector('.offer-dop').querySelector('.offer__title'),
-
-            // Catalog page container variables
-            offerDopCont  = document.querySelector('.offer-dop').querySelector('.container'),
-            offerDopEmpty = document.querySelector('.offer-dop').querySelector('.offer__empty');
-      }
-
-      if (document.querySelector('.filters')) {
-        // Catalog-list elements
-        var catalogSelect = document.querySelector('.filters-sort'),
-
-            //Catalog-list container
-            catalogListCont = document.querySelector('.heading__row'),
-            filtersCont     = document.querySelector('.filters').querySelector('.container');
-      }
-
-      if (viewportWidth < 1260) {
-        if (flag === 1) {
-          flag = 0;
-          if (document.querySelector('.offer-dop')) {
+        if (viewportWidth < 1260) {
+          if (flag === 1) {
+            flag = 0;
             // ('.offer__title') element teleport on screen smaller then 1260px and onresize
             offerDopCont.appendChild(offerDopTitle);
           }
         }
       }
 
-      if (viewportWidth > 1260) {
-        if (flag === 0) {
-          flag = 1;
-          if (document.querySelector('.offer-dop')) {
+      if (document.querySelector('.offer-dop')) {
+        if (viewportWidth > 1260) {
+          if (flag === 0) {
+            flag = 1;
             // ('.offer__title') element teleport on screen smaller then 1260px and onresize
             offerDopEmpty.appendChild(offerDopTitle);
           }
         }
       }
 
-      if (viewportWidth < 991) {
-        if (flag_4 === 1) {
-          flag_4 = 0;
-          // ('.filters-sort') element teleport teleport on screen smaller then 991px and onresize
-          if (document.querySelector('.filters')) {
+      if (document.querySelector('.filters')) {
+        if (viewportWidth < 991) {
+          if (flag_4 === 1) {
+            flag_4 = 0;
+            // ('.filters-sort') element teleport teleport on screen smaller then 991px and onresize
             catalogListCont.appendChild(catalogSelect);
+          }
+        }
+      }
+
+      if (document.querySelector('.filters')) {
+        if (viewportWidth > 991) {
+          if (flag_4 === 0) {
+            flag_4 = 1;
+            // ('.filters-sort') element teleport teleport on screen smaller then 991px and onresize
+            filtersCont.appendChild(catalogSelect);
           }
         }
       }
@@ -631,20 +644,12 @@ ready(() => {
         if (flag_1 === 1) {
           flag_2 = 1;
           flag_3 = 1;
-          flag_1 = 0;
 
           headerButtonsCont.appendChild(headerCart);
           headerButtonsCont.appendChild(headerAccount);
-        }
-      }
+          headerBottomCont.appendChild(catalogMenu);
 
-      if (viewportWidth > 991) {
-        if (flag_2 === 0) {
-          flag_2 = 1;
-          // ('.filters-sort') element teleport teleport on screen smaller then 991px and onresize
-          if (document.querySelector('.filters')) {
-            catalogListCont.appendChild(catalogSelect);
-          }
+          flag_1 = 0;
         }
       }
 
@@ -652,12 +657,13 @@ ready(() => {
         if (flag_2 === 1) {
           flag_1 = 1;
           flag_3 = 1;
-          flag_2 = 0;
 
           headerBottomCont.appendChild(headerCart);
           headerPhoneCont.appendChild(headerAccount);
           headerBottomCont.appendChild(catalogMenu);
           headerBottomCont.appendChild(burgerMenu);
+
+          flag_2 = 0;
         }
       }
 
@@ -665,12 +671,13 @@ ready(() => {
         if (flag_3 === 1) {
           flag_1 = 1;
           flag_2 = 1;
-          flag_3 = 0;
 
           headerCont.appendChild(headerCart);
           headerCont.appendChild(headerAccount);
           headerCont.appendChild(catalogMenu);
           headerCont.appendChild(burgerMenu);
+
+          flag_3 = 0;
         }
       }
     }
