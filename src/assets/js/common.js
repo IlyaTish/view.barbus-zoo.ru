@@ -1,6 +1,6 @@
 /* Functions */
 
-// Document ready function
+/* Document ready function */
 const ready = (callback) => {
   if (document.readyState != 'loading') callback();
   else document.addEventListener('DOMContentLoaded', callback);
@@ -8,7 +8,7 @@ const ready = (callback) => {
 
 
 
-// Toggle class function
+/* Toggle class function */
 const toggleClass = (targetElem, elem, activeClass) => {
   elem.addEventListener('click', () => {
     targetElem.classList.toggle(activeClass);
@@ -17,7 +17,7 @@ const toggleClass = (targetElem, elem, activeClass) => {
 
 
 
-// Close open menu if click is outside menu or menu children
+/* Close open menu if click is outside menu or menu children */
 const closeMenu = (elem, btn, elemActiveClass, btnActiveClass) => {
   document.addEventListener('click', (e) => {
     const isClickInside = elem.contains(e.target),
@@ -33,7 +33,7 @@ const closeMenu = (elem, btn, elemActiveClass, btnActiveClass) => {
 
 
 
-// Teleport function for teleport layout
+/* Teleport function for responsive layout */
 const teleport = (width, elem, cont_1, cont_2, appendChild) => {
   if (window.matchMedia(width).matches) {
     // do functionality on screens smaller than width
@@ -161,7 +161,8 @@ const headerFix = () => {
 
 
 
-const catalogLinksHover = () => {
+/* Set z-index for each catalog-menu link */
+const setZindex = () => {
   const catItems      = document.querySelectorAll('.catalog-menu__item'),
         catItemsIndex = [...catItems].reverse(),
         leftPos       = 20;
@@ -266,6 +267,7 @@ const delimiter = () => {
 
 
 
+/* Tabs on product page */
 const tabs = () => {
   const tabLinks   = document.querySelectorAll('.tabs a'),
         tabPanels  = document.querySelectorAll('.tab-panel');
@@ -312,6 +314,7 @@ const tabs = () => {
 
 
 
+/* Collapse */
 const collapseFn = () => {
   const collapse       = document.querySelector('.collapse'),
         collapseTitle  = document.querySelectorAll('.collapse__title'),
@@ -385,23 +388,21 @@ const popupFunc = () => {
     btnHrefs.push(linkHref);
 
     link.addEventListener('click', () => {
-      setTimeout(() => {
-        popups.forEach(popupElem => {
-          if (popupElem.getAttribute('id') === linkHref) {
-            popupElem.classList.add('active');
+      popups.forEach(popupElem => {
+        if (popupElem.getAttribute('id') === linkHref) {
+          popupElem.classList.add('active');
 
-            const btnClose = popupElem.querySelector('.btn-close'),
-                  popupBg  = popupElem.querySelector('.popup-bg');
+          const btnClose = popupElem.querySelector('.btn-close'),
+          popupBg  = popupElem.querySelector('.popup-bg');
 
-            btnClose.addEventListener('click', () => {
-              popupElem.classList.remove('active');
-            });
+          btnClose.addEventListener('click', () => {
+            popupElem.classList.remove('active');
+          });
 
-            popupBg.addEventListener('click', () => {
-              popupElem.classList.remove('active');
-            });
-          }
-        });
+          popupBg.addEventListener('click', () => {
+            popupElem.classList.remove('active');
+          });
+        }
       });
     });
   });
@@ -413,7 +414,7 @@ const popupFunc = () => {
 ready(() => {
   selectStyle();
   headerFix();
-  catalogLinksHover();
+  setZindex();
   quantityProducts();
   delimiter();
   tabs();
@@ -428,6 +429,8 @@ ready(() => {
   const mask        = IMask(phoneInput, maskOptions);
 
 
+
+  const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
   // Width
   var width_1260 = '(min-width: 1260px)',
@@ -458,26 +461,78 @@ ready(() => {
 
       appendChild = true;
 
-  // ('.header__cart'), ('.header__account') teleport
+
   if (window.matchMedia(width_1199).matches) {
-    teleport(width_1199, headerCart, headerBottomCont, headerButtonsCont, appendChild);
-    teleport(width_1199, headerAccount, headerPhoneCont, headerButtonsCont, appendChild);
+    // ('.header__cart') teleport
+    teleport(
+      width_1199,
+      headerCart,
+      headerBottomCont,
+      headerButtonsCont,
+      appendChild
+    );
+
+    // ('.header__account') teleport
+    teleport(
+      width_1199,
+      headerAccount,
+      headerPhoneCont,
+      headerButtonsCont,
+      appendChild
+    );
   }
+
 
   if (window.matchMedia(width_767).matches) {
-    // ('.burger-menu'), ('.catalog-menu') teleport on screen smaller then 767px
-    teleport(width_767, burgerMenu, headerCont, headerBottomCont, appendChild);
-    teleport(width_767, catalogMenu, headerCont, headerBottomCont, appendChild);
+    // ('.burger-menu') teleport on screen smaller then 767px
+    teleport(
+      width_767,
+      burgerMenu,
+      headerCont,
+      headerBottomCont,
+      appendChild
+    );
+
+    // ('.catalog-menu') teleport on screen smaller then 767px
+    teleport(
+      width_767,
+      catalogMenu,
+      headerCont,
+      headerBottomCont,
+      appendChild
+    );
+
     // ('.header__cart') teleport on screen smaller then 767px
-    teleport(width_767, headerCart, headerCont, headerBottomCont, appendChild);
+    teleport(
+      width_767,
+      headerCart,
+      headerCont,
+      headerBottomCont,
+      appendChild
+    );
   }
 
-  // Toggle classes on ('.burger-menu') click event
-  toggleClass(catalogMenu, burgerMenu, catalogMenuActive);
-  toggleClass(burgerMenu, burgerMenu, burgerMenuActive);
 
-  // Close ('.catalog-menu') when document clicked
-  closeMenu(catalogMenu, burgerMenu, catalogMenuActive, burgerMenuActive);
+  // Toggle classes on ('.burger-menu') click event
+  toggleClass(
+    catalogMenu,
+    burgerMenu,
+    catalogMenuActive
+  );
+
+  toggleClass(
+    burgerMenu,
+    burgerMenu,
+    burgerMenuActive
+  );
+
+  // Close ('.catalog-menu') on document click
+  closeMenu(
+    catalogMenu,
+    burgerMenu,
+    catalogMenuActive,
+    burgerMenuActive
+  );
 
 
 
@@ -489,26 +544,32 @@ ready(() => {
         offerDopCont  = document.querySelector('.offer-dop').querySelector('.container'),
         offerDopEmpty = document.querySelector('.offer-dop').querySelector('.offer__empty');
 
-    // Catalog page teleport
-    teleport(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
+    if (viewportWidth < 1260) {
+      // Catalog page teleport
+      offerDopCont.appendChild(offerDopTitle);
+    }
   }
 
 
 
-  if (document.querySelector('.catalog-list') || document.querySelector('.akvablog-page')) {
+  if (document.querySelector('.filters')) {
     // Catalog-list elements
     var catalogSelect = document.querySelector('.filters-sort'),
 
-        //Catalog-list container
+        //Catalog-list containers
         catalogListCont = document.querySelector('.heading__row'),
         filtersCont     = document.querySelector('.filters').querySelector('.container');
 
-    // ('.filters-sort') element teleport
-    teleport(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
+    if (viewportWidth < 991) {
+      // ('.filters-sort') element teleport
+      catalogListCont.appendChild(catalogSelect);
+    }
   }
 
 
-  let flag_1 = 1,
+
+  let flag   = 1,
+      flag_1 = 1,
       flag_2 = 1,
       flag_3 = 1,
       flag_4 = 1;
@@ -516,15 +577,74 @@ ready(() => {
   window.onresize = () => {
     const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
     const teleportOnResize = () => {
+      if (document.querySelector('.offer-dop')) {
+        // Catalog page elements
+        var offerDopTitle = document.querySelector('.offer-dop').querySelector('.offer__title'),
+
+            // Catalog page container variables
+            offerDopCont  = document.querySelector('.offer-dop').querySelector('.container'),
+            offerDopEmpty = document.querySelector('.offer-dop').querySelector('.offer__empty');
+      }
+
+      if (document.querySelector('.filters')) {
+        // Catalog-list elements
+        var catalogSelect = document.querySelector('.filters-sort'),
+
+            //Catalog-list container
+            catalogListCont = document.querySelector('.heading__row'),
+            filtersCont     = document.querySelector('.filters').querySelector('.container');
+      }
+
+      if (viewportWidth < 1260) {
+        if (flag === 1) {
+          flag = 0;
+          if (document.querySelector('.offer-dop')) {
+            // ('.offer__title') element teleport on screen smaller then 1260px and onresize
+            offerDopCont.appendChild(offerDopTitle);
+          }
+        }
+      }
+
+      if (viewportWidth > 1260) {
+        if (flag === 0) {
+          flag = 1;
+          if (document.querySelector('.offer-dop')) {
+            // ('.offer__title') element teleport on screen smaller then 1260px and onresize
+            offerDopEmpty.appendChild(offerDopTitle);
+          }
+        }
+      }
+
+      if (viewportWidth < 991) {
+        if (flag_4 === 1) {
+          flag_4 = 0;
+          // ('.filters-sort') element teleport teleport on screen smaller then 991px and onresize
+          if (document.querySelector('.filters')) {
+            catalogListCont.appendChild(catalogSelect);
+          }
+        }
+      }
+
+
+      // Header teleport on resize
       if (viewportWidth > 1199) {
         if (flag_1 === 1) {
           flag_2 = 1;
           flag_3 = 1;
+          flag_1 = 0;
 
           headerButtonsCont.appendChild(headerCart);
           headerButtonsCont.appendChild(headerAccount);
+        }
+      }
 
-          flag_1 = 0;
+      if (viewportWidth > 991) {
+        if (flag_2 === 0) {
+          flag_2 = 1;
+          // ('.filters-sort') element teleport teleport on screen smaller then 991px and onresize
+          if (document.querySelector('.filters')) {
+            catalogListCont.appendChild(catalogSelect);
+          }
         }
       }
 
@@ -532,13 +652,12 @@ ready(() => {
         if (flag_2 === 1) {
           flag_1 = 1;
           flag_3 = 1;
+          flag_2 = 0;
 
           headerBottomCont.appendChild(headerCart);
           headerPhoneCont.appendChild(headerAccount);
           headerBottomCont.appendChild(catalogMenu);
           headerBottomCont.appendChild(burgerMenu);
-
-          flag_2 = 0;
         }
       }
 
@@ -546,26 +665,13 @@ ready(() => {
         if (flag_3 === 1) {
           flag_1 = 1;
           flag_2 = 1;
+          flag_3 = 0;
 
           headerCont.appendChild(headerCart);
           headerCont.appendChild(headerAccount);
           headerCont.appendChild(catalogMenu);
           headerCont.appendChild(burgerMenu);
-
-          flag_3 = 0;
         }
-      }
-    }
-
-    if (window.matchMedia(width_1260).matches) {
-      // ('.offer__title') element teleport on screen smaller then 1260px and onresize
-      teleport(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
-    }
-
-    if (window.matchMedia(width_991).matches) {
-      // ('.filters-sort') element teleport teleport on screen smaller then 991px and onresize
-      if (document.querySelector('.catalog-list') || document.querySelector('.akvablog-page')) {
-        teleport(width_991, catalogSelect, catalogListCont, filtersCont, appendChild);
       }
     }
 

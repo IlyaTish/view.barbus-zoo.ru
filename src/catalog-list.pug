@@ -30,10 +30,9 @@ block content
     include assets/blocks/common-blocks/breadcrumb/block.pug
     +breadcrumb(links)
 
-
-    //- Include Heading block ('.catalog-list__heading')
-    include assets/blocks/catalog-list/heading/block.pug
-
+    //- Include Heading block ('.heading')
+    include assets/blocks/common-blocks/heading/block.pug
+    +heading('Рыбки', '96\u00A0предложений')
 
     //- Include Filters block ('.filters')
     include assets/blocks/catalog-list/filters/block.pug
