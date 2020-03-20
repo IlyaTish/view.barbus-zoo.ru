@@ -57,7 +57,7 @@ function reload() {
 
 gulp.task('clear', async () => {
   /* Удаление папки js */
-  console.log('\n' + '* Удаление папки js *');
+  console.log('\n' + '* Удаление папки dist *');
   const deletedPaths = await del([ paths.dist ]);
 });
 
@@ -78,7 +78,7 @@ gulp.task('pug', () => {
   return gulp
     .src([ paths.pug.src, '!src/template.pug' ])
     .pipe(plumber())
-    .pipe(pug())
+    .pipe(pug({pretty: true}))
     .pipe(gulp.dest(paths.pug.dest))
     .pipe(browserSync.stream());
 });

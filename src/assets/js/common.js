@@ -129,28 +129,32 @@ const headerFix = () => {
 
   let flag = 1;
 
-  window.addEventListener('scroll', function teleportMenu(e) {
-    if (window.matchMedia(width_1199).matches) {
+  window.addEventListener('scroll', () => {
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    if (viewportWidth > 1199) {
       if (window.pageYOffset >= 170) {
         if (flag === 1) {
-          headerCont.classList.add('header-cont--fixed');
-          teleport(width_1199, catalogMenu, headerInfoCont, headerBottomCont, appendChild);
           flag = 0;
+          setTimeout(() => {
+            headerCont.classList.add('header-cont--fixed');
+            headerInfoCont.appendChild(catalogMenu);
+          }, 0);
         }
       }
 
       else {
-        flag = 0;
         if (flag === 0) {
-          headerCont.classList.remove('header-cont--fixed');
-          teleport(width_1199, catalogMenu, headerBottomCont, headerInfoCont, appendChild);
           flag = 1;
+          headerCont.classList.remove('header-cont--fixed');
+          headerBottomCont.appendChild(catalogMenu);
         }
       }
     }
 
     else {
-      return;
+      headerCont.classList.remove('header-cont--fixed');
+      headerBottomCont.appendChild(catalogMenu);
     }
   });
 }
@@ -506,19 +510,19 @@ ready(() => {
 
   let flag_1 = 1,
       flag_2 = 1,
-      flag_3 = 1;
+      flag_3 = 1,
+      flag_4 = 1;
 
   window.onresize = () => {
     const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
     const teleportOnResize = () => {
-      if (viewportWidth > 1200) {
+      if (viewportWidth > 1199) {
         if (flag_1 === 1) {
           flag_2 = 1;
           flag_3 = 1;
 
           headerButtonsCont.appendChild(headerCart);
           headerButtonsCont.appendChild(headerAccount);
-          headerBottomCont.appendChild(catalogMenu);
 
           flag_1 = 0;
         }
@@ -553,8 +557,6 @@ ready(() => {
       }
     }
 
-    teleportOnResize();
-
     if (window.matchMedia(width_1260).matches) {
       // ('.offer__title') element teleport on screen smaller then 1260px and onresize
       teleport(width_1260, offerDopTitle, offerDopCont, offerDopEmpty, appendChild);
@@ -568,6 +570,8 @@ ready(() => {
     }
 
     collapseFn();
+    headerFix();
+    teleportOnResize();
   }
 
 
