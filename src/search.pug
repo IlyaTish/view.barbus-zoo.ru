@@ -2,18 +2,18 @@ extends template.pug
 
 block content
   //- Include Header block ('.header')
-  include assets/blocks/common-blocks/header/block.pug
+  include /common-blocks/header/block.pug
 
 
   - var page = 'search-page'
   div(class='content '+ page +'')
 
     //- Include Search block ('.search')
-    include assets/blocks/search/block.pug
+    include /search/block.pug
 
 
   //- Include Popup block ('.popup')
-  include assets/blocks/common-blocks/popup/block.pug
+  include /common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
-  include assets/blocks/common-blocks/footer/block.pug
+  include /common-blocks/footer/block.pug

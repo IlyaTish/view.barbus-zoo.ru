@@ -1,319 +1,5 @@
-/* normalize.css */
+// -------- Variables --------
 
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- */
-
-html
-  height: 100%
-  line-height: 1.15 /* 1 */
-  -webkit-text-size-adjust: 100% /* 2 */
-
-/* Sections
-   ========================================================================== */
-
-/**
- * Remove the margin in all browsers.
- */
-
-/**
- * Render the `main` element consistently in IE.
- */
-
-main
-  display: block
-
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
-
-h1
-  font-size: 2em
-  margin: 0.67em 0
-
-/* Grouping content
-   ========================================================================== */
-
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-
-hr
-  box-sizing: content-box /* 1 */
-  height: 0 /* 1 */
-  overflow: visible /* 2 */
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
-pre
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em /* 2 */
-
-/* Text-level semantics
-   ========================================================================== */
-
-/**
- * Remove the gray background on active links in IE 10.
- */
-
-a
-  background-color: transparent
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-
-abbr[title]
-  border-bottom: none /* 1 */
-  text-decoration: underline /* 2 */
-  text-decoration: underline dotted /* 2 */
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-
-b,
-strong
-  font-weight: bolder
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
-code,
-kbd,
-samp
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em /* 2 */
-
-/**
- * Add the correct font size in all browsers.
- */
-
-small
-  font-size: 80%
-
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-
-sub,
-sup
-  font-size: 75%
-  line-height: 0
-  position: relative
-  vertical-align: baseline
-
-sub
-  bottom: -0.25em
-
-sup
-  top: -0.5em
-
-/* Embedded content
-   ========================================================================== */
-
-/**
- * Remove the border on images inside links in IE 10.
- */
-
-img
-  border-style: none
-
-/* Forms
-   ========================================================================== */
-
-/**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
- */
-
-button,
-input,
-optgroup,
-select,
-textarea
-  font-family: inherit; /* 1 */
-  font-size: 100% /* 1 */
-  line-height: 1.15 /* 1 */
-  margin: 0 /* 2 */
-
-/**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
- */
-
-button,
-input /* 1 */
-  overflow: visible
-
-/**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
- */
-
-button,
-select /* 1 */
-  text-transform: none
-
-/**
- * Correct the inability to style clickable types in iOS and Safari.
- */
-
-button,
-[type='button'],
-[type='reset'],
-[type='submit']
-  -webkit-appearance: button
-
-/**
- * Remove the inner border and padding in Firefox.
- */
-
-button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner
-  border-style: none
-  padding: 0
-
-/**
- * Restore the focus styles unset by the previous rule.
- */
-
-button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring
-  outline: 1px dotted ButtonText
-
-/**
- * Correct the padding in Firefox.
- */
-
-fieldset
-  padding: 0.35em 0.75em 0.625em
-
-/**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
- */
-
-legend
-  box-sizing: border-box /* 1 */
-  color: inherit /* 2 */
-  display: table /* 1 */
-  max-width: 100% /* 1 */
-  padding: 0 /* 3 */
-  white-space: normal /* 1 */
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-
-progress
-  vertical-align: baseline
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-
-textarea
-  overflow: auto
-
-/**
- * 1. Add the correct box sizing in IE 10.
- * 2. Remove the padding in IE 10.
- */
-
-[type='checkbox'],
-[type='radio']
-  box-sizing: border-box /* 1 */
-  padding: 0 /* 2 */
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button
-  height: auto
-
-/**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
- */
-
-[type='search']
-  -webkit-appearance: textfield /* 1 */
-  outline-offset: -2px /* 2 */
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-
-[type='search']::-webkit-search-decoration
-  -webkit-appearance: none
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-
-::-webkit-file-upload-button
-  -webkit-appearance: button /* 1 */
-  font: inherit; /* 2 */
-
-/* Interactive
-   ========================================================================== */
-
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-
-details
-  display: block
-
-/*
- * Add the correct display in all browsers.
- */
-
-summary
-  display: list-item
-
-/* Misc
-   ========================================================================== */
-
-/**
- * Add the correct display in IE 10+.
- */
-
-template
-  display: none
-
-/**
- * Add the correct display in IE 10.
- */
-
-[hidden]
-  display: none
-
-
-/* end normalize.css */
-
-
-/* Variables */
 $main: #EEEEEE
 $white: #FFFFFF
 $yellow: #FFA800
@@ -335,7 +21,8 @@ $black: #202020
   font-family: 'Roboto-Bold', sans-serif
 
 
-/* Mixins */
+// -------- Mixins --------
+
 @mixin roboto-bold
   font-family: 'Roboto-Bold', sans-serif
 
@@ -348,7 +35,8 @@ $black: #202020
   font-weight: 300
 
 
-/* Fonts styles */
+// -------- Font styles --------
+
 @font-face
   font-family: 'Roboto-Bold'
   src: url('./../fonts/Roboto/Roboto-Bold/Roboto-Bold.eot')
@@ -455,8 +143,7 @@ $black: #202020
   content: '\e91c'
 
 
-/* Common styles
-   ========================================================================== */
+// -------- Common styles --------
 
 html
   height: 100%
@@ -479,6 +166,7 @@ body
   margin-right: auto
   padding: 0 20px
   box-sizing: border-box
+
   @media (max-width: 767px)
     padding: 0 16px
 
@@ -492,27 +180,33 @@ body
   position: relative
   background-size: 100% auto
   background-repeat: no-repeat
+
   &:before
     width: 100%
     height: 170px
     content: ''
     display: block
     background: #FFFFFF
+
     @media (max-width: 1199px)
       display: none
 
 .index.content
   background-image: url('./../images/acvarium-pattern-01.png')
+
   @media (max-width: 767px)
     background-image: url('./../images/acvarium-pattern-01-small.png')
 
 .catalog.content
   background-image: url('./../images/acvarium-pattern-01.png')
+
   @media (max-width: 1199px)
     background-position: 0 -200px
+
   @media (max-width: 767px)
     background-image: url('./../images/acvarium-pattern-01.png')
     background-position: 0 -140px
+
   @media (max-width: 479px)
     background-image: url('./../images/acvarium-pattern-01.png') !important
     background-position: 0 -40px
@@ -522,6 +216,7 @@ body
 
 .author
   background: #FFFFFF
+
   &__text
     width: 100%
     padding: 14px 0
@@ -529,6 +224,18 @@ body
     display: inline-block
     color: $black
     text-align: center
+
+.subtitle
+  margin: 0 0 24px
+  display: inline-block
+  color: #202020
+  font-size: 20px
+
+.txt
+  color: #4D4D4D
+  font-size: 16px
+  @include roboto-light
+  line-height: 20px
 
 .link
   color: $blue
@@ -555,13 +262,16 @@ body
   cursor: pointer
   outline: none
   transition: .2s
+
   i
     margin: 0 6px 0 0
     color: $blue
     transition: .2s
+
   &:hover, &:focus
     color: #FFFFFF
     background: $blue
+
     i
       color: #FFFFFF
 
@@ -576,13 +286,17 @@ body
   background: none
   outline: none
   cursor: pointer
+
   i
     position: relative
     color: $blue
     transition: .2s
-  &:hover, &:focus
+
+  &:hover,
+  &:focus
     i
       color: darken($blue, 20%)
+
   &:active
     i
       top: 2px
@@ -596,13 +310,18 @@ body
   text-transform: uppercase
   line-height: 60px
   border: 1px solid #8998A4
+
   &--margins
     margin: 40px auto
+
     @media (max-width: 767px)
       margin: 60px auto
+
     @media (max-width: 479px)
       margin: 40px auto
-  &:hover, &:focus
+
+  &:hover,
+  &:focus
     border: 1px solid $blue
 
 .btn-print
@@ -613,17 +332,24 @@ body
   background: none
   cursor: pointer
   transition: .2s
-  &:hover, &:focus, &:active
+
+  &:hover,
+  &:focus,
+  &:active
     color: lighten($blue, 20%)
+
   &--ml
     margin-left: auto
+
   span
     font-size: 16px
   i
     margin: 0 0 0 14px
     font-size: 40px
 
+
 // Headings
+
 h1, h2, h3, h4
   margin: 0
   color: $black
@@ -640,15 +366,18 @@ h5
 
 
 // Burger-menu styles
+
 .burger-menu
   height: 100%
   display: none
   cursor: pointer
   position: relative
   transition: .2
+
   &:hover
     &:before
       opacity: 1
+
   &:before
     width: calc(100% + 50px)
     height: 100%
@@ -662,16 +391,20 @@ h5
     border-bottom-right-radius: 40px
     opacity: 0
     transition: .2
+
   &--active
     .burger-menu-btn
       transform: rotate(-90deg)
+
   &__text
     margin: 0 0 0 20px
     color: #FFFFFF
     font-size: 24px
     z-index: 2
+
     @media (max-width: 767px)
       display: none
+
   @media (max-width: 1199px)
     display: flex
     align-items: center
@@ -686,6 +419,7 @@ h5
   cursor: pointer
   z-index: 999999
   transition: .1s
+
   &:before
     width: 100%
     height: 4px
@@ -693,6 +427,7 @@ h5
     display: block
     background: #FFFFFF
     transition: ease-in-out .2s
+
   &:after
     width: 100%
     min-height: 4px
@@ -700,6 +435,7 @@ h5
     display: block
     background: #FFFFFF
     transition: ease-in-out .2s
+
   &__elem
     width: 100%
     min-height: 4px
@@ -737,11 +473,15 @@ h5
     margin-top: unset !important
     border-radius: 100%
     outline: none
-    &:hover, &:focus
+
+    &:hover,
+    &:focus
       &:after
         color: darken(#D5D8DC, 10%)
+
     &:active
       opacity: .6
+
     &:after
       content: '\e900'
       color: #D5D8DC
@@ -761,11 +501,15 @@ h5
     border-radius: 100%
     transform: rotate(180deg)
     outline: none
-    &:hover, &:focus
+
+    &:hover,
+    &:focus
       &:after
         color: darken(#D5D8DC, 10%)
+
     &:active
       opacity: .6
+
     &:after
       content: '\e900'
       color: #D5D8DC
@@ -783,10 +527,12 @@ h5
 
 
 // Swiper pagination sytles
+
 .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet
   width: 11px
   height: 11px
   margin: 0 10px 0 0
+
   &:last-of-type
     margin: 0 !important
 
@@ -827,8 +573,7 @@ h5
   max-height: 400px
 
 
-/* Radiobutton, checkbox styles
-   ========================================================================== */
+// -------- Radiobutton, checkbox --------
 
 .checkbox
   vertical-align: top
@@ -925,8 +670,7 @@ h5
   background: $blue
 
 
-/* Select styles
-   ========================================================================== */
+// -------- Select --------
 
 .select
   display: block
@@ -947,16 +691,20 @@ h5
   outline: none
   cursor: pointer
   transition: .2s
+
   &:hover
     opacity: .7
+
   &:focus
     color: #000000
+
   &::-ms-expand
     display: none
 
   option
     color: #000000
     font-weight: normal
+
   *[dir='rtl'] .select, :root:lang(ar) .select, :root:lang(iw) .select
     background-position: left .7em top 50%, 0 0
     padding: .6em .8em .5em 1.4em
@@ -965,10 +713,12 @@ h5
   display: inline-block
   position: relative
   z-index: 1
+
   &--active
     .select-box__cont
       &:after
         transform: rotate(180deg)
+
   li
     padding: 12px 16px
     font-size: 14px
@@ -976,6 +726,7 @@ h5
     position: relative
     background: #FFFFFF
     border-bottom: 1px solid #eee
+
     &:last-of-type
       border-bottom: none
 
@@ -994,6 +745,7 @@ h5
   border-radius: 3px
   background: none
   box-sizing: border-box
+
   &:after
     width: 24px
     height: 20px
@@ -1021,16 +773,20 @@ h5
   list-style: none
   box-sizing: border-box
   box-shadow: 0 2px 10px rgba(0,0,0,.159392)
+
   &--active
     display: block !important
 
 .select-main
   .select-box
     height: 100%
+
     li
       transition: .2s
+
       &:hover
         color: $blue
+
     &__cont
       width: 100%
       min-width: 244px
@@ -1044,12 +800,14 @@ h5
       border-radius: 40px
       border: 1px solid #BEC3C7
       box-sizing: border-box
+
     &__dropdown
       width: 100%
       background: #FFFFFF
       border-radius: 10px
       box-shadow: 0px 4px 10px rgba(0,0,0,.159392)
       overflow: hidden
+
       li
         padding: 12px 20px
         font-size: 16px
@@ -1074,12 +832,15 @@ h5
   cursor: pointer
   transition: .1s
   z-index: 2
+
   &:last-of-type
     margin: 0
+
   &--active
     color: $blue
     background: #FFFFFF
     z-index: 4
+
   a
     width: 100%
     height: 100%
@@ -1088,6 +849,7 @@ h5
     font-size: 24px
     text-decoration: none
     box-sizing: border-box
+
   @media (max-width: 767px)
     a
       padding: 12px 18px
@@ -1100,6 +862,7 @@ h5
   border: 1px solid #EDF6F9
   border-radius: 0 20px 20px 20px
   z-index: 3
+
   p
     margin: 0
     color: #4D4D4D
@@ -1112,8 +875,10 @@ h5
   display: none
   overflow: hidden
   transition: .2s
+
   &--active
     display: block
+
   &--mh
     max-height: 4000px
 
@@ -1132,8 +897,10 @@ h5
   box-sizing: border-box
   overflow: hidden
   transition: max-height ease-in-out .5s
+
   &:last-of-type
     margin: 0
+
   &__title
     width: 100%
     padding: 22px 30px
@@ -1145,6 +912,7 @@ h5
     font-size: 24px
     cursor: pointer
     box-sizing: border-box
+
     &:after
       content: '\e91e'
       margin-left: 10px
@@ -1155,6 +923,7 @@ h5
       font-family: 'acvarium-icons'
       transform: rotate(0deg)
       transition: .2s
+
   &__p
     margin: 0
     padding: 0 30px 22px 30px
@@ -1167,6 +936,7 @@ h5
 .collapse.active
   .collapse__title
     color: $blue
+
     &:after
       margin-top: -8px
       color: $blue
@@ -1196,6 +966,7 @@ h5
   background-position: center center
   cursor: pointer
   opacity: 1
+
   &:active
     opacity: .6
 
@@ -1215,10 +986,15 @@ h5
   text-align: center
   opacity: 1
   transition: .2s
-  &:hover, &:focus, &:active
+
+  &:hover,
+  &:focus,
+  &:active
     opacity: .6
+
   span
     font-size: 16px
+
   i
     font-size: 30px
     margin: 0 0 0 14px
@@ -1238,11 +1014,13 @@ input[type=number]
 ::placeholder
   color: $gray
   @include roboto-regular
+
 ::-webkit-scrollbar
   width: 6px
   height: 4px
   background: #EEEEEE
   border-radius: 20px
+
 ::-webkit-scrollbar-thumb
   background: #C4C4C4
   border-radius: 20px

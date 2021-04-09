@@ -2,7 +2,7 @@ extends template.pug
 
 block content
   //- Include Header block ('.header')
-  include assets/blocks/common-blocks/header/block.pug
+  include /common-blocks/header/block.pug
 
 
   - var page = 'error-page'
@@ -10,12 +10,12 @@ block content
 
 
     //- Include Message block ('.message')
-    include assets/blocks/common-blocks/message/block.pug
+    include /common-blocks/message/block.pug
     +message('Упс!\nОшибка 404')
 
 
   //- Include Popup block ('.popup')
-  include assets/blocks/common-blocks/popup/block.pug
+  include /common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
-  include assets/blocks/common-blocks/footer/block.pug
+  include /common-blocks/footer/block.pug

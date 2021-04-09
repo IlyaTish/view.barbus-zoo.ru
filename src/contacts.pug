@@ -1,8 +1,9 @@
 extends template.pug
 
+
 block content
   //- Include Header block ('.header')
-  include assets/blocks/common-blocks/header/block.pug
+  include /common-blocks/header/block.pug
 
 
   - var page = 'contacts-page'
@@ -27,24 +28,24 @@ block content
       }
 
     //- Include Breadcrumb block ('.breadcrumb')
-    include assets/blocks/common-blocks/breadcrumb/block.pug
+    include /common-blocks/breadcrumb/block.pug
     +breadcrumb(links)
 
 
     //- Include Route block ('.route')
-    include assets/blocks/contacts/route/block.pug
+    include /contacts/route/block.pug
 
 
     //- Include Info block ('.info')
-    include assets/blocks/common-blocks/info/block.pug
+    include /common-blocks/info/block.pug
 
 
     //- Include Instagram block ('.insta')
-    include assets/blocks/common-blocks/insta/block.pug
+    include /common-blocks/insta/block.pug
 
 
   //- Include Popup block ('.popup')
-  include assets/blocks/common-blocks/popup/block.pug
+  include /common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
-  include assets/blocks/common-blocks/footer/block.pug
+  include /common-blocks/footer/block.pug

@@ -2,7 +2,7 @@ extends template.pug
 
 block content
   //- Include Header block ('.header')
-  include assets/blocks/common-blocks/header/block.pug
+  include /common-blocks/header/block.pug
 
 
   - var page = 'services-page'
@@ -22,20 +22,20 @@ block content
       }
 
     //- Include Breadcrumb block ('.breadcrumb')
-    include assets/blocks/common-blocks/breadcrumb/block.pug
+    include /common-blocks/breadcrumb/block.pug
     +breadcrumb(links)
 
 
     //- Include Services description block ('.services-desc')
-    include assets/blocks/services/desc/block.pug
+    include /services/desc/block.pug
 
 
     //- Include Services list block ('.services-list')
-    include assets/blocks/services/list/block.pug
+    include /services/list/block.pug
 
 
   //- Include Popup block ('.popup')
-  include assets/blocks/common-blocks/popup/block.pug
+  include /common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
-  include assets/blocks/common-blocks/footer/block.pug
+  include /common-blocks/footer/block.pug

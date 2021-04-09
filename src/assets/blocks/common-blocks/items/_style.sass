@@ -1,0 +1,23 @@
+.items
+  margin: 0
+  padding: 0
+
+  &__item
+    margin: 0 0 20px
+    display: flex
+    color: #202020
+    font-size: 16px
+    @include roboto-light
+    list-style: none
+
+    &:before
+      width: 5px
+      height: 5px
+      flex: 5px 0 0
+      margin: 0 26px 0 0
+      content: ''
+      display: block
+      top: 6px
+      position: relative
+      background: $blue
+      border-radius: 100%

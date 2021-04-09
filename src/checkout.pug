@@ -2,7 +2,7 @@ extends template.pug
 
 block content
   //- Include Header block ('.header')
-  include assets/blocks/common-blocks/header/block.pug
+  include /common-blocks/header/block.pug
 
 
   - var page = 'checkout'
@@ -22,16 +22,16 @@ block content
       }
 
     //- Include Breadcrumb block ('.breadcrumb')
-    include assets/blocks/common-blocks/breadcrumb/block.pug
+    include /common-blocks/breadcrumb/block.pug
     +breadcrumb(links)
 
 
     //- Include Checkout block ('.checkout')
-    include assets/blocks/checkout/block.pug
+    include /checkout/block.pug
 
 
   //- Include Popup block ('.popup')
-  include assets/blocks/common-blocks/popup/block.pug
+  include /common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
-  include assets/blocks/common-blocks/footer/block.pug
+  include /common-blocks/footer/block.pug

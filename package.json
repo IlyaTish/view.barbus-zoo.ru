@@ -13,10 +13,15 @@
     "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^6.2.0",
+    "gulp-include": "^2.4.1",
     "gulp-plumber": "^1.2.1",
+    "gulp-pretty-html": "^2.0.10",
+    "gulp-pxtorem": "^3.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
+    "gulp-uglify-es": "^2.0.0",
+    "save-dev": "^0.0.1-security",
     "webpack-stream": "^5.2.1"
   },
   "devDependencies": {

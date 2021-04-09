@@ -2,14 +2,14 @@ extends template.pug
 
 block content
   //- Include Header block ('.header')
-  include assets/blocks/common-blocks/header/block.pug
+  include /common-blocks/header/block.pug
 
 
   - var page = 'index'
   div(class='content '+ page +'')
-    include assets/blocks/main/main-slider/block.pug
-    include assets/blocks/main/menu-desc/block.pug
-    include assets/blocks/main/map/block.pug
+    include /main/main-slider/block.pug
+    include /main/menu-desc/block.pug
+    include /main/map/block.pug
 
     //- Products block ('.products') data
     -
@@ -43,15 +43,15 @@ block content
       }
 
     //- Include Product block ('.product')
-    include assets/blocks/common-blocks/products/block.pug
+    include /common-blocks/products/block.pug
     +products(products)
 
     //- Include Insta block ('.insta')
-    include assets/blocks/common-blocks/insta/block.pug
+    include /common-blocks/insta/block.pug
 
 
   //- Include Popup block ('.popup')
-  include assets/blocks/common-blocks/popup/block.pug
+  include /common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
-  include assets/blocks/common-blocks/footer/block.pug
+  include /common-blocks/footer/block.pug

@@ -2,7 +2,7 @@ extends template.pug
 
 block content
   //- Include Header block ('.header')
-  include assets/blocks/common-blocks/header/block.pug
+  include /common-blocks/header/block.pug
 
 
   - var page = 'article-page'
@@ -27,11 +27,11 @@ block content
       }
 
     //- Include Breadcrumb block ('.breadcrumb')
-    include assets/blocks/common-blocks/breadcrumb/block.pug
+    include /common-blocks/breadcrumb/block.pug
     +breadcrumb(links)
 
     //- Include Modal-gallery block ('.modal-gallery')
-    include assets/blocks/common-blocks/modal-gallery/block.pug
+    include /common-blocks/modal-gallery/block.pug
     +modal-gallery(
       'Барбусс одноштриховый',
       'assets/images/modal-gallery/modal-gallery-img-07.jpg',
@@ -41,11 +41,11 @@ block content
     )
 
     //- Include Content block ('.article-content')
-    include assets/blocks/article/content/block.pug
+    include /article/content/block.pug
 
 
   //- Include Popup block ('.popup')
-  include assets/blocks/common-blocks/popup/block.pug
+  include /common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
-  include assets/blocks/common-blocks/footer/block.pug
+  include /common-blocks/footer/block.pug

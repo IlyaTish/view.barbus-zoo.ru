@@ -1,8 +1,9 @@
 extends template.pug
 
+
 block content
   //- Include Header block ('.header')
-  include assets/blocks/common-blocks/header/block.pug
+  include /common-blocks/header/block.pug
 
 
   - var page = 'thanks-page'
@@ -27,17 +28,17 @@ block content
       }
 
     //- Include Breadcrumb block ('.breadcrumb')
-    include assets/blocks/common-blocks/breadcrumb/block.pug
+    include /common-blocks/breadcrumb/block.pug
     +breadcrumb(links)
 
 
     //- Include Message block ('.message')
-    include assets/blocks/common-blocks/message/block.pug
+    include /common-blocks/message/block.pug
     +message('Спасибо\nза Ваш заказ!')
 
 
   //- Include Popup block ('.popup')
-  include assets/blocks/common-blocks/popup/block.pug
+  include /common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
-  include assets/blocks/common-blocks/footer/block.pug
+  include /common-blocks/footer/block.pug

@@ -2,7 +2,7 @@ extends template.pug
 
 block content
   //- Include Header block ('.header')
-  include assets/blocks/common-blocks/header/block.pug
+  include /common-blocks/header/block.pug
 
 
   - var page = 'catalog-list'
@@ -27,15 +27,15 @@ block content
       }
 
     //- Include Breadcrumb block ('.breadcrumb')
-    include assets/blocks/common-blocks/breadcrumb/block.pug
+    include /common-blocks/breadcrumb/block.pug
     +breadcrumb(links)
 
     //- Include Heading block ('.heading')
-    include assets/blocks/common-blocks/heading/block.pug
+    include /common-blocks/heading/block.pug
     +heading('Рыбки', '96\u00A0предложений')
 
     //- Include Filters block ('.filters')
-    include assets/blocks/catalog-list/filters/block.pug
+    include /catalog-list/filters/block.pug
 
 
     //- Products block ('.products') data
@@ -116,16 +116,16 @@ block content
       }
 
     //- Include Product block ('.product')
-    include assets/blocks/common-blocks/products/block.pug
+    include /common-blocks/products/block.pug
     +products(products)
 
 
     //- Include Catalog-list desc block ('.catalog-list__desc')
-    include assets/blocks/catalog-list/desc/block.pug
+    include /catalog-list/desc/block.pug
 
 
   //- Include Popup block ('.popup')
-  include assets/blocks/common-blocks/popup/block.pug
+  include /common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
-  include assets/blocks/common-blocks/footer/block.pug
+  include /common-blocks/footer/block.pug

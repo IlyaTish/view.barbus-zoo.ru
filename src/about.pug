@@ -2,7 +2,7 @@ extends template.pug
 
 block content
   //- Include Header block ('.header')
-  include assets/blocks/common-blocks/header/block.pug
+  include /common-blocks/header/block.pug
 
 
   - var page = 'about-page'
@@ -22,29 +22,29 @@ block content
       }
 
     //- Include Breadcrumb block ('.breadcrumb')
-    include assets/blocks/common-blocks/breadcrumb/block.pug
+    include /common-blocks/breadcrumb/block.pug
     +breadcrumb(links)
 
 
     //- Include Modal-gallery block ('.modal-gallery')
-    include assets/blocks/common-blocks/modal-gallery/block.pug
+    include /common-blocks/modal-gallery/block.pug
     +modal-gallery('Про нас', 'assets/images/modal-gallery/modal-gallery-img-01.jpg', 'assets/images/modal-gallery/modal-gallery-img-02.jpg', 'assets/images/modal-gallery/modal-gallery-img-03.jpg')
 
 
     //- Include Adout desc block ('.about__desc')
-    include assets/blocks/about/desc/block.pug
+    include /about/desc/block.pug
 
 
     //- Include Info block ('.info')
-    include assets/blocks/common-blocks/info/block.pug
+    include /common-blocks/info/block.pug
 
 
     //- Include Instagram block ('.insta')
-    include assets/blocks/common-blocks/insta/block.pug
+    include /common-blocks/insta/block.pug
 
 
   //- Include Popup block ('.popup')
-  include assets/blocks/common-blocks/popup/block.pug
+  include /common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
-  include assets/blocks/common-blocks/footer/block.pug
+  include /common-blocks/footer/block.pug

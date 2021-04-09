@@ -1,23 +1,27 @@
 const gulp         = require('gulp'),
-      sass         = require('gulp-sass'),
-      cleanCSS     = require('gulp-clean-css'),
-      browserSync  = require('browser-sync').create();
+      del          = require('del'),
+      browserSync  = require('browser-sync').create(),
+      include      = require('gulp-include'),
       pug          = require('gulp-pug'),
+      prettyHtml   = require('gulp-pretty-html'),
+      sass         = require('gulp-sass'),
+      pxtorem      = require('gulp-pxtorem'),
+      cleanCSS     = require('gulp-clean-css'),
+      autoprefixer = require('gulp-autoprefixer'),
+      sourcemaps   = require('gulp-sourcemaps'),
       concat       = require('gulp-concat'),
       babel        = require('gulp-babel'),
-      uglify       = require('gulp-uglify'),
-      rename       = require('gulp-rename'),
-      del          = require('del'),
-      sourcemaps   = require('gulp-sourcemaps'),
+      uglify       = require('gulp-uglify-es').default,
       plumber      = require('gulp-plumber'),
-      autoprefixer = require('gulp-autoprefixer'),
+      rename       = require('gulp-rename'),
       imagemin     = require('gulp-imagemin'),
       fs           = require('fs');
 
 
-const paths = {
+const PATHS = {
   src:  './src',
   dist: './dist',
+  blocks: './src/assets/blocks/',
   html: {
     src:  './src/*.html',
     dest: './dist'
@@ -32,8 +36,9 @@ const paths = {
     dest:   './src/assets/css'
   },
   scripts: {
-    src:  './src/assets/js/**/**/*.js',
-    dest: './dist/assets/js'
+    src:    './src/assets/js/**/**/*.js',
+    blocks: './src/assets/blocks/**/**/*.js',
+    dest:   './dist/assets/js'
   },
   libs: {
     jsSrc:   './src/assets/libs/*.js',
@@ -45,138 +50,155 @@ const paths = {
     dest: './dist/assets/fonts'
   },
   images: {
-    src: './src/img/**/**/*.+(png|jpg|jpeg|gif|svg|ico)',
+    src: './src/assets/blocks/**/**/*.+(png|jpg|jpeg|gif|svg|ico)',
   }
 }
 
 
 function reload() {
-  browserSync.reload();
+  browserSync.reload()
 }
 
 
-gulp.task('clear', async () => {
+gulp.task('clear', async() => {
   /* Удаление папки js */
   console.log('\n' + '* Удаление папки dist *');
-  const deletedPaths = await del([ paths.dist ]);
+
+  const deletedPaths = await del([ PATHS.dist ])
 });
 
 
 gulp.task('html', () => {
   /* Сборка html файлов */
   console.log('\n' + '* Сборка html файлов *');
+
   return gulp
-    .src(paths.html.src)
-    .pipe(gulp.dest(paths.html.dest))
-    .pipe(browserSync.stream());
+    .src(PATHS.html.src)
+    .pipe(gulp.dest(PATHS.html.dest))
+    .pipe(browserSync.stream())
 });
 
 
 gulp.task('pug', () => {
   /* Компиляция pug файлов */
   console.log('\n' + '* Компиляция pug файлов *');
+
   return gulp
-    .src([ paths.pug.src, '!src/template.pug' ])
+    .src([ PATHS.pug.src, '!src/template.pug' ])
     .pipe(plumber())
-    .pipe(pug({pretty: true}))
-    .pipe(gulp.dest(paths.pug.dest))
-    .pipe(browserSync.stream());
+    .pipe(pug({
+      basedir: PATHS.blocks
+    }))
+    .pipe(prettyHtml({
+      indent_size: 2,
+      end_with_newline: true,
+      indent_inner_html: true,
+      extra_liners: ['header','body','main','section','footer']
+    }))
+    .pipe(gulp.dest(PATHS.pug.dest))
+    .pipe(browserSync.stream())
 });
 
 
 gulp.task('styles', () => {
   /* Компиляция style.sass */
   console.log('\n' + '* Компиляция style.sass *');
+
   return (
     gulp
-      .src([ paths.styles.src, paths.styles.blocks ])
-      .pipe(sass())
+      .src([ PATHS.styles.src, PATHS.styles.blocks ])
+      .pipe(sass({
+        includePaths: [PATHS.blocks]
+      }))
       .on('error', sass.logError)
       .pipe(autoprefixer())
       .pipe(concat('style.min.css'))
+      .pipe(pxtorem({
+        propList: ['*']
+      }))
       .pipe(cleanCSS())
-      .pipe(gulp.dest(paths.styles.dest))
+      .pipe(gulp.dest(PATHS.styles.dest))
       .pipe(browserSync.stream())
-  );
+  )
 });
 
 
 gulp.task('cssLibs', () => {
   /* Сборка библиотек стилей */
   console.log('\n' + '* Сборка библиотек стилей *');
+
   return (
     gulp
-      .src(paths.libs.cssSrc)
+      .src(PATHS.libs.cssSrc)
       .pipe(concat('libs.min.css'))
       .pipe(cleanCSS())
-      .pipe(gulp.dest(paths.libs.cssDest))
+      .pipe(gulp.dest(PATHS.libs.cssDest))
       .pipe(browserSync.stream())
-  );
+  )
 });
 
 
 gulp.task('cssConcat', () => {
   /* Объединение всех стилей */
   console.log('\n' + '* Объединение всех стилей *');
+
   return (
     gulp
-      .src(paths.src + '/assets/css/*.css')
+      .src(PATHS.src + '/assets/css/*.css')
       .pipe(concat('all.min.css'))
-      .pipe(gulp.dest(paths.dist + '/assets/css'))
+      .pipe(gulp.dest(PATHS.dist + '/assets/css'))
       .pipe(browserSync.stream())
-  );
+  )
 });
 
 
 gulp.task('scripts', () => {
   /* Объединение и сжатие скриптов */
   console.log('\n' + '* Объединение и сжатие скриптов *');
+
   return (
     gulp
-      .src([ paths.libs.jsSrc, paths.scripts.src ])
+      .src([ PATHS.libs.jsSrc, PATHS.scripts.src ])
+      .pipe(plumber())
+      .pipe(include({
+        includePaths: [PATHS.blocks]
+      }))
       .pipe(babel({
-          presets: ['@babel/env']
+        presets: ['@babel/env']
       }))
       .pipe(concat('all.min.js'))
-      .pipe(uglify())
-      .pipe(gulp.dest(paths.scripts.dest))
-  );
+      .pipe(gulp.dest(PATHS.scripts.dest))
+  )
 });
 
 
 gulp.task('images', () => {
   /* Минификация картинок */
   console.log('\n' + '* Минификация картинок *');
+
   return gulp
-    .src(paths.src + '/assets/images/**/*.+(png|jpg|jpeg|gif|svg|ico)')
+    .src(PATHS.src + '/assets/blocks/**/**/**/**/*.+(png|jpg|jpeg|gif|svg|ico)')
     .pipe(plumber())
     .pipe(imagemin())
-    .pipe(gulp.dest(paths.dist + '/assets/images'))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest(PATHS.dist + '/assets/images/'))
+    .pipe(browserSync.stream())
 });
 
 
 gulp.task('fonts', () => {
   /* Сборка шрифтов */
   console.log('\n' + '* Сборка шрифтов *');
-  return gulp
-    .src(paths.fonts.src)
-    .pipe(gulp.dest(paths.fonts.dest))
-});
 
-
-gulp.task('webfonts', () => {
-  /* Сборка иконок fontawesome */
-  console.log('\n' + '* Сборка иконок fontawesome *');
   return gulp
-    .src(paths.src + '/assets/webfonts/*')
-    .pipe(gulp.dest(paths.dist + '/assets/webfonts'))
+    .src(PATHS.fonts.src)
+    .pipe(gulp.dest(PATHS.fonts.dest))
 });
 
 
 gulp.task('watch', () => {
   /* Отслеживание pug/html/sass */
   console.log('\n' + '* Отслеживание pug/html/sass *');
+
   browserSync.init({
     server: {
       baseDir: [ 'dist' ],
@@ -185,14 +207,46 @@ gulp.task('watch', () => {
     port: 3000
   });
 
-  gulp.watch(paths.html.src).on('change', browserSync.reload);
-  gulp.watch([ paths.pug.src, paths.src + '/**/**/**/**/*.pug' ], gulp.series('pug')).on('change', browserSync.reload);
-  gulp.watch([ paths.styles.src, paths.styles.blocks ], gulp.series('styles', 'cssLibs', 'cssConcat'));
-  gulp.watch(paths.styles.dest);
-  gulp.watch(paths.scripts.src, gulp.series('scripts')).on('change', browserSync.reload);
-  gulp.watch(paths.images.src).on('change', browserSync.reload);
+  gulp.watch(PATHS.html.src).on('change', browserSync.reload);
+
+  gulp.watch(
+    [ PATHS.pug.src, PATHS.src + '/**/**/**/**/*.pug' ],
+    gulp
+      .series('pug'))
+      .on('change', browserSync.reload
+  );
+
+  gulp.watch(
+    [ PATHS.styles.src, PATHS.styles.blocks ],
+    gulp
+      .series('styles', 'cssLibs', 'cssConcat')
+  );
+
+  gulp.watch(PATHS.styles.dest);
+
+  gulp.watch(
+    [ PATHS.scripts.src, PATHS.scripts.blocks ],
+    gulp
+      .series('scripts'))
+      .on('change', browserSync.reload
+  );
+
+  gulp.watch(PATHS.images.src, gulp.series('images'))
 });
 
 
-gulp.task('build', gulp.series('clear', 'html', 'pug', 'styles', 'cssLibs', 'cssConcat', 'scripts', 'images', 'fonts', 'webfonts'));
-gulp.task('default', gulp.series('build', gulp.parallel('watch')));
+gulp.task('build',
+  gulp.series(
+    'clear',
+    'html',
+    'pug',
+    'styles',
+    'cssLibs',
+    'cssConcat',
+    'scripts',
+    'images',
+    'fonts'
+  )
+);
+
+gulp.task('default', gulp.series('build', gulp.parallel('watch')))

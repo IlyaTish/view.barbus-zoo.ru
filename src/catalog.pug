@@ -2,7 +2,7 @@ extends template.pug
 
 block content
   //- Include Header block ('.header')
-  include assets/blocks/common-blocks/header/block.pug
+  include /common-blocks/header/block.pug
 
 
   - var page = 'catalog'
@@ -22,12 +22,12 @@ block content
       }
 
     //- Include Breadcrumb block ('.breadcrumb')
-    include assets/blocks/common-blocks/breadcrumb/block.pug
+    include /common-blocks/breadcrumb/block.pug
     +breadcrumb(links)
 
 
     //- Include Catalog-desc block ('.catalog-desc')
-    include assets/blocks/catalog/catalog-desc/block.pug
+    include /catalog/catalog-desc/block.pug
 
 
     //- Offer block ('.offer') data
@@ -66,7 +66,7 @@ block content
       }
 
     //- Include Offer block ('.offer')
-    include assets/blocks/catalog/offer/block.pug
+    include /catalog/offer/block.pug
     +offer(offerItems)
 
 
@@ -88,7 +88,7 @@ block content
       }
 
     //- Include Offer-dop block ('.offer-dop')
-    include assets/blocks/catalog/offer-dop/block.pug
+    include /catalog/offer-dop/block.pug
     +offer-dop(offerDopItems)
 
 
@@ -116,12 +116,12 @@ block content
       }
 
     //- Include Services block ('.services')
-    include assets/blocks/catalog/services/block.pug
+    include /catalog/services/block.pug
     +service(services)
 
 
   //- Include Popup block ('.popup')
-  include assets/blocks/common-blocks/popup/block.pug
+  include /common-blocks/popup/block.pug
 
   //- Include Footer block ('.footer')
-  include assets/blocks/common-blocks/footer/block.pug
+  include /common-blocks/footer/block.pug
